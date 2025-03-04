@@ -15,7 +15,7 @@ namespace Attendance_Management.Models
         [Required]
         public string Name { get; set; }
         [Required]
-        public string Department { get; set; }
+        public Department Department { get; set; }
         [Required]
         public UserRole Role { get; set; }
         [EmailAddress(ErrorMessage ="invaild Email!!")]
@@ -43,5 +43,13 @@ namespace Attendance_Management.Models
         PartTime,
         Remote
     }
-    
+    public enum Department
+    {
+        HR,
+        IT,
+        Finance,
+        Marketing,
+        Sales,
+        Operations
+    }
 }
