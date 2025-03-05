@@ -4,6 +4,7 @@ using Attendance_Management.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Attendance_Management.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20250304222706_updatedata")]
+    partial class updatedata
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -186,7 +189,7 @@ namespace Attendance_Management.Migrations
                         new
                         {
                             EmployeeID = 1,
-                            Department = "IT",
+                            Department = "HR",
                             Email = "alice.johnson@company.com",
                             Name = "Alice Johnson",
                             Password = "hashedpass1",
@@ -197,7 +200,7 @@ namespace Attendance_Management.Migrations
                         new
                         {
                             EmployeeID = 2,
-                            Department = "HR",
+                            Department = "IT",
                             Email = "bob.smith@company.com",
                             Name = "Bob Smith",
                             Password = "hashedpass2",

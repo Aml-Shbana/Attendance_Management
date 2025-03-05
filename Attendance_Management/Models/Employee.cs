@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +27,8 @@ namespace Attendance_Management.Models
         public WorkSchedule Schedule { get; set; }
         [PasswordPropertyText(true)]
         public string Password { get; set; }
+        [NotMapped] 
+        public string ConfirmPassword { get; set; }
         //relations
         public virtual List<Attendance> Attendances { get; set; } = new List<Attendance>();
         public virtual List<LeaveRequest> Leaves { get; set; } = new List<LeaveRequest>();

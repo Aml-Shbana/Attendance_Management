@@ -1,4 +1,4 @@
-﻿using Attendance_Management.Models;
+using Attendance_Management.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,13 +11,17 @@ using System.Windows.Forms;
 
 namespace Attendance_Management.Forms_Folder
 {
+
+
     public partial class login : Form
     {
         //call dbcontext
         private readonly Context con = new Context();
+        public static int LoggedInEmployeeID;
         public login()
         {
             InitializeComponent();
+
         }
 
         private void btnlogin_Click(object sender, EventArgs e)
@@ -35,6 +39,12 @@ namespace Attendance_Management.Forms_Folder
             {
                 MessageBox.Show("Error", "invaild Email or Password", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
+            }
+            if (user != null)
+            {
+                //save id
+                LoggedInEmployeeID = user.EmployeeID;
+                MessageBox.Show("saved id");
             }
             //set role
             switch (user.Role)
@@ -54,5 +64,7 @@ namespace Attendance_Management.Forms_Folder
             }
 
         }
+
+       
     }
 }
