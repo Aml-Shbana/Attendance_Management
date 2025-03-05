@@ -27,7 +27,9 @@ namespace Attendance_Management.Models
             new Employee { EmployeeID = 3, Name = "Charlie Brown", Department = "Finance", Role = UserRole.HR, Email = "charlie.brown@company.com", Phone = "0543216789", Schedule = WorkSchedule.PartTime, Password = "hashedpass3" },
             new Employee { EmployeeID = 4, Name = "Diana Green", Department = "IT", Role = UserRole.Employee, Email = "diana.green@company.com", Phone = "0778899000", Schedule = WorkSchedule.FullTime, Password = "hashedpass4" },
             new Employee { EmployeeID = 5, Name = "Ethan White", Department = "Marketing", Role = UserRole.Employee, Email = "ethan.white@company.com", Phone = "0667788990", Schedule = WorkSchedule.PartTime, Password = "hashedpass5" },
-            new Employee { EmployeeID = 6, Name = "AML", Department = "Marketing", Role = UserRole.Employee, Email = "aml@company.com", Phone = "0667788990", Schedule = WorkSchedule.PartTime, Password = "123" });
+            new Employee { EmployeeID = 6, Name = "AML", Department = "Marketing", Role = UserRole.Employee, Email = "aml@company.com", Phone = "0667788990", Schedule = WorkSchedule.PartTime, Password = "123" },
+            new Employee { EmployeeID = 7, Name = "eman", Department = "cs", Role = UserRole.Employee, Email = "eman@gmail.com", Phone = "1111111", Schedule = WorkSchedule.FullTime, Password = "123" },
+            new Employee { EmployeeID = 8, Name = "esraa", Department = "cs", Role = UserRole.Employee, Email = "esraa@gmail.com", Phone = "1111111", Schedule = WorkSchedule.FullTime, Password = "123" });
 
             // Seed Leaves
             modelBuilder.Entity<LeaveRequest>().HasData(

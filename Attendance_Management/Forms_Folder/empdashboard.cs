@@ -81,6 +81,9 @@ namespace Attendance_Management.Forms_Folder
         }
 
         #endregion
+
+        #region checkin
+        
         private void btnCheckIn_Click(object sender, EventArgs e)
         {
             var today = DateTime.Today;
@@ -89,8 +92,9 @@ namespace Attendance_Management.Forms_Folder
             var attendata = con.Attendances.FirstOrDefault(a => a.EmployeeID == login.LoggedInEmployeeID && a.CheckInTime.Value.Date == today
           );
 
-            if (attendata != null)
+            if ( attendata == null)
             {
+
                 var now = DateTime.Now;
                 var isLate = now.TimeOfDay > late;
                 var isearly = now.TimeOfDay < early;
@@ -102,6 +106,7 @@ namespace Attendance_Management.Forms_Folder
                     EarlyDeparture = isearly
 
                 };
+                
                 con.Attendances.Add(atten);
 
                 con.SaveChanges();
@@ -120,7 +125,8 @@ namespace Attendance_Management.Forms_Folder
             }
 
         }
-
+        #endregion
+        #region checkout
         private void btnCheckOut_Click(object sender, EventArgs e)
         {
             var today = DateTime.Today;
@@ -128,6 +134,7 @@ namespace Attendance_Management.Forms_Folder
            .Where(f => f.EmployeeID == login.LoggedInEmployeeID && f.CheckInTime.Value.Date == today)
           .OrderByDescending(f => f.CheckInTime)
             .FirstOrDefault(f => f.CheckOutTime == null);
+
             if (attenCHOut != null)//سجل حضور و انصراف لا
             {
                 attenCHOut.CheckOutTime = DateTime.Now;
@@ -147,13 +154,15 @@ namespace Attendance_Management.Forms_Folder
                 MessageBox.Show("Warning!!", "Attendance must be registered first!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
+        #endregion
         private void tabAttendanceHistory_Click(object sender, EventArgs e)
         {
             loadattendance();
 
         }
 
+        #region save chnged password
+       
         private void btnsave_Click(object sender, EventArgs e)
         {
             string oldpass = txtoldpass.Text.Trim();
@@ -190,6 +199,7 @@ namespace Attendance_Management.Forms_Folder
             con.SaveChanges();
             MessageBox.Show("Success", "Password updated successfully!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+        #endregion
 
     }
 }
