@@ -4,6 +4,7 @@ using Attendance_Management.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Attendance_Management.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20250304210809_add_department_enum")]
+    partial class add_department_enum
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -234,17 +237,6 @@ namespace Attendance_Management.Migrations
                             Email = "ethan.white@company.com",
                             Name = "Ethan White",
                             Password = "hashedpass5",
-                            Phone = "0667788990",
-                            Role = 2,
-                            Schedule = 1
-                        },
-                        new
-                        {
-                            EmployeeID = 6,
-                            Department = "Marketing",
-                            Email = "aml@company.com",
-                            Name = "AML",
-                            Password = "123",
                             Phone = "0667788990",
                             Role = 2,
                             Schedule = 1
