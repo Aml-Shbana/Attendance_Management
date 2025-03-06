@@ -38,6 +38,17 @@
             lblAttendanceStatus = new System.Windows.Forms.Label();
             lblCurrentTime = new System.Windows.Forms.Label();
             tabLeaveRequest = new System.Windows.Forms.TabPage();
+            lblstatus = new System.Windows.Forms.Label();
+            btnSubmitLeave = new System.Windows.Forms.Button();
+            txtReason = new System.Windows.Forms.TextBox();
+            dtpEndDate = new System.Windows.Forms.DateTimePicker();
+            dtpStartDate = new System.Windows.Forms.DateTimePicker();
+            cmbLeaveType = new System.Windows.Forms.ComboBox();
+            lblleavestatus = new System.Windows.Forms.Label();
+            label7 = new System.Windows.Forms.Label();
+            label6 = new System.Windows.Forms.Label();
+            label5 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
             tabAttendanceHistory = new System.Windows.Forms.TabPage();
             lblEarlyDeparture = new System.Windows.Forms.Label();
             lblLateArrival = new System.Windows.Forms.Label();
@@ -57,6 +68,7 @@
             tabcontrolemp.SuspendLayout();
             panel1.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
+            tabLeaveRequest.SuspendLayout();
             tabAttendanceHistory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAttendanceHistory).BeginInit();
             tabchange.SuspendLayout();
@@ -155,6 +167,17 @@
             // 
             // tabLeaveRequest
             // 
+            tabLeaveRequest.Controls.Add(lblstatus);
+            tabLeaveRequest.Controls.Add(btnSubmitLeave);
+            tabLeaveRequest.Controls.Add(txtReason);
+            tabLeaveRequest.Controls.Add(dtpEndDate);
+            tabLeaveRequest.Controls.Add(dtpStartDate);
+            tabLeaveRequest.Controls.Add(cmbLeaveType);
+            tabLeaveRequest.Controls.Add(lblleavestatus);
+            tabLeaveRequest.Controls.Add(label7);
+            tabLeaveRequest.Controls.Add(label6);
+            tabLeaveRequest.Controls.Add(label5);
+            tabLeaveRequest.Controls.Add(label4);
             tabLeaveRequest.Location = new System.Drawing.Point(4, 29);
             tabLeaveRequest.Name = "tabLeaveRequest";
             tabLeaveRequest.Padding = new System.Windows.Forms.Padding(3);
@@ -162,6 +185,100 @@
             tabLeaveRequest.TabIndex = 1;
             tabLeaveRequest.Text = "LeaveRequest";
             tabLeaveRequest.UseVisualStyleBackColor = true;
+            // 
+            // lblstatus
+            // 
+            lblstatus.AutoSize = true;
+            lblstatus.Location = new System.Drawing.Point(509, 207);
+            lblstatus.Name = "lblstatus";
+            lblstatus.Size = new System.Drawing.Size(49, 20);
+            lblstatus.TabIndex = 11;
+            lblstatus.Text = "Status";
+            // 
+            // btnSubmitLeave
+            // 
+            btnSubmitLeave.Location = new System.Drawing.Point(667, 369);
+            btnSubmitLeave.Name = "btnSubmitLeave";
+            btnSubmitLeave.Size = new System.Drawing.Size(94, 29);
+            btnSubmitLeave.TabIndex = 10;
+            btnSubmitLeave.Text = "Submit";
+            btnSubmitLeave.UseVisualStyleBackColor = true;
+            btnSubmitLeave.Click += btnSubmitLeave_Click;
+            // 
+            // txtReason
+            // 
+            txtReason.Location = new System.Drawing.Point(214, 270);
+            txtReason.Name = "txtReason";
+            txtReason.Size = new System.Drawing.Size(125, 27);
+            txtReason.TabIndex = 9;
+            // 
+            // dtpEndDate
+            // 
+            dtpEndDate.Location = new System.Drawing.Point(184, 201);
+            dtpEndDate.Name = "dtpEndDate";
+            dtpEndDate.Size = new System.Drawing.Size(250, 27);
+            dtpEndDate.TabIndex = 8;
+            // 
+            // dtpStartDate
+            // 
+            dtpStartDate.Location = new System.Drawing.Point(165, 128);
+            dtpStartDate.Name = "dtpStartDate";
+            dtpStartDate.Size = new System.Drawing.Size(250, 27);
+            dtpStartDate.TabIndex = 7;
+            // 
+            // cmbLeaveType
+            // 
+            cmbLeaveType.FormattingEnabled = true;
+            cmbLeaveType.Location = new System.Drawing.Point(590, 47);
+            cmbLeaveType.Name = "cmbLeaveType";
+            cmbLeaveType.Size = new System.Drawing.Size(151, 28);
+            cmbLeaveType.TabIndex = 6;
+            cmbLeaveType.SelectedIndexChanged += cmbLeaveType_SelectedIndexChanged;
+            // 
+            // lblleavestatus
+            // 
+            lblleavestatus.AutoSize = true;
+            lblleavestatus.Location = new System.Drawing.Point(138, 378);
+            lblleavestatus.Name = "lblleavestatus";
+            lblleavestatus.Size = new System.Drawing.Size(104, 20);
+            lblleavestatus.TabIndex = 4;
+            lblleavestatus.Text = "lblLeaveStatus";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new System.Drawing.Point(86, 264);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(53, 20);
+            label7.TabIndex = 3;
+            label7.Text = "reason";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new System.Drawing.Point(82, 198);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(34, 20);
+            label6.TabIndex = 2;
+            label6.Text = "end";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new System.Drawing.Point(74, 130);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(38, 20);
+            label5.TabIndex = 1;
+            label5.Text = "start";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new System.Drawing.Point(493, 55);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(91, 20);
+            label4.TabIndex = 0;
+            label4.Text = "type holiday";
             // 
             // tabAttendanceHistory
             // 
@@ -323,6 +440,8 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             flowLayoutPanel1.ResumeLayout(false);
+            tabLeaveRequest.ResumeLayout(false);
+            tabLeaveRequest.PerformLayout();
             tabAttendanceHistory.ResumeLayout(false);
             tabAttendanceHistory.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAttendanceHistory).EndInit();
@@ -357,5 +476,16 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnSubmitLeave;
+        private System.Windows.Forms.TextBox txtReason;
+        private System.Windows.Forms.DateTimePicker dtpEndDate;
+        private System.Windows.Forms.DateTimePicker dtpStartDate;
+        private System.Windows.Forms.ComboBox cmbLeaveType;
+        private System.Windows.Forms.Label lblleavestatus;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblstatus;
     }
 }

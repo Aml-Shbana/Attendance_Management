@@ -29,16 +29,23 @@ namespace Attendance_Management.Models
             new Employee { EmployeeID = 5, Name = "Ethan White", Department = "Marketing", Role = UserRole.Employee, Email = "ethan.white@company.com", Phone = "0667788990", Schedule = WorkSchedule.PartTime, Password = "hashedpass5" },
             new Employee { EmployeeID = 6, Name = "AML", Department = "Marketing", Role = UserRole.Employee, Email = "aml@company.com", Phone = "0667788990", Schedule = WorkSchedule.PartTime, Password = "123" },
             new Employee { EmployeeID = 7, Name = "eman", Department = "cs", Role = UserRole.Employee, Email = "eman@gmail.com", Phone = "1111111", Schedule = WorkSchedule.FullTime, Password = "123" },
-            new Employee { EmployeeID = 8, Name = "esraa", Department = "cs", Role = UserRole.Employee, Email = "esraa@gmail.com", Phone = "1111111", Schedule = WorkSchedule.FullTime, Password = "123" });
+            new Employee { EmployeeID = 8, Name = "esraa", Department = "cs", Role = UserRole.Employee, Email = "esraa@gmail.com", Phone = "1111111", Schedule = WorkSchedule.FullTime, Password = "123" },
+            new Employee { EmployeeID = 9, Name = "yasser", Department = "cs", Role = UserRole.Employee, Email = "yasser@gmail.com", Phone = "1111111", Schedule = WorkSchedule.FullTime, Password = "55555" },
+            new Employee { EmployeeID = 10, Name = "fatma", Department = "pd", Role = UserRole.Employee, Email = "fa@gmail.com", Phone = "1111111", Schedule = WorkSchedule.FullTime, Password = "111" },
+            new Employee { EmployeeID = 11, Name = "sara", Department = "cs", Role = UserRole.Employee, Email = "sara@gmail.com", Phone = "1111111", Schedule = WorkSchedule.FullTime, Password = "111" },
+            new Employee { EmployeeID = 12, Name = "a", Department = "cs", Role = UserRole.Employee, Email = "a@gmail.com", Phone = "1111111", Schedule = WorkSchedule.FullTime, Password = "111" },
+            new Employee { EmployeeID = 13, Name = "b", Department = "cs", Role = UserRole.Employee, Email = "b@gmail.com", Phone = "1111111", Schedule = WorkSchedule.FullTime, Password = "111" },
+            new Employee { EmployeeID = 14, Name = "c", Department = "cs", Role = UserRole.Employee, Email = "c@gmail.com", Phone = "1111111", Schedule = WorkSchedule.FullTime, Password = "111" },
+            new Employee { EmployeeID = 15, Name = "d", Department = "cs", Role = UserRole.Employee, Email = "d@gmail.com", Phone = "1111111", Schedule = WorkSchedule.FullTime, Password = "111" });
 
             // Seed Leaves
             modelBuilder.Entity<LeaveRequest>().HasData(
-                new LeaveRequest { LeaveRequestID = 1, StartDate = DateTime.Parse("2025-03-05"), EndDate = DateTime.Parse("2025-03-10"), Status = LeaveStatus.Approved, Type = LeaveType.Vacation, EmployeeID = 2 },
-                new LeaveRequest { LeaveRequestID = 2, StartDate = DateTime.Parse("2025-03-15"), EndDate = DateTime.Parse("2025-03-16"), Status = LeaveStatus.Pending, Type = LeaveType.SickLeave, EmployeeID = 3 },
-                new LeaveRequest { LeaveRequestID = 3, StartDate = DateTime.Parse("2025-04-01"), EndDate = DateTime.Parse("2025-04-15"), Status = LeaveStatus.Rejected, Type = LeaveType.UnpaidLeave, EmployeeID = 5 },
-                new LeaveRequest { LeaveRequestID = 4, StartDate = DateTime.Parse("2025-04-10"), EndDate = DateTime.Parse("2025-04-20"), Status = LeaveStatus.Approved, Type = LeaveType.Vacation, EmployeeID = 1 },
-                new LeaveRequest { LeaveRequestID = 5, StartDate = DateTime.Parse("2025-05-02"), EndDate = DateTime.Parse("2025-05-05"), Status = LeaveStatus.Pending, Type = LeaveType.SickLeave, EmployeeID = 4 },
-                new LeaveRequest { LeaveRequestID = 6, StartDate = DateTime.Parse("2025-05-15"), EndDate = DateTime.Parse("2025-05-25"), Status = LeaveStatus.Approved, Type = LeaveType.UnpaidLeave, EmployeeID = 3 }
+                new LeaveRequest { LeaveRequestID = 1, StartDate = DateTime.Parse("2025-03-05"), EndDate = DateTime.Parse("2025-03-10"), Status = LeaveStatus.Approved, Type = LeaveType.Vacation, Reason = "Not specified", EmployeeID = 2 },
+                new LeaveRequest { LeaveRequestID = 2, StartDate = DateTime.Parse("2025-03-15"), EndDate = DateTime.Parse("2025-03-16"), Status = LeaveStatus.Pending, Type = LeaveType.SickLeave, Reason = "Not specified", EmployeeID = 3 },
+                new LeaveRequest { LeaveRequestID = 3, StartDate = DateTime.Parse("2025-04-01"), EndDate = DateTime.Parse("2025-04-15"), Status = LeaveStatus.Rejected, Type = LeaveType.UnpaidLeave, Reason = "Not specified", EmployeeID = 5 },
+                new LeaveRequest { LeaveRequestID = 4, StartDate = DateTime.Parse("2025-04-10"), EndDate = DateTime.Parse("2025-04-20"), Status = LeaveStatus.Approved, Type = LeaveType.Vacation, Reason = "Not specified", EmployeeID = 1 },
+                new LeaveRequest { LeaveRequestID = 5, StartDate = DateTime.Parse("2025-05-02"), EndDate = DateTime.Parse("2025-05-05"), Status = LeaveStatus.Pending, Type = LeaveType.SickLeave, Reason = "Not specified", EmployeeID = 4 },
+                new LeaveRequest { LeaveRequestID = 6, StartDate = DateTime.Parse("2025-05-15"), EndDate = DateTime.Parse("2025-05-25"), Status = LeaveStatus.Approved, Type = LeaveType.UnpaidLeave, Reason = "Not specified", EmployeeID = 3 }
             );
 
             // Seed Attendances

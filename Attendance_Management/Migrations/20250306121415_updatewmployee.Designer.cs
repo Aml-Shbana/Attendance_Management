@@ -4,6 +4,7 @@ using Attendance_Management.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Attendance_Management.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20250306121415_updatewmployee")]
+    partial class updatewmployee
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -364,10 +367,6 @@ namespace Attendance_Management.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Reason")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
@@ -389,7 +388,6 @@ namespace Attendance_Management.Migrations
                             LeaveRequestID = 1,
                             EmployeeID = 2,
                             EndDate = new DateTime(2025, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Reason = "Not specified",
                             StartDate = new DateTime(2025, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 1,
                             Type = 1
@@ -399,7 +397,6 @@ namespace Attendance_Management.Migrations
                             LeaveRequestID = 2,
                             EmployeeID = 3,
                             EndDate = new DateTime(2025, 3, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Reason = "Not specified",
                             StartDate = new DateTime(2025, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 0,
                             Type = 0
@@ -409,7 +406,6 @@ namespace Attendance_Management.Migrations
                             LeaveRequestID = 3,
                             EmployeeID = 5,
                             EndDate = new DateTime(2025, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Reason = "Not specified",
                             StartDate = new DateTime(2025, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
                             Type = 2
@@ -419,7 +415,6 @@ namespace Attendance_Management.Migrations
                             LeaveRequestID = 4,
                             EmployeeID = 1,
                             EndDate = new DateTime(2025, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Reason = "Not specified",
                             StartDate = new DateTime(2025, 4, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 1,
                             Type = 1
@@ -429,7 +424,6 @@ namespace Attendance_Management.Migrations
                             LeaveRequestID = 5,
                             EmployeeID = 4,
                             EndDate = new DateTime(2025, 5, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Reason = "Not specified",
                             StartDate = new DateTime(2025, 5, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 0,
                             Type = 0
@@ -439,7 +433,6 @@ namespace Attendance_Management.Migrations
                             LeaveRequestID = 6,
                             EmployeeID = 3,
                             EndDate = new DateTime(2025, 5, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Reason = "Not specified",
                             StartDate = new DateTime(2025, 5, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 1,
                             Type = 2

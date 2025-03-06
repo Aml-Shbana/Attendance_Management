@@ -19,7 +19,9 @@ namespace Attendance_Management.Models
         [Required]
         public DateTime EndDate { get; set; }
         [Required]
-        public LeaveStatus Status { get; set; }
+        public LeaveStatus Status { get; set; } = LeaveStatus.Pending;
+        //set coulmn to reason of holiday
+        public string Reason { get; set; }
         //object
        // [ForeignKey(nameof(Employee))] //name of prop
         public int EmployeeID { get; set; }
