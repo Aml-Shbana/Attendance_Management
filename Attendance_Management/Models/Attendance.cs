@@ -11,7 +11,7 @@ namespace Attendance_Management.Models
     {
         [Key]
         public int AttendanceID { get; set; }
-        public DateTime? CheckInTime  { get; set; }
+        public DateTime? CheckInTime { get; set; }
         public DateTime? CheckOutTime { get; set; }
         public TimeSpan? TotalHoursWorked
         {
@@ -20,12 +20,12 @@ namespace Attendance_Management.Models
             {
                 return CheckOutTime.HasValue ? CheckOutTime.Value - CheckInTime : (TimeSpan?)null;
             }
-        }  
-        public bool LateArrival { get; set; } 
+        }
+        public bool LateArrival { get; set; }
         public bool EarlyDeparture { get; set; }
-       // object
-       // [ForeignKey(nameof(Employee))] //name of prop
+        
         public int EmployeeID { get; set; }
         public virtual Employee Employee { get; set; }
+        
     }
 }
