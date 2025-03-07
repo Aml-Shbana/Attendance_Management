@@ -53,13 +53,12 @@ namespace Attendance_Management.Forms_Folder
                     //new admindashboard().Show();
                     MessageBox.Show("admin", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
-                case UserRole.HR:
-                    new HR().Show();
-                    this.Hide();
+                  case UserRole.HR:
+                     new HR().Show();
+                   // this.Hide();
                     break;
                 case UserRole.Employee:
-                    // new empdashboard().Show();
-                    MessageBox.Show("Employee", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                     new empdashboard().Show();
                     break;
             }
 
