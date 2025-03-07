@@ -17,13 +17,13 @@ namespace Attendance_Management.Forms_Folder
     {
         //call dbcontext
         private readonly Context con = new Context();
-        public static int LoggedInEmployeeID;
         public login()
         {
             InitializeComponent();
 
         }
 
+        public static int LoggedInEmployeeID;
         private void btnlogin_Click(object sender, EventArgs e)
         {
             string email = txtemail.Text.Trim();
@@ -44,7 +44,6 @@ namespace Attendance_Management.Forms_Folder
             {
                 //save id
                 LoggedInEmployeeID = user.EmployeeID;
-                MessageBox.Show("saved id");
             }
             //set role
             switch (user.Role)
@@ -58,8 +57,8 @@ namespace Attendance_Management.Forms_Folder
                     this.Hide();
                     break;
                 case UserRole.Employee:
-                    // new empdashboard().Show();
-                    MessageBox.Show("Employee", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    new empdashboard().Show();
+                    this.Hide();
                     break;
             }
 

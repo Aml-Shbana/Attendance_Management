@@ -86,8 +86,7 @@ namespace Attendance_Management.Forms_Folder
             var today = DateTime.Today;
             var late = new TimeSpan(9, 0, 0);
             var early = new TimeSpan(16, 0, 0);
-            var attendata = con.Attendances.FirstOrDefault(a => a.EmployeeID == login.LoggedInEmployeeID && a.CheckInTime.Value.Date == today
-          );
+            var attendata = con.Attendances.FirstOrDefault(a => a.EmployeeID == login.LoggedInEmployeeID && a.CheckInTime.Value.Date == today);
 
             if (attendata != null)
             {
