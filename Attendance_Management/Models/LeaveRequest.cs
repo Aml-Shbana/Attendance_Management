@@ -19,7 +19,7 @@ namespace Attendance_Management.Models
         [Required]
         public DateTime EndDate { get; set; }
         [Required]
-        public LeaveStatus Status { get; set; } = LeaveStatus.Pending;
+        public LeaveStatus Status { get; set; } 
         //set coulmn to reason of holiday
         public string Reason { get; set; }
         //object

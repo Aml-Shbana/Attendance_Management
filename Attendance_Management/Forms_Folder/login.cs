@@ -1,4 +1,4 @@
-﻿using Attendance_Management.Models;
+using Attendance_Management.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -53,13 +53,12 @@ namespace Attendance_Management.Forms_Folder
                     //new admindashboard().Show();
                     MessageBox.Show("admin", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
-                case UserRole.HR:
-                    // new hrdashboard().Show();
-                    MessageBox.Show("hr", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                  case UserRole.HR:
+                     new HR().Show();
+                   // this.Hide();
                     break;
                 case UserRole.Employee:
-                    new empdashboard().Show();
-                    MessageBox.Show("Employee", "Employee", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                     new empdashboard().Show();
                     break;
             }
 

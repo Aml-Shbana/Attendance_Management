@@ -32,12 +32,18 @@
             tabControl1 = new System.Windows.Forms.TabControl();
             tabcontrolemp = new System.Windows.Forms.TabPage();
             panel1 = new System.Windows.Forms.Panel();
+            btnclose = new System.Windows.Forms.Button();
+            label9 = new System.Windows.Forms.Label();
+            label8 = new System.Windows.Forms.Label();
+            lbldept = new System.Windows.Forms.Label();
+            lblname = new System.Windows.Forms.Label();
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             btnCheckIn = new System.Windows.Forms.Button();
             btnCheckOut = new System.Windows.Forms.Button();
             lblAttendanceStatus = new System.Windows.Forms.Label();
             lblCurrentTime = new System.Windows.Forms.Label();
             tabLeaveRequest = new System.Windows.Forms.TabPage();
+            button1 = new System.Windows.Forms.Button();
             lblstatus = new System.Windows.Forms.Label();
             btnSubmitLeave = new System.Windows.Forms.Button();
             txtReason = new System.Windows.Forms.TextBox();
@@ -50,12 +56,14 @@
             label5 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
             tabAttendanceHistory = new System.Windows.Forms.TabPage();
+            button2 = new System.Windows.Forms.Button();
             lblEarlyDeparture = new System.Windows.Forms.Label();
             lblLateArrival = new System.Windows.Forms.Label();
             dgvAttendanceHistory = new System.Windows.Forms.DataGridView();
             lblLastCheckOut = new System.Windows.Forms.Label();
             lblLastCheckIn = new System.Windows.Forms.Label();
             tabchange = new System.Windows.Forms.TabPage();
+            button3 = new System.Windows.Forms.Button();
             btnsave = new System.Windows.Forms.Button();
             txtconfirmpass = new System.Windows.Forms.TextBox();
             txtnewpass = new System.Windows.Forms.TextBox();
@@ -100,6 +108,11 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnclose);
+            panel1.Controls.Add(label9);
+            panel1.Controls.Add(label8);
+            panel1.Controls.Add(lbldept);
+            panel1.Controls.Add(lblname);
             panel1.Controls.Add(flowLayoutPanel1);
             panel1.Controls.Add(lblAttendanceStatus);
             panel1.Controls.Add(lblCurrentTime);
@@ -109,6 +122,52 @@
             panel1.Padding = new System.Windows.Forms.Padding(20);
             panel1.Size = new System.Drawing.Size(924, 473);
             panel1.TabIndex = 0;
+            // 
+            // btnclose
+            // 
+            btnclose.Location = new System.Drawing.Point(820, 430);
+            btnclose.Name = "btnclose";
+            btnclose.Size = new System.Drawing.Size(94, 29);
+            btnclose.TabIndex = 9;
+            btnclose.Text = "Close App";
+            btnclose.UseVisualStyleBackColor = true;
+            btnclose.Click += btnclose_Click;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new System.Drawing.Point(31, 250);
+            label9.Name = "label9";
+            label9.Size = new System.Drawing.Size(92, 20);
+            label9.TabIndex = 8;
+            label9.Text = "Department:";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new System.Drawing.Point(31, 186);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(82, 20);
+            label8.TabIndex = 7;
+            label8.Text = "User name:";
+            // 
+            // lbldept
+            // 
+            lbldept.AutoSize = true;
+            lbldept.Location = new System.Drawing.Point(129, 251);
+            lbldept.Name = "lbldept";
+            lbldept.Size = new System.Drawing.Size(89, 20);
+            lbldept.TabIndex = 6;
+            lbldept.Text = "Department";
+            // 
+            // lblname
+            // 
+            lblname.AutoSize = true;
+            lblname.Location = new System.Drawing.Point(129, 186);
+            lblname.Name = "lblname";
+            lblname.Size = new System.Drawing.Size(49, 20);
+            lblname.TabIndex = 5;
+            lblname.Text = "Name";
             // 
             // flowLayoutPanel1
             // 
@@ -167,6 +226,7 @@
             // 
             // tabLeaveRequest
             // 
+            tabLeaveRequest.Controls.Add(button1);
             tabLeaveRequest.Controls.Add(lblstatus);
             tabLeaveRequest.Controls.Add(btnSubmitLeave);
             tabLeaveRequest.Controls.Add(txtReason);
@@ -185,6 +245,16 @@
             tabLeaveRequest.TabIndex = 1;
             tabLeaveRequest.Text = "LeaveRequest";
             tabLeaveRequest.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            button1.Location = new System.Drawing.Point(830, 444);
+            button1.Name = "button1";
+            button1.Size = new System.Drawing.Size(94, 29);
+            button1.TabIndex = 12;
+            button1.Text = "Close App";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // lblstatus
             // 
@@ -282,6 +352,7 @@
             // 
             // tabAttendanceHistory
             // 
+            tabAttendanceHistory.Controls.Add(button2);
             tabAttendanceHistory.Controls.Add(lblEarlyDeparture);
             tabAttendanceHistory.Controls.Add(lblLateArrival);
             tabAttendanceHistory.Controls.Add(dgvAttendanceHistory);
@@ -294,6 +365,16 @@
             tabAttendanceHistory.Text = "AttendanceHistory";
             tabAttendanceHistory.UseVisualStyleBackColor = true;
             tabAttendanceHistory.Click += tabAttendanceHistory_Click;
+            // 
+            // button2
+            // 
+            button2.Location = new System.Drawing.Point(828, 442);
+            button2.Name = "button2";
+            button2.Size = new System.Drawing.Size(94, 29);
+            button2.TabIndex = 13;
+            button2.Text = "Close App";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // lblEarlyDeparture
             // 
@@ -348,6 +429,7 @@
             // 
             // tabchange
             // 
+            tabchange.Controls.Add(button3);
             tabchange.Controls.Add(btnsave);
             tabchange.Controls.Add(txtconfirmpass);
             tabchange.Controls.Add(txtnewpass);
@@ -362,6 +444,16 @@
             tabchange.TabIndex = 3;
             tabchange.Text = "change password";
             tabchange.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            button3.Location = new System.Drawing.Point(828, 442);
+            button3.Name = "button3";
+            button3.Size = new System.Drawing.Size(94, 29);
+            button3.TabIndex = 14;
+            button3.Text = "Close App";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // btnsave
             // 
@@ -487,5 +579,13 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblstatus;
+        private System.Windows.Forms.Label lbldept;
+        private System.Windows.Forms.Label lblname;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btnclose;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }

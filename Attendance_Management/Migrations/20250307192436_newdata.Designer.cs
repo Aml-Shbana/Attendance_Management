@@ -4,6 +4,7 @@ using Attendance_Management.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Attendance_Management.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20250307192436_newdata")]
+    partial class newdata
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -258,28 +261,6 @@ namespace Attendance_Management.Migrations
                             Password = "123",
                             Phone = "0667788990",
                             Role = 1,
-                            Schedule = 1
-                        },
-                        new
-                        {
-                            EmployeeID = 8,
-                            Department = "HR",
-                            Email = "new@company.com",
-                            Name = "new",
-                            Password = "123",
-                            Phone = "0667788990",
-                            Role = 1,
-                            Schedule = 1
-                        },
-                        new
-                        {
-                            EmployeeID = 9,
-                            Department = "Marketing",
-                            Email = "emp@company.com",
-                            Name = "emp",
-                            Password = "123",
-                            Phone = "0667788990",
-                            Role = 2,
                             Schedule = 1
                         });
                 });

@@ -21,22 +21,18 @@ namespace Attendance_Management.Models
         {
             modelBuilder.Entity<Attendance>().HasOne(e => e.Employee).WithMany(e => e.Attendances).HasForeignKey(e => e.EmployeeID);
             modelBuilder.Entity<LeaveRequest>().HasOne(e => e.Employee).WithMany(e => e.Leaves).HasForeignKey(e => e.EmployeeID);
+            modelBuilder.Entity<Employee>().Property(e => e.Department).HasConversion<string>();
             modelBuilder.Entity<Employee>().HasData(
-            new Employee { EmployeeID = 1, Name = "Alice Johnson", Department = "HR", Role = UserRole.Admin, Email = "alice.johnson@company.com", Phone = "0123456789", Schedule = WorkSchedule.FullTime, Password = "hashedpass1" },
-            new Employee { EmployeeID = 2, Name = "Bob Smith", Department = "IT", Role = UserRole.Employee, Email = "bob.smith@company.com", Phone = "0987654321", Schedule = WorkSchedule.Remote, Password = "hashedpass2" },
-            new Employee { EmployeeID = 3, Name = "Charlie Brown", Department = "Finance", Role = UserRole.HR, Email = "charlie.brown@company.com", Phone = "0543216789", Schedule = WorkSchedule.PartTime, Password = "hashedpass3" },
-            new Employee { EmployeeID = 4, Name = "Diana Green", Department = "IT", Role = UserRole.Employee, Email = "diana.green@company.com", Phone = "0778899000", Schedule = WorkSchedule.FullTime, Password = "hashedpass4" },
-            new Employee { EmployeeID = 5, Name = "Ethan White", Department = "Marketing", Role = UserRole.Employee, Email = "ethan.white@company.com", Phone = "0667788990", Schedule = WorkSchedule.PartTime, Password = "hashedpass5" },
-            new Employee { EmployeeID = 6, Name = "AML", Department = "Marketing", Role = UserRole.Employee, Email = "aml@company.com", Phone = "0667788990", Schedule = WorkSchedule.PartTime, Password = "123" },
-            new Employee { EmployeeID = 7, Name = "eman", Department = "cs", Role = UserRole.Employee, Email = "eman@gmail.com", Phone = "1111111", Schedule = WorkSchedule.FullTime, Password = "123" },
-            new Employee { EmployeeID = 8, Name = "esraa", Department = "cs", Role = UserRole.Employee, Email = "esraa@gmail.com", Phone = "1111111", Schedule = WorkSchedule.FullTime, Password = "123" },
-            new Employee { EmployeeID = 9, Name = "yasser", Department = "cs", Role = UserRole.Employee, Email = "yasser@gmail.com", Phone = "1111111", Schedule = WorkSchedule.FullTime, Password = "55555" },
-            new Employee { EmployeeID = 10, Name = "fatma", Department = "pd", Role = UserRole.Employee, Email = "fa@gmail.com", Phone = "1111111", Schedule = WorkSchedule.FullTime, Password = "111" },
-            new Employee { EmployeeID = 11, Name = "sara", Department = "cs", Role = UserRole.Employee, Email = "sara@gmail.com", Phone = "1111111", Schedule = WorkSchedule.FullTime, Password = "111" },
-            new Employee { EmployeeID = 12, Name = "a", Department = "cs", Role = UserRole.Employee, Email = "a@gmail.com", Phone = "1111111", Schedule = WorkSchedule.FullTime, Password = "111" },
-            new Employee { EmployeeID = 13, Name = "b", Department = "cs", Role = UserRole.Employee, Email = "b@gmail.com", Phone = "1111111", Schedule = WorkSchedule.FullTime, Password = "111" },
-            new Employee { EmployeeID = 14, Name = "c", Department = "cs", Role = UserRole.Employee, Email = "c@gmail.com", Phone = "1111111", Schedule = WorkSchedule.FullTime, Password = "111" },
-            new Employee { EmployeeID = 15, Name = "d", Department = "cs", Role = UserRole.Employee, Email = "d@gmail.com", Phone = "1111111", Schedule = WorkSchedule.FullTime, Password = "111" });
+           new Employee { EmployeeID = 1, Name = "Alice Johnson", Department = Department.IT, Role = UserRole.Admin, Email = "alice.johnson@company.com", Phone = "0123456789", Schedule = WorkSchedule.FullTime, Password = "hashedpass1" },
+          new Employee { EmployeeID = 2, Name = "Bob Smith", Department = Department.HR, Role = UserRole.Employee, Email = "bob.smith@company.com", Phone = "0987654321", Schedule = WorkSchedule.Remote, Password = "hashedpass2" },
+            new Employee { EmployeeID = 3, Name = "Charlie Brown", Department = Department.Finance, Role = UserRole.HR, Email = "charlie.brown@company.com", Phone = "0543216789", Schedule = WorkSchedule.PartTime, Password = "hashedpass3" },
+        new Employee { EmployeeID = 4, Name = "Diana Green", Department = Department.IT, Role = UserRole.Employee, Email = "diana.green@company.com", Phone = "0778899000", Schedule = WorkSchedule.FullTime, Password = "hashedpass4" },
+         new Employee { EmployeeID = 5, Name = "Ethan White", Department = Department.Marketing, Role = UserRole.Employee, Email = "ethan.white@company.com", Phone = "0667788990", Schedule = WorkSchedule.PartTime, Password = "hashedpass5" },
+        new Employee { EmployeeID = 6, Name = "AML", Department = Department.Marketing, Role = UserRole.Employee, Email = "aml@company.com", Phone = "0667788990", Schedule = WorkSchedule.PartTime, Password = "123" },
+         new Employee { EmployeeID = 7, Name = "Fatma", Department = Department.HR, Role = UserRole.HR, Email = "fatma@company.com", Phone = "0667788990", Schedule = WorkSchedule.PartTime, Password = "123" },
+            new Employee { EmployeeID = 8, Name = "new", Department = Department.HR, Role = UserRole.HR, Email = "new@company.com", Phone = "0667788990", Schedule = WorkSchedule.PartTime, Password = "123" },
+            new Employee { EmployeeID = 9, Name = "emp", Department = Department.Marketing, Role = UserRole.Employee, Email = "emp@company.com", Phone = "0667788990", Schedule = WorkSchedule.PartTime, Password = "123" });
+
 
             // Seed Leaves
             modelBuilder.Entity<LeaveRequest>().HasData(

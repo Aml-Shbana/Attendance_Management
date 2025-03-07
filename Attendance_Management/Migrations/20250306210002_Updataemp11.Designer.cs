@@ -4,6 +4,7 @@ using Attendance_Management.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Attendance_Management.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20250306210002_Updataemp11")]
+    partial class Updataemp11
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -186,7 +189,7 @@ namespace Attendance_Management.Migrations
                         new
                         {
                             EmployeeID = 1,
-                            Department = "IT",
+                            Department = "HR",
                             Email = "alice.johnson@company.com",
                             Name = "Alice Johnson",
                             Password = "hashedpass1",
@@ -197,7 +200,7 @@ namespace Attendance_Management.Migrations
                         new
                         {
                             EmployeeID = 2,
-                            Department = "HR",
+                            Department = "Sales",
                             Email = "bob.smith@company.com",
                             Name = "Bob Smith",
                             Password = "hashedpass2",
@@ -208,7 +211,7 @@ namespace Attendance_Management.Migrations
                         new
                         {
                             EmployeeID = 3,
-                            Department = "Finance",
+                            Department = "HR",
                             Email = "charlie.brown@company.com",
                             Name = "Charlie Brown",
                             Password = "hashedpass3",
@@ -219,7 +222,7 @@ namespace Attendance_Management.Migrations
                         new
                         {
                             EmployeeID = 4,
-                            Department = "IT",
+                            Department = "HR",
                             Email = "diana.green@company.com",
                             Name = "Diana Green",
                             Password = "hashedpass4",
@@ -230,7 +233,7 @@ namespace Attendance_Management.Migrations
                         new
                         {
                             EmployeeID = 5,
-                            Department = "Marketing",
+                            Department = "HR",
                             Email = "ethan.white@company.com",
                             Name = "Ethan White",
                             Password = "hashedpass5",
@@ -241,7 +244,7 @@ namespace Attendance_Management.Migrations
                         new
                         {
                             EmployeeID = 6,
-                            Department = "Marketing",
+                            Department = "IT",
                             Email = "aml@company.com",
                             Name = "AML",
                             Password = "123",
@@ -252,35 +255,112 @@ namespace Attendance_Management.Migrations
                         new
                         {
                             EmployeeID = 7,
-                            Department = "HR",
-                            Email = "fatma@company.com",
-                            Name = "Fatma",
+                            Department = "IT",
+                            Email = "eman@gmail.com",
+                            Name = "eman",
                             Password = "123",
-                            Phone = "0667788990",
-                            Role = 1,
-                            Schedule = 1
+                            Phone = "1111111",
+                            Role = 2,
+                            Schedule = 0
                         },
                         new
                         {
                             EmployeeID = 8,
-                            Department = "HR",
-                            Email = "new@company.com",
-                            Name = "new",
+                            Department = "IT",
+                            Email = "esraa@gmail.com",
+                            Name = "esraa",
                             Password = "123",
-                            Phone = "0667788990",
-                            Role = 1,
-                            Schedule = 1
+                            Phone = "1111111",
+                            Role = 2,
+                            Schedule = 0
                         },
                         new
                         {
                             EmployeeID = 9,
                             Department = "Marketing",
-                            Email = "emp@company.com",
-                            Name = "emp",
-                            Password = "123",
-                            Phone = "0667788990",
+                            Email = "yasser@gmail.com",
+                            Name = "yasser",
+                            Password = "55555",
+                            Phone = "1111111",
                             Role = 2,
-                            Schedule = 1
+                            Schedule = 0
+                        },
+                        new
+                        {
+                            EmployeeID = 10,
+                            Department = "Marketing",
+                            Email = "fa@gmail.com",
+                            Name = "fatma",
+                            Password = "111",
+                            Phone = "1111111",
+                            Role = 2,
+                            Schedule = 0
+                        },
+                        new
+                        {
+                            EmployeeID = 11,
+                            Department = "Marketing",
+                            Email = "sara@gmail.com",
+                            Name = "sara",
+                            Password = "111",
+                            Phone = "1111111",
+                            Role = 2,
+                            Schedule = 0
+                        },
+                        new
+                        {
+                            EmployeeID = 12,
+                            Department = "Marketing",
+                            Email = "a@gmail.com",
+                            Name = "a",
+                            Password = "111",
+                            Phone = "1111111",
+                            Role = 2,
+                            Schedule = 0
+                        },
+                        new
+                        {
+                            EmployeeID = 13,
+                            Department = "Operations",
+                            Email = "b@gmail.com",
+                            Name = "b",
+                            Password = "111",
+                            Phone = "1111111",
+                            Role = 2,
+                            Schedule = 0
+                        },
+                        new
+                        {
+                            EmployeeID = 14,
+                            Department = "Operations",
+                            Email = "c@gmail.com",
+                            Name = "c",
+                            Password = "111",
+                            Phone = "1111111",
+                            Role = 2,
+                            Schedule = 0
+                        },
+                        new
+                        {
+                            EmployeeID = 15,
+                            Department = "Operations",
+                            Email = "d@gmail.com",
+                            Name = "d",
+                            Password = "111",
+                            Phone = "1111111",
+                            Role = 2,
+                            Schedule = 0
+                        },
+                        new
+                        {
+                            EmployeeID = 16,
+                            Department = "Operations",
+                            Email = "new@gmail.com",
+                            Name = "new",
+                            Password = "111",
+                            Phone = "1111111",
+                            Role = 2,
+                            Schedule = 0
                         });
                 });
 
