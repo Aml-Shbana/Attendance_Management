@@ -44,29 +44,38 @@ namespace Attendance_Management.Forms_Folder
             var today = DateTime.Today;
             var late = new TimeSpan(9, 0, 0);
             var early = new TimeSpan(16, 0, 0);
-            var attendata = con.Attendances.FirstOrDefault(a => a.EmployeeID == login.LoggedInEmployeeID && a.CheckInTime.Value.Date == today
-          );
+            var attendata = con.Attendances.FirstOrDefault(a => a.EmployeeID == login.LoggedInEmployeeID && a.CheckInTime.Value.Date == today);
 
-            if (attendata == null)
+            if (attendata != null)
             {
                 var now = DateTime.Now;
-                var isLate = now.TimeOfDay > late;  
+                var isLate = now.TimeOfDay > late;
+                var isearly = now.TimeOfDay < early;
                 var atten = new Attendance
                 {
                     EmployeeID = login.LoggedInEmployeeID,
                     CheckInTime = DateTime.Now,
-                    LateArrival = isLate, 
-                };
+                    LateArrival = isLate,
+                    EarlyDeparture = isearly
 
+                };
                 con.Attendances.Add(atten);
+
                 con.SaveChanges();
-                loadcheckinout();
+                lblAttendanceStatus.Text = "Attendance taken ,thank you";
+                lblAttendanceStatus.ForeColor = Color.Green;
+                lblLastCheckIn.BackColor = Color.Green;
+                lblLastCheckIn.Text = "Take CheckIn ✔";
+                btnCheckIn.Enabled = false;
+                btnCheckOut.Enabled = true;
+
                 loadattendance();
             }
             else
             {
                 MessageBox.Show("Warning!!", "Attendance was already taken!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
 
         }
         #endregion
@@ -221,59 +230,6 @@ namespace Attendance_Management.Forms_Folder
         }
 
         #endregion
-
-        private void btnCheckIn_Click(object sender, EventArgs e)
-        {
-            var today = DateTime.Today;
-            var late = new TimeSpan(9, 0, 0);
-            var early = new TimeSpan(16, 0, 0);
-            var attendata = con.Attendances.FirstOrDefault(a => a.EmployeeID == login.LoggedInEmployeeID && a.CheckInTime.Value.Date == today);
-
-            if (attendata != null)
-            {
-                var now = DateTime.Now;
-                var isLate = now.TimeOfDay > late;
-                var isearly = now.TimeOfDay < early;
-                var atten = new Attendance
-                {
-                    EmployeeID = login.LoggedInEmployeeID,
-                    CheckInTime = DateTime.Now,
-                    LateArrival = isLate,
-                    EarlyDeparture = isearly
-
-                };
-                con.Attendances.Add(atten);
-
-                con.SaveChanges();
-                lblAttendanceStatus.Text = "Attendance taken ,thank you";
-                lblAttendanceStatus.ForeColor = Color.Green;
-                lblLastCheckIn.BackColor = Color.Green;
-                lblLastCheckIn.Text = "Take CheckIn ✔";
-                btnCheckIn.Enabled = false;
-                btnCheckOut.Enabled = true;
-
-                loadattendance();
-            }
-            else
-            {
-                MessageBox.Show("Warning!!", "Attendance was already taken!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-
-        }
-
-        private void btnCheckOut_Click(object sender, EventArgs e)
-        {
-            var today = DateTime.Today;
-            var attenCHOut = con.Attendances
-           .Where(f => f.EmployeeID == login.LoggedInEmployeeID && f.CheckInTime.Value.Date == today)
-          .OrderByDescending(f => f.CheckInTime)
-            .FirstOrDefault(f => f.CheckOutTime == null);
-            if (attenCHOut != null)//سجل حضور و انصراف لا
-            {
-                attenCHOut.CheckOutTime = DateTime.Now;
-                con.SaveChanges();
-                con.Entry(attenCHOut).Reload();
-
 
         #region save changed of password 
 
