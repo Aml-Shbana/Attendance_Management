@@ -27,6 +27,8 @@ namespace Attendance_Management.Forms_Folder
             LoadEmployee();
             LoadAttendance();
             LoadData_cmb();
+            LoadLeaveReuset();
+            clear_data();
         }
         #region Manage Employees Tab
         #region function
@@ -154,8 +156,7 @@ namespace Attendance_Management.Forms_Folder
                 }
             }
         }
-        #endregion  
-
+        #endregion   
 
         #region update button
 
@@ -238,14 +239,7 @@ namespace Attendance_Management.Forms_Folder
         #endregion
 
         #region Attendance Tracking Tab
-        #region variables
-        int DailyAttendance = 0;
-        int monthlyAttendance = 0;
-        int weekAttendance = 0;
-        int MonthlyWorkingHours = 0;
-        int DailyWorkingHours = 0;
 
-        #endregion
         #region function
         private void LoadAttendance()
         {
@@ -333,13 +327,13 @@ namespace Attendance_Management.Forms_Folder
 
         #endregion
 
-        #region change data depend in date
+        #region change data depend in date  
 
         //view Employee depending on date 
         private void dtp_date_ValueChanged(object sender, EventArgs e)
         {
             dgv_attendance.DataSource = _context.Attendances
-                .Where(a => a.CheckInTime.Value.Date == dtp_date.Value.Date &&  a.Employee.Role == UserRole.Employee )
+                .Where(a => a.CheckInTime.Value.Date == dtp_date.Value.Date && a.Employee.Role == UserRole.Employee)
                 .Select(a => new
                 {
                     a.Employee.Name,
@@ -350,7 +344,7 @@ namespace Attendance_Management.Forms_Folder
                 })
                 .ToList();
         }
-        #endregion
+        #endregion   
 
         #region ideal employee button
 
@@ -375,7 +369,7 @@ namespace Attendance_Management.Forms_Folder
             }
 
         }
-        #endregion
+        #endregion 
 
         #region Calc Total Hour button
 
@@ -395,7 +389,7 @@ namespace Attendance_Management.Forms_Folder
         }
 
         #endregion
-        
+
         #region highlight late arrival and early departure
 
         //highlight late arrival and early departure after load data in data grid view
@@ -403,12 +397,12 @@ namespace Attendance_Management.Forms_Folder
         {
             foreach (DataGridViewRow row in dgv_attendance.Rows)
             {
-                if (row.Cells["LateArrival"].Value !=  null && row.Cells["EarlyDeparture"].Value != null)
+                if (row.Cells["LateArrival"].Value != null && row.Cells["EarlyDeparture"].Value != null)
                 {
-                    var late = Convert.ToInt32(row.Cells["LateArrival"].Value); 
-                    var early = Convert.ToInt32(row.Cells["EarlyDeparture"].Value); 
-                    
-                    if( late > 0 || early > 0)
+                    var late = Convert.ToInt32(row.Cells["LateArrival"].Value);
+                    var early = Convert.ToInt32(row.Cells["EarlyDeparture"].Value);
+
+                    if (late > 0 || early > 0)
                     {
                         row.DefaultCellStyle.BackColor = Color.Red;
                         row.DefaultCellStyle.ForeColor = Color.White;
@@ -416,8 +410,158 @@ namespace Attendance_Management.Forms_Folder
                 }
             }
         }
-        #endregion 
+        #endregion
+
+        #endregion
+
+        #region Leave Management Tab
+
+        #region function
+        private void LoadLeaveReuset()
+        {
+            dgv_Leaves.DataSource = _context.Leaves.Where(l => l.Status == LeaveStatus.Pending).Include(l => l.Employee).Select(l => new
+            {
+                l.LeaveRequestID,
+                l.Employee.Name,
+                StartDate = l.StartDate.ToString(),
+                EndDate = l.EndDate.ToString(),
+                l.Type,
+                l.Reason,
+                l.Status
+            }).ToList();
+            dgv_Leaves.Columns["LeaveRequestID"].Visible = false;
+        }
+
+        private void LoadApprovedLeaveReuset()
+        {
+            dgv_Leaves.DataSource = _context.Leaves.Where(l => l.Status == LeaveStatus.Approved).Include(l => l.Employee).Select(l => new
+            {
+                l.LeaveRequestID,
+                l.Employee.Name,
+                StartDate = l.StartDate.ToString(),
+                EndDate = l.EndDate.ToString(),
+                l.Type,
+                l.Reason,
+                l.Status
+            }).ToList();
+            dgv_Leaves.Columns["LeaveRequestID"].Visible = false;
+        }
+
+        private void LoadRejectedLeaveReuset()
+        {
+            dgv_Leaves.DataSource = _context.Leaves.Where(l => l.Status == LeaveStatus.Rejected).Include(l => l.Employee).Select(l => new
+            {
+                l.LeaveRequestID,
+                l.Employee.Name,
+                StartDate = l.StartDate.ToString(),
+                EndDate = l.EndDate.ToString(),
+                l.Type,
+                l.Reason,
+                l.Status
+            }).ToList();
+            dgv_Leaves.Columns["LeaveRequestID"].Visible = false;
+        }
+
+        private void clear_data()
+        {
+            lbl_e_email.Text = string.Empty;
+            lbl_e_name.Text = string.Empty;
+            lbl_startdate.Text = string.Empty;
+            lbl_status.Text = string.Empty;
+            lbl_type.Text = string.Empty;
+            lbl_enddate.Text = string.Empty;
+        }
+        #endregion
+
+        #region View all pending leave request
+
+        //load all pending leave request
+        private void btn_leaveRequest_Click(object sender, EventArgs e)
+        {
+            LoadLeaveReuset();
+            clear_data();
+        }
+        #endregion
+
+        #region View all Approved leave request
+        private void btn_approvedrequest_Click(object sender, EventArgs e)
+        {
+            LoadApprovedLeaveReuset();
+            clear_data();
+        }
+
+        #endregion
+
+        #region View all Rejected leave request
+        private void btn_RejectedRequest_Click(object sender, EventArgs e)
+        {
+            LoadRejectedLeaveReuset();
+            clear_data();
+        }
+
+        #endregion
+
+        #region RowHeaderMouseDoubleClick
+        int leaveeId;
+        private void dgv_Leaves_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (dgv_Leaves.Rows.Count > 0)
+            {
+                leaveeId = Convert.ToInt32(dgv_Leaves.SelectedRows[0].Cells["LeaveRequestID"].Value);
+                var request = _context.Leaves.Where(l => l.LeaveRequestID == leaveeId).Include(l => l.Employee).FirstOrDefault();
+
+                lbl_e_email.Text = request.Employee.Email;
+                lbl_e_name.Text = request.Employee.Name;
+                lbl_startdate.Text = request.StartDate.ToString();
+                lbl_status.Text = request.Status.ToString();
+                lbl_type.Text = request.Type.ToString();
+                lbl_enddate.Text = request.EndDate.ToString();
+            }
+        }
+        #endregion
+
+        #region Approved button
+
+        private void btn_approve_Click(object sender, EventArgs e)
+        {
+            var request = _context.Leaves.Where(l => l.LeaveRequestID == leaveeId).Include(l => l.Employee).FirstOrDefault();
+            if (request != null)
+            {
+                request.Status = LeaveStatus.Approved;
+                _context.Update(request);
+                _context.SaveChanges();
+                MessageBox.Show("Approved Request");
+                LoadLeaveReuset();
+            }
+            else
+            {
+                MessageBox.Show("Request not found!");
+            }
+        }
+        #endregion
+
+        #region Rejected Button
+        private void btn_reject_Click(object sender, EventArgs e)
+        {
+            var request = _context.Leaves.Where(l => l.LeaveRequestID == leaveeId).Include(l => l.Employee).FirstOrDefault();
+            if (request != null)
+            {
+                request.Status = LeaveStatus.Rejected;
+                _context.Update(request);
+                _context.SaveChanges();
+                MessageBox.Show("Rejected Request");
+                LoadLeaveReuset();
+            }
+            else
+            {
+                MessageBox.Show("Request not found!");
+            }
+        }
+
+        #endregion
         
         #endregion
+
+
     }
 }

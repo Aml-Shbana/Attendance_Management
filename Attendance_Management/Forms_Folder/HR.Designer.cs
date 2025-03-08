@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HR));
-            tab_AttendanceTracking = new System.Windows.Forms.TabControl();
+            tab_HRManagement = new System.Windows.Forms.TabControl();
             tab_ManageEmployees = new System.Windows.Forms.TabPage();
             pb_ceyes = new System.Windows.Forms.PictureBox();
             pb_oeyes = new System.Windows.Forms.PictureBox();
@@ -66,9 +66,28 @@
             dtp_date = new System.Windows.Forms.DateTimePicker();
             lbl_closeApp = new System.Windows.Forms.Label();
             lbl_date = new System.Windows.Forms.Label();
-            tabPage3 = new System.Windows.Forms.TabPage();
-            tabPage4 = new System.Windows.Forms.TabPage();
-            tab_AttendanceTracking.SuspendLayout();
+            tab_LeaveManagement = new System.Windows.Forms.TabPage();
+            btn_RejectedRequest = new System.Windows.Forms.Button();
+            panel2 = new System.Windows.Forms.Panel();
+            label1 = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
+            label5 = new System.Windows.Forms.Label();
+            label6 = new System.Windows.Forms.Label();
+            lbl_status = new System.Windows.Forms.Label();
+            lbl_enddate = new System.Windows.Forms.Label();
+            lbl_startdate = new System.Windows.Forms.Label();
+            lbl_e_email = new System.Windows.Forms.Label();
+            lbl_type = new System.Windows.Forms.Label();
+            lbl_e_name = new System.Windows.Forms.Label();
+            dgv_Leaves = new System.Windows.Forms.DataGridView();
+            btn_approvedrequest = new System.Windows.Forms.Button();
+            btn_reject = new System.Windows.Forms.Button();
+            btn_approve = new System.Windows.Forms.Button();
+            btn_leaveRequest = new System.Windows.Forms.Button();
+            tab_Reports = new System.Windows.Forms.TabPage();
+            tab_HRManagement.SuspendLayout();
             tab_ManageEmployees.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pb_ceyes).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pb_oeyes).BeginInit();
@@ -77,19 +96,22 @@
             panel1.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgv_attendance).BeginInit();
+            tab_LeaveManagement.SuspendLayout();
+            panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgv_Leaves).BeginInit();
             SuspendLayout();
             // 
-            // tab_AttendanceTracking
+            // tab_HRManagement
             // 
-            tab_AttendanceTracking.Controls.Add(tab_ManageEmployees);
-            tab_AttendanceTracking.Controls.Add(tabPage_AttendanceTracking);
-            tab_AttendanceTracking.Controls.Add(tabPage3);
-            tab_AttendanceTracking.Controls.Add(tabPage4);
-            tab_AttendanceTracking.Location = new System.Drawing.Point(2, 12);
-            tab_AttendanceTracking.Name = "tab_AttendanceTracking";
-            tab_AttendanceTracking.SelectedIndex = 0;
-            tab_AttendanceTracking.Size = new System.Drawing.Size(1141, 436);
-            tab_AttendanceTracking.TabIndex = 0;
+            tab_HRManagement.Controls.Add(tab_ManageEmployees);
+            tab_HRManagement.Controls.Add(tabPage_AttendanceTracking);
+            tab_HRManagement.Controls.Add(tab_LeaveManagement);
+            tab_HRManagement.Controls.Add(tab_Reports);
+            tab_HRManagement.Location = new System.Drawing.Point(2, 12);
+            tab_HRManagement.Name = "tab_HRManagement";
+            tab_HRManagement.SelectedIndex = 0;
+            tab_HRManagement.Size = new System.Drawing.Size(1141, 436);
+            tab_HRManagement.TabIndex = 0;
             // 
             // tab_ManageEmployees
             // 
@@ -455,36 +477,230 @@
             lbl_date.TabIndex = 1;
             lbl_date.Text = "Date";
             // 
-            // tabPage3
+            // tab_LeaveManagement
             // 
-            tabPage3.Location = new System.Drawing.Point(4, 29);
-            tabPage3.Name = "tabPage3";
-            tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            tabPage3.Size = new System.Drawing.Size(1133, 403);
-            tabPage3.TabIndex = 2;
-            tabPage3.Text = "tabPage3";
-            tabPage3.UseVisualStyleBackColor = true;
+            tab_LeaveManagement.Controls.Add(btn_RejectedRequest);
+            tab_LeaveManagement.Controls.Add(panel2);
+            tab_LeaveManagement.Controls.Add(dgv_Leaves);
+            tab_LeaveManagement.Controls.Add(btn_approvedrequest);
+            tab_LeaveManagement.Controls.Add(btn_reject);
+            tab_LeaveManagement.Controls.Add(btn_approve);
+            tab_LeaveManagement.Controls.Add(btn_leaveRequest);
+            tab_LeaveManagement.Location = new System.Drawing.Point(4, 29);
+            tab_LeaveManagement.Name = "tab_LeaveManagement";
+            tab_LeaveManagement.Padding = new System.Windows.Forms.Padding(3);
+            tab_LeaveManagement.Size = new System.Drawing.Size(1133, 403);
+            tab_LeaveManagement.TabIndex = 2;
+            tab_LeaveManagement.Text = "Leave Management";
+            tab_LeaveManagement.UseVisualStyleBackColor = true;
             // 
-            // tabPage4
+            // btn_RejectedRequest
             // 
-            tabPage4.Location = new System.Drawing.Point(4, 29);
-            tabPage4.Name = "tabPage4";
-            tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            tabPage4.Size = new System.Drawing.Size(1133, 403);
-            tabPage4.TabIndex = 3;
-            tabPage4.Text = "tabPage4";
-            tabPage4.UseVisualStyleBackColor = true;
+            btn_RejectedRequest.Location = new System.Drawing.Point(39, 333);
+            btn_RejectedRequest.Name = "btn_RejectedRequest";
+            btn_RejectedRequest.Size = new System.Drawing.Size(358, 29);
+            btn_RejectedRequest.TabIndex = 6;
+            btn_RejectedRequest.Text = "View Rejected Leave Request";
+            btn_RejectedRequest.UseVisualStyleBackColor = true;
+            btn_RejectedRequest.Click += btn_RejectedRequest_Click;
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(label1);
+            panel2.Controls.Add(label2);
+            panel2.Controls.Add(label3);
+            panel2.Controls.Add(label4);
+            panel2.Controls.Add(label5);
+            panel2.Controls.Add(label6);
+            panel2.Controls.Add(lbl_status);
+            panel2.Controls.Add(lbl_enddate);
+            panel2.Controls.Add(lbl_startdate);
+            panel2.Controls.Add(lbl_e_email);
+            panel2.Controls.Add(lbl_type);
+            panel2.Controls.Add(lbl_e_name);
+            panel2.Location = new System.Drawing.Point(39, 9);
+            panel2.Name = "panel2";
+            panel2.Size = new System.Drawing.Size(358, 246);
+            panel2.TabIndex = 5;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(18, 213);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(49, 20);
+            label1.TabIndex = 11;
+            label1.Text = "Status";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(18, 173);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(40, 20);
+            label2.TabIndex = 10;
+            label2.Text = "Type";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(18, 133);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(70, 20);
+            label3.TabIndex = 9;
+            label3.Text = "End Date";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new System.Drawing.Point(18, 93);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(76, 20);
+            label4.TabIndex = 8;
+            label4.Text = "Start Date";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new System.Drawing.Point(18, 53);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(46, 20);
+            label5.TabIndex = 7;
+            label5.Text = "Email";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new System.Drawing.Point(18, 13);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(49, 20);
+            label6.TabIndex = 6;
+            label6.Text = "Name";
+            // 
+            // lbl_status
+            // 
+            lbl_status.AutoSize = true;
+            lbl_status.Location = new System.Drawing.Point(107, 213);
+            lbl_status.Name = "lbl_status";
+            lbl_status.Size = new System.Drawing.Size(49, 20);
+            lbl_status.TabIndex = 5;
+            lbl_status.Text = "Status";
+            // 
+            // lbl_enddate
+            // 
+            lbl_enddate.AutoSize = true;
+            lbl_enddate.Location = new System.Drawing.Point(107, 133);
+            lbl_enddate.Name = "lbl_enddate";
+            lbl_enddate.Size = new System.Drawing.Size(70, 20);
+            lbl_enddate.TabIndex = 3;
+            lbl_enddate.Text = "End Date";
+            // 
+            // lbl_startdate
+            // 
+            lbl_startdate.AutoSize = true;
+            lbl_startdate.Location = new System.Drawing.Point(107, 93);
+            lbl_startdate.Name = "lbl_startdate";
+            lbl_startdate.Size = new System.Drawing.Size(76, 20);
+            lbl_startdate.TabIndex = 2;
+            lbl_startdate.Text = "Start Date";
+            // 
+            // lbl_e_email
+            // 
+            lbl_e_email.AutoSize = true;
+            lbl_e_email.Location = new System.Drawing.Point(107, 53);
+            lbl_e_email.Name = "lbl_e_email";
+            lbl_e_email.Size = new System.Drawing.Size(46, 20);
+            lbl_e_email.TabIndex = 1;
+            lbl_e_email.Text = "Email";
+            // 
+            // lbl_type
+            // 
+            lbl_type.AutoSize = true;
+            lbl_type.Location = new System.Drawing.Point(107, 173);
+            lbl_type.Name = "lbl_type";
+            lbl_type.Size = new System.Drawing.Size(40, 20);
+            lbl_type.TabIndex = 4;
+            lbl_type.Text = "Type";
+            // 
+            // lbl_e_name
+            // 
+            lbl_e_name.AutoSize = true;
+            lbl_e_name.Location = new System.Drawing.Point(107, 13);
+            lbl_e_name.Name = "lbl_e_name";
+            lbl_e_name.Size = new System.Drawing.Size(49, 20);
+            lbl_e_name.TabIndex = 0;
+            lbl_e_name.Text = "Name";
+            // 
+            // dgv_Leaves
+            // 
+            dgv_Leaves.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgv_Leaves.Location = new System.Drawing.Point(426, 9);
+            dgv_Leaves.Name = "dgv_Leaves";
+            dgv_Leaves.RowHeadersWidth = 51;
+            dgv_Leaves.Size = new System.Drawing.Size(684, 391);
+            dgv_Leaves.TabIndex = 4;
+            dgv_Leaves.RowHeaderMouseDoubleClick += dgv_Leaves_RowHeaderMouseDoubleClick;
+            // 
+            // btn_approvedrequest
+            // 
+            btn_approvedrequest.Location = new System.Drawing.Point(39, 296);
+            btn_approvedrequest.Name = "btn_approvedrequest";
+            btn_approvedrequest.Size = new System.Drawing.Size(358, 29);
+            btn_approvedrequest.TabIndex = 3;
+            btn_approvedrequest.Text = "View Approved Leave Request";
+            btn_approvedrequest.UseVisualStyleBackColor = true;
+            btn_approvedrequest.Click += btn_approvedrequest_Click;
+            // 
+            // btn_reject
+            // 
+            btn_reject.Location = new System.Drawing.Point(218, 368);
+            btn_reject.Name = "btn_reject";
+            btn_reject.Size = new System.Drawing.Size(179, 29);
+            btn_reject.TabIndex = 2;
+            btn_reject.Text = "Reject";
+            btn_reject.UseVisualStyleBackColor = true;
+            btn_reject.Click += btn_reject_Click;
+            // 
+            // btn_approve
+            // 
+            btn_approve.Location = new System.Drawing.Point(39, 368);
+            btn_approve.Name = "btn_approve";
+            btn_approve.Size = new System.Drawing.Size(179, 29);
+            btn_approve.TabIndex = 1;
+            btn_approve.Text = "Approve";
+            btn_approve.UseVisualStyleBackColor = true;
+            btn_approve.Click += btn_approve_Click;
+            // 
+            // btn_leaveRequest
+            // 
+            btn_leaveRequest.Location = new System.Drawing.Point(39, 261);
+            btn_leaveRequest.Name = "btn_leaveRequest";
+            btn_leaveRequest.Size = new System.Drawing.Size(358, 29);
+            btn_leaveRequest.TabIndex = 0;
+            btn_leaveRequest.Text = "View All Leave Request";
+            btn_leaveRequest.UseVisualStyleBackColor = true;
+            btn_leaveRequest.Click += btn_leaveRequest_Click;
+            // 
+            // tab_Reports
+            // 
+            tab_Reports.Location = new System.Drawing.Point(4, 29);
+            tab_Reports.Name = "tab_Reports";
+            tab_Reports.Padding = new System.Windows.Forms.Padding(3);
+            tab_Reports.Size = new System.Drawing.Size(1133, 403);
+            tab_Reports.TabIndex = 3;
+            tab_Reports.Text = "Reports & Logging";
+            tab_Reports.UseVisualStyleBackColor = true;
             // 
             // HR
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1155, 450);
-            Controls.Add(tab_AttendanceTracking);
+            Controls.Add(tab_HRManagement);
             Name = "HR";
             Text = "HR Page";
             Load += HR_Load;
-            tab_AttendanceTracking.ResumeLayout(false);
+            tab_HRManagement.ResumeLayout(false);
             tab_ManageEmployees.ResumeLayout(false);
             tab_ManageEmployees.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pb_ceyes).EndInit();
@@ -496,16 +712,20 @@
             panel1.PerformLayout();
             flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgv_attendance).EndInit();
+            tab_LeaveManagement.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgv_Leaves).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private System.Windows.Forms.TabControl tab_AttendanceTracking;
+        private System.Windows.Forms.TabControl tab_HRManagement;
         private System.Windows.Forms.TabPage tab_ManageEmployees;
         private System.Windows.Forms.TabPage tabPage_AttendanceTracking;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TabPage tab_LeaveManagement;
+        private System.Windows.Forms.TabPage tab_Reports;
         private System.Windows.Forms.Label lbl_phone;
         private System.Windows.Forms.Label lbl_schedule;
         private System.Windows.Forms.Label lbl_email;
@@ -540,5 +760,24 @@
         private System.Windows.Forms.Label lbl_chickOUT;
         private System.Windows.Forms.Label lbl_THD;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btn_leaveRequest;
+        private System.Windows.Forms.Button btn_approvedrequest;
+        private System.Windows.Forms.Button btn_reject;
+        private System.Windows.Forms.Button btn_approve;
+        private System.Windows.Forms.DataGridView dgv_Leaves;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label lbl_e_name;
+        private System.Windows.Forms.Label lbl_type;
+        private System.Windows.Forms.Label lbl_enddate;
+        private System.Windows.Forms.Label lbl_startdate;
+        private System.Windows.Forms.Label lbl_e_email;
+        private System.Windows.Forms.Label lbl_status;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btn_RejectedRequest;
     }
 }
