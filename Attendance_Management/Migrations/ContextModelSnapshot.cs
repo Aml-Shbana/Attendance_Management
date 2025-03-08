@@ -49,7 +49,7 @@ namespace Attendance_Management.Migrations
 
                     b.HasIndex("EmployeeID");
 
-                    b.ToTable("Attendances", (string)null);
+                    b.ToTable("Attendances");
 
                     b.HasData(
                         new
@@ -180,7 +180,7 @@ namespace Attendance_Management.Migrations
 
                     b.HasKey("EmployeeID");
 
-                    b.ToTable("Employees", (string)null);
+                    b.ToTable("Employees");
 
                     b.HasData(
                         new
@@ -281,7 +281,43 @@ namespace Attendance_Management.Migrations
                             Phone = "0667788990",
                             Role = 2,
                             Schedule = 1
+                        },
+                        new
+                        {
+                            EmployeeID = 10,
+                            Department = "Marketing",
+                            Email = "emp01@company.com",
+                            Name = "emp01",
+                            Password = "123",
+                            Phone = "0667788990",
+                            Role = 2,
+                            Schedule = 1
                         });
+                });
+
+            modelBuilder.Entity("Attendance_Management.Models.EmployeeAttendanceSummary", b =>
+                {
+                    b.Property<int>("EmpSummaryID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EmployeeID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DailyAttendance")
+                        .HasColumnType("int");
+
+                    b.Property<int>("monthlyAttendance")
+                        .HasColumnType("int");
+
+                    b.Property<int>("weekAttendance")
+                        .HasColumnType("int");
+
+                    b.HasKey("EmpSummaryID", "EmployeeID");
+
+                    b.HasIndex("EmployeeID")
+                        .IsUnique();
+
+                    b.ToTable("AttendanceSummaries");
                 });
 
             modelBuilder.Entity("Attendance_Management.Models.LeaveRequest", b =>
@@ -315,7 +351,7 @@ namespace Attendance_Management.Migrations
 
                     b.HasIndex("EmployeeID");
 
-                    b.ToTable("Leaves", (string)null);
+                    b.ToTable("Leaves");
 
                     b.HasData(
                         new
@@ -391,6 +427,17 @@ namespace Attendance_Management.Migrations
                     b.Navigation("Employee");
                 });
 
+            modelBuilder.Entity("Attendance_Management.Models.EmployeeAttendanceSummary", b =>
+                {
+                    b.HasOne("Attendance_Management.Models.Employee", "Employee")
+                        .WithOne("EmployeeAttendanceSummary")
+                        .HasForeignKey("Attendance_Management.Models.EmployeeAttendanceSummary", "EmployeeID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+                });
+
             modelBuilder.Entity("Attendance_Management.Models.LeaveRequest", b =>
                 {
                     b.HasOne("Attendance_Management.Models.Employee", "Employee")
@@ -405,6 +452,9 @@ namespace Attendance_Management.Migrations
             modelBuilder.Entity("Attendance_Management.Models.Employee", b =>
                 {
                     b.Navigation("Attendances");
+
+                    b.Navigation("EmployeeAttendanceSummary")
+                        .IsRequired();
 
                     b.Navigation("Leaves");
                 });
