@@ -1,4 +1,5 @@
 ﻿using Attendance_Management.Models;
+using ClosedXML.Excel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -26,7 +27,11 @@ namespace Attendance_Management.Forms_Folder
         {
             LoadEmployee();
             LoadAttendance();
+            LoadCMP_LogsData();
+            LoadLogsData_AtDate();
             LoadData_cmb();
+            LoadLeaveReuset();
+            clear_data();
         }
         #region Manage Employees Tab
         #region function
@@ -154,8 +159,7 @@ namespace Attendance_Management.Forms_Folder
                 }
             }
         }
-        #endregion  
-
+        #endregion   
 
         #region update button
 
@@ -238,14 +242,7 @@ namespace Attendance_Management.Forms_Folder
         #endregion
 
         #region Attendance Tracking Tab
-        #region variables
-        int DailyAttendance = 0;
-        int monthlyAttendance = 0;
-        int weekAttendance = 0;
-        int MonthlyWorkingHours = 0;
-        int DailyWorkingHours = 0;
 
-        #endregion
         #region function
         private void LoadAttendance()
         {
@@ -333,13 +330,13 @@ namespace Attendance_Management.Forms_Folder
 
         #endregion
 
-        #region change data depend in date
+        #region change data depend in date  
 
         //view Employee depending on date 
         private void dtp_date_ValueChanged(object sender, EventArgs e)
         {
             dgv_attendance.DataSource = _context.Attendances
-                .Where(a => a.CheckInTime.Value.Date == dtp_date.Value.Date &&  a.Employee.Role == UserRole.Employee )
+                .Where(a => a.CheckInTime.Value.Date == dtp_date.Value.Date && a.Employee.Role == UserRole.Employee)
                 .Select(a => new
                 {
                     a.Employee.Name,
@@ -350,7 +347,7 @@ namespace Attendance_Management.Forms_Folder
                 })
                 .ToList();
         }
-        #endregion
+        #endregion   
 
         #region ideal employee button
 
@@ -375,7 +372,7 @@ namespace Attendance_Management.Forms_Folder
             }
 
         }
-        #endregion
+        #endregion 
 
         #region Calc Total Hour button
 
@@ -395,7 +392,7 @@ namespace Attendance_Management.Forms_Folder
         }
 
         #endregion
-        
+
         #region highlight late arrival and early departure
 
         //highlight late arrival and early departure after load data in data grid view
@@ -403,12 +400,12 @@ namespace Attendance_Management.Forms_Folder
         {
             foreach (DataGridViewRow row in dgv_attendance.Rows)
             {
-                if (row.Cells["LateArrival"].Value !=  null && row.Cells["EarlyDeparture"].Value != null)
+                if (row.Cells["LateArrival"].Value != null && row.Cells["EarlyDeparture"].Value != null)
                 {
-                    var late = Convert.ToInt32(row.Cells["LateArrival"].Value); 
-                    var early = Convert.ToInt32(row.Cells["EarlyDeparture"].Value); 
-                    
-                    if( late > 0 || early > 0)
+                    var late = Convert.ToInt32(row.Cells["LateArrival"].Value);
+                    var early = Convert.ToInt32(row.Cells["EarlyDeparture"].Value);
+
+                    if (late > 0 || early > 0)
                     {
                         row.DefaultCellStyle.BackColor = Color.Red;
                         row.DefaultCellStyle.ForeColor = Color.White;
@@ -416,8 +413,341 @@ namespace Attendance_Management.Forms_Folder
                 }
             }
         }
-        #endregion 
-        
         #endregion
+
+        #endregion
+
+        #region Leave Management Tab
+
+        #region function
+        private void LoadLeaveReuset()
+        {
+            dgv_Leaves.DataSource = _context.Leaves.Where(l => l.Status == LeaveStatus.Pending).Include(l => l.Employee).Select(l => new
+            {
+                l.LeaveRequestID,
+                l.Employee.Name,
+                StartDate = l.StartDate.ToString(),
+                EndDate = l.EndDate.ToString(),
+                l.Type,
+                l.Reason,
+                l.Status
+            }).ToList();
+            dgv_Leaves.Columns["LeaveRequestID"].Visible = false;
+        }
+
+        private void LoadApprovedLeaveReuset()
+        {
+            dgv_Leaves.DataSource = _context.Leaves.Where(l => l.Status == LeaveStatus.Approved).Include(l => l.Employee).Select(l => new
+            {
+                l.LeaveRequestID,
+                l.Employee.Name,
+                StartDate = l.StartDate.ToString(),
+                EndDate = l.EndDate.ToString(),
+                l.Type,
+                l.Reason,
+                l.Status
+            }).ToList();
+            dgv_Leaves.Columns["LeaveRequestID"].Visible = false;
+        }
+
+        private void LoadRejectedLeaveReuset()
+        {
+            dgv_Leaves.DataSource = _context.Leaves.Where(l => l.Status == LeaveStatus.Rejected).Include(l => l.Employee).Select(l => new
+            {
+                l.LeaveRequestID,
+                l.Employee.Name,
+                StartDate = l.StartDate.ToString(),
+                EndDate = l.EndDate.ToString(),
+                l.Type,
+                l.Reason,
+                l.Status
+            }).ToList();
+            dgv_Leaves.Columns["LeaveRequestID"].Visible = false;
+        }
+
+        private void clear_data()
+        {
+            lbl_e_email.Text = string.Empty;
+            lbl_e_name.Text = string.Empty;
+            lbl_startdate.Text = string.Empty;
+            lbl_status.Text = string.Empty;
+            lbl_type.Text = string.Empty;
+            lbl_enddate.Text = string.Empty;
+        }
+        #endregion
+
+        #region View all pending leave request
+
+        //load all pending leave request
+        private void btn_leaveRequest_Click(object sender, EventArgs e)
+        {
+            LoadLeaveReuset();
+            clear_data();
+        }
+        #endregion
+
+        #region View all Approved leave request
+        private void btn_approvedrequest_Click(object sender, EventArgs e)
+        {
+            LoadApprovedLeaveReuset();
+            clear_data();
+        }
+
+        #endregion
+
+        #region View all Rejected leave request
+        private void btn_RejectedRequest_Click(object sender, EventArgs e)
+        {
+            LoadRejectedLeaveReuset();
+            clear_data();
+        }
+
+        #endregion
+
+        #region RowHeaderMouseDoubleClick
+        int leaveeId;
+        private void dgv_Leaves_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (dgv_Leaves.Rows.Count > 0)
+            {
+                leaveeId = Convert.ToInt32(dgv_Leaves.SelectedRows[0].Cells["LeaveRequestID"].Value);
+                var request = _context.Leaves.Where(l => l.LeaveRequestID == leaveeId).Include(l => l.Employee).FirstOrDefault();
+
+                lbl_e_email.Text = request.Employee.Email;
+                lbl_e_name.Text = request.Employee.Name;
+                lbl_startdate.Text = request.StartDate.ToString();
+                lbl_status.Text = request.Status.ToString();
+                lbl_type.Text = request.Type.ToString();
+                lbl_enddate.Text = request.EndDate.ToString();
+            }
+        }
+        #endregion
+
+        #region Approved button
+
+        private void btn_approve_Click(object sender, EventArgs e)
+        {
+            var request = _context.Leaves.Where(l => l.LeaveRequestID == leaveeId).Include(l => l.Employee).FirstOrDefault();
+            if (request != null)
+            {
+                request.Status = LeaveStatus.Approved;
+                _context.Update(request);
+                _context.SaveChanges();
+                MessageBox.Show("Approved Request");
+                LoadLeaveReuset();
+            }
+            else
+            {
+                MessageBox.Show("Request not found!");
+            }
+        }
+        #endregion
+
+        #region Rejected Button
+        private void btn_reject_Click(object sender, EventArgs e)
+        {
+            var request = _context.Leaves.Where(l => l.LeaveRequestID == leaveeId).Include(l => l.Employee).FirstOrDefault();
+            if (request != null)
+            {
+                request.Status = LeaveStatus.Rejected;
+                _context.Update(request);
+                _context.SaveChanges();
+                MessageBox.Show("Rejected Request");
+                LoadLeaveReuset();
+            }
+            else
+            {
+                MessageBox.Show("Request not found!");
+            }
+        }
+
+        #endregion
+
+        #endregion
+
+        #region Reports Tab
+        #region functions
+
+        public void ExportToExcel(DataGridView dataGridView, string filePath)
+        {
+            var workbook = new XLWorkbook();
+            var worksheet = workbook.Worksheets.Add("Report");
+
+            // إضافة عناوين الأعمدة
+            for (int i = 0; i < dataGridView.Columns.Count; i++)
+            {
+                worksheet.Cell(1, i + 1).Value = dataGridView.Columns[i].HeaderText;
+            }
+
+            // إضافة البيانات
+            for (int i = 0; i < dataGridView.Rows.Count; i++)
+            {
+                for (int j = 0; j < dataGridView.Columns.Count; j++)
+                {
+                    worksheet.Cell(i + 2, j + 1).Value = dataGridView.Rows[i].Cells[j].Value?.ToString();
+                }
+            }
+
+            workbook.SaveAs(filePath);
+        }
+
+        private void DailyReport()
+        {
+            var daily_report = _context.Attendances.Include(a => a.Employee)
+                                                         .Where(a => a.CheckInTime.HasValue && a.CheckInTime.Value.Date == DateTime.Today.Date && a.Employee.Role == UserRole.Employee)
+                                                         .Select(e => new
+                                                         {
+                                                             e.Employee.Name,
+                                                             e.CheckInTime,
+                                                             e.CheckOutTime,
+                                                             Status = e.LateArrival ? "Late" : "On Time",
+                                                             EarlyDeparture = e.EarlyDeparture ? "Leave Early" : "Leave On Time",
+                                                         }).ToList();
+            dgv_reports.DataSource = daily_report;
+        }
+
+        private void WeeklyReport()
+        {
+            var start_date = DateTime.Today.AddDays(-7).Date;
+            var weekly_report = _context.Attendances.Include(a => a.Employee)
+                                .Where(e => e.CheckInTime.Value.Date >= start_date && e.CheckInTime.Value.Date <= DateTime.Today.Date && e.Employee.Role == UserRole.Employee)
+                                .GroupBy(a => a.Employee.Name)
+                                .Select(e => new
+                                {
+                                    Name = e.Key,
+                                    TotalDaysPresent = e.Count(),
+                                    TotalDaysAbsence = 7 - e.Count(),
+                                    LateDays = e.Count(a => a.LateArrival == true),
+                                    EarlyLeavesDays = e.Count(a => a.EarlyDeparture == true),
+                                }).ToList();
+            dgv_reports.DataSource = weekly_report;
+        }
+
+        private void MonthlyReport()
+        {
+            var start_date = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1).Date;
+            var monthly_report = _context.Attendances.Include(a => a.Employee)
+                                 .Where(e => e.CheckInTime.Value.Date >= start_date && e.CheckInTime.Value.Date <= DateTime.Today.Date && e.Employee.Role == UserRole.Employee)
+                                 .GroupBy(a => a.Employee.Name)
+                                 .Select(e => new
+                                 {
+                                     Name = e.Key,
+                                     TotalDaysPresent = e.Count(),
+                                     TotalDaysAbsence = DateTime.Today.Day - e.Count(),
+                                     LateDays = e.Count(a => a.LateArrival == true),
+                                     EarlyLeavesDays = e.Count(a => a.EarlyDeparture == true),
+                                 }).ToList();
+            dgv_reports.DataSource = monthly_report;
+        }
+        private void periodReport()
+        {
+            var start_date = dtp_sdate.Value.Date;
+            var end_date = dtp_edate.Value.Date;
+
+            var report = _context.Attendances.Include(a => a.Employee)
+                                 .Where(e => e.CheckInTime.Value.Date >= start_date && e.CheckInTime.Value.Date <= end_date && e.Employee.Role == UserRole.Employee)
+                                 .GroupBy(a => a.Employee.Name)
+                                 .Select(e => new
+                                 {
+                                     Name = e.Key,
+                                     TotalDaysPresent = e.Count(),
+                                     TotalDaysAbsence = DateTime.Today.Day - e.Count(),
+                                     LateDays = e.Count(a => a.LateArrival == true),
+                                     EarlyLeavesDays = e.Count(a => a.EarlyDeparture == true),
+                                 }).ToList();
+            dgv_reports.DataSource = report;
+        }
+        #endregion
+
+        #region buttons
+        private void btn_daily_Click(object sender, EventArgs e)
+        {
+            DailyReport();
+        }
+
+        private void btn_monthly_Click(object sender, EventArgs e)
+        {
+            MonthlyReport();
+        }
+
+        private void btn_weekly_Click(object sender, EventArgs e)
+        {
+            WeeklyReport();
+        }
+
+        private void btn_RangeDate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                periodReport();
+            }
+            catch
+            {
+                MessageBox.Show("Select Start Date and End Date ");
+            }
+        }
+        #endregion
+
+        #endregion
+
+        #region Logging Tab
+        #region functions 
+        private void LoadLogsData()
+        {
+            dgv_logs.DataSource = _context.Logs.Include(e => e.Employee).Where(e => e.Employee.Role == UserRole.Employee && e.EmployeeID == (int)cmb_employeelogsname.SelectedValue)
+                                               .Select(e => new
+                                               {
+                                                   e.Employee.Name,
+                                                   e.Action,
+                                                   e.Time_OfAction
+                                               }).OrderByDescending(l => l.Time_OfAction).ToList();
+        }
+
+        private void LoadLogsData_AtDate()
+        {
+            dgv_logs.DataSource = _context.Logs.Include(e => e.Employee)
+                .Where(e => e.Employee.Role == UserRole.Employee && (e.Time_OfAction.Date == dtp_spacificdate.Value.Date || e.Time_OfAction.Date == DateTime.Now.Date))
+                                               .Select(e => new
+                                               {
+                                                   e.Employee.Name,
+                                                   e.Action,
+                                                   e.Time_OfAction
+                                               }).OrderByDescending(l => l.Time_OfAction).ToList();
+        }
+        private void LoadCMP_LogsData()
+        {
+            cmb_employeelogsname.DataSource = _context.Employees.Where(e => e.Role == UserRole.Employee).ToList();
+            cmb_employeelogsname.ValueMember = "EmployeeID";
+            cmb_employeelogsname.DisplayMember = "Name";
+        }
+
+
+        #endregion
+
+        #region btton of change data depend in employee name and date
+        private void btn_logsAtDate_Click(object sender, EventArgs e)
+        {
+            LoadLogsData_AtDate();
+        }
+
+        private void cmb_employeelogsname_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadLogsData();
+        }
+
+        #endregion
+
+        #endregion
+
+
+        private void btn_pdf_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_excel_Click(object sender, EventArgs e)
+        {
+            ExportToExcel(dgv_reports, "D:\\MY Career\\ITI\\LINQ\\Project\\Attendance_Management\\Files");
+        }
     }
 }

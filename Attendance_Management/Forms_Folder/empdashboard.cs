@@ -1,3 +1,4 @@
+using Attendance_Management.Migrations;
 using Attendance_Management.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -44,29 +45,53 @@ namespace Attendance_Management.Forms_Folder
             var today = DateTime.Today;
             var late = new TimeSpan(9, 0, 0);
             var early = new TimeSpan(16, 0, 0);
-            var attendata = con.Attendances.FirstOrDefault(a => a.EmployeeID == login.LoggedInEmployeeID && a.CheckInTime.Value.Date == today
-          );
+            var attendata = con.Attendances.FirstOrDefault(a => a.EmployeeID == login.LoggedInEmployeeID && a.CheckInTime.Value.Date == today);
 
-            if (attendata == null)
+            if (attendata != null)
             {
                 var now = DateTime.Now;
                 var isLate = now.TimeOfDay > late;
+
+                var isearly = now.TimeOfDay < early;
+
+                #region store log action
+                var log = new Logs
+                {
+                    EmployeeID = login.LoggedInEmployeeID,
+                    Action = Action_Type.check_in,
+                    Time_OfAction = now,
+                };
+                con.Logs.Add(log);
+                con.SaveChanges();
+                #endregion
+
+
                 var atten = new Attendance
                 {
                     EmployeeID = login.LoggedInEmployeeID,
                     CheckInTime = DateTime.Now,
                     LateArrival = isLate,
+                    EarlyDeparture = isearly
                 };
 
+                };
                 con.Attendances.Add(atten);
+
                 con.SaveChanges();
-                loadcheckinout();
+                lblAttendanceStatus.Text = "Attendance taken ,thank you";
+                lblAttendanceStatus.ForeColor = Color.Green;
+                lblLastCheckIn.BackColor = Color.Green;
+                lblLastCheckIn.Text = "Take CheckIn ✔";
+                btnCheckIn.Enabled = false;
+                btnCheckOut.Enabled = true;
+
                 loadattendance();
             }
             else
             {
                 MessageBox.Show("Warning!!", "Attendance was already taken!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
 
         }
         #endregion
@@ -83,6 +108,16 @@ namespace Attendance_Management.Forms_Folder
 
             if (attenCHOut != null)
             {
+                #region store log action
+                var log = new Logs
+                {
+                    EmployeeID = login.LoggedInEmployeeID,
+                    Action = Action_Type.check_out,
+                    Time_OfAction = DateTime.Now,
+                };
+                con.Logs.Add(log);
+                #endregion
+
                 attenCHOut.CheckOutTime = DateTime.Now;
                 con.SaveChanges();
                 loadcheckinout();
@@ -222,9 +257,6 @@ namespace Attendance_Management.Forms_Folder
 
         #endregion
 
-       
-
-       
 
         #region save changed of password 
 
@@ -288,6 +320,16 @@ namespace Attendance_Management.Forms_Folder
                 Status = LeaveStatus.Pending,
                 Reason = txtReason.Text.Trim()
             };
+            #region store log action
+            var log = new Logs
+            {
+                EmployeeID = login.LoggedInEmployeeID,
+                Action = Action_Type.leave_request,
+                Time_OfAction = DateTime.Now,
+            };
+            con.Logs.Add(log);
+            #endregion
+
             con.Leaves.Add(leavreq);
             con.SaveChanges();
             lblleavestatus.Text = "Sent request";
