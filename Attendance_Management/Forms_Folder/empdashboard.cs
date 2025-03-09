@@ -24,7 +24,7 @@ namespace Attendance_Management.Forms_Folder
             InitializeComponent();
         }
         #region loaded
-        
+
         //code of timer
         private void empdashboard_Load(object sender, EventArgs e)
         {
@@ -50,12 +50,12 @@ namespace Attendance_Management.Forms_Folder
             if (attendata == null)
             {
                 var now = DateTime.Now;
-                var isLate = now.TimeOfDay > late;  
+                var isLate = now.TimeOfDay > late;
                 var atten = new Attendance
                 {
                     EmployeeID = login.LoggedInEmployeeID,
                     CheckInTime = DateTime.Now,
-                    LateArrival = isLate, 
+                    LateArrival = isLate,
                 };
 
                 con.Attendances.Add(atten);
@@ -79,7 +79,7 @@ namespace Attendance_Management.Forms_Folder
            .Where(f => f.EmployeeID == login.LoggedInEmployeeID && f.CheckInTime.Value.Date == today)
           .OrderByDescending(f => f.CheckInTime)
             .FirstOrDefault(f => f.CheckOutTime == null);
-            
+
 
             if (attenCHOut != null)
             {
@@ -97,7 +97,7 @@ namespace Attendance_Management.Forms_Folder
         #endregion
 
         #region tabloaded
-       
+
         private void tabAttendanceHistory_Click(object sender, EventArgs e)
         {
             loadattendance();
@@ -108,7 +108,7 @@ namespace Attendance_Management.Forms_Folder
         //function checkin checkout
         public void loadcheckinout()
         {
-            
+
             var today = DateTime.Today;
             var check = con.Attendances.Where(w => w.EmployeeID == login.LoggedInEmployeeID && w.CheckInTime
             .Value.Date == today).OrderBy(o => o.CheckInTime).FirstOrDefault();
@@ -144,7 +144,7 @@ namespace Attendance_Management.Forms_Folder
             }
 
         }
-       //function attendance with validations
+        //function attendance with validations
         public void loadattendance()
         {
             #region show
@@ -166,7 +166,7 @@ namespace Attendance_Management.Forms_Folder
                 }).ToList();
             #endregion
             #region loaded data of employee
-            
+
             lblname.Text = con.Employees.Where(w => w.EmployeeID == login.LoggedInEmployeeID)
                 .Select(s => s.Name).FirstOrDefault();
             lbldept.Text = con.Employees.Where(w => w.EmployeeID == login.LoggedInEmployeeID)
@@ -242,7 +242,7 @@ namespace Attendance_Management.Forms_Folder
                 return;
 
             }
-            
+
             if (newpass != confirmpass)
 
             {
@@ -258,7 +258,7 @@ namespace Attendance_Management.Forms_Folder
         #endregion
 
         #region loaddata in combobox
-        
+
         private void cmbLeaveType_SelectedIndexChanged(object sender, EventArgs e)
         {
             LeaveType selectedtype = (LeaveType)cmbLeaveType.SelectedItem;
@@ -266,7 +266,7 @@ namespace Attendance_Management.Forms_Folder
         #endregion
 
         #region submit button for request holiday
-        
+
         private void btnSubmitLeave_Click(object sender, EventArgs e)
         {
             var todayholiy = DateTime.Now.Date;
@@ -304,7 +304,7 @@ namespace Attendance_Management.Forms_Folder
         #endregion
 
         #region close tabs and return to login
-        
+
         private void btnclose_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -325,5 +325,13 @@ namespace Attendance_Management.Forms_Folder
             this.Close();
         }
         #endregion
+
+
+      
+        private void btnStartQR_Click(object sender, EventArgs e)
+        {
+            GenerateQR generateQR = new GenerateQR();
+            generateQR.ShowDialog();
+        }
     }
 }

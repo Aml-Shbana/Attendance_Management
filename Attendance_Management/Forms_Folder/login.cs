@@ -23,8 +23,8 @@ namespace Attendance_Management.Forms_Folder
             InitializeComponent();
 
         }
-
-        private void btnlogin_Click(object sender, EventArgs e)
+        #region button login
+        private void log_infun()
         {
             string email = txtemail.Text.Trim();
             string password = txtpass.Text.Trim();
@@ -53,17 +53,54 @@ namespace Attendance_Management.Forms_Folder
                     //new admindashboard().Show();
                     MessageBox.Show("admin", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
-                  case UserRole.HR:
-                     new HR().Show();
-                   // this.Hide();
+                case UserRole.HR:
+                    new HR().Show();
+                    // this.Hide();
                     break;
                 case UserRole.Employee:
-                     new empdashboard().Show();
+                    new empdashboard().Show();
                     break;
+            }
+        }
+        private void btnlogin_Click(object sender, EventArgs e)
+        {
+            log_infun();
+
+        }
+        #endregion
+        #region sho forgetpass form
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            new Forgetpassword().Show();
+        }
+        #endregion
+        #region show password
+
+        private void chbshowpass_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbshowpass.Checked)
+            {
+                txtpass.PasswordChar = '\0';
+            }
+            else
+            {
+                txtpass.PasswordChar = '*';
             }
 
         }
+        #endregion
 
-       
+        #region button clear
+        private void btnclear_Click(object sender, EventArgs e)
+        {
+            txtemail.Text = txtpass.Text = "";
+        }
+        #endregion
+
+        private void btnlogin_Enter(object sender, EventArgs e)
+        {
+            log_infun();
+        }
     }
 }

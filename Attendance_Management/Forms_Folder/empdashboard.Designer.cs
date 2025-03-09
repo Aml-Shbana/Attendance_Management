@@ -32,6 +32,8 @@
             tabControl1 = new System.Windows.Forms.TabControl();
             tabcontrolemp = new System.Windows.Forms.TabPage();
             panel1 = new System.Windows.Forms.Panel();
+            btnStartQR = new System.Windows.Forms.Button();
+            pbCamera = new System.Windows.Forms.PictureBox();
             btnclose = new System.Windows.Forms.Button();
             label9 = new System.Windows.Forms.Label();
             label8 = new System.Windows.Forms.Label();
@@ -75,6 +77,7 @@
             tabControl1.SuspendLayout();
             tabcontrolemp.SuspendLayout();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbCamera).BeginInit();
             flowLayoutPanel1.SuspendLayout();
             tabLeaveRequest.SuspendLayout();
             tabAttendanceHistory.SuspendLayout();
@@ -108,6 +111,8 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnStartQR);
+            panel1.Controls.Add(pbCamera);
             panel1.Controls.Add(btnclose);
             panel1.Controls.Add(label9);
             panel1.Controls.Add(label8);
@@ -122,6 +127,24 @@
             panel1.Padding = new System.Windows.Forms.Padding(20);
             panel1.Size = new System.Drawing.Size(924, 473);
             panel1.TabIndex = 0;
+            // 
+            // btnStartQR
+            // 
+            btnStartQR.Location = new System.Drawing.Point(270, 398);
+            btnStartQR.Name = "btnStartQR";
+            btnStartQR.Size = new System.Drawing.Size(167, 54);
+            btnStartQR.TabIndex = 11;
+            btnStartQR.Text = "Start QR Scan";
+            btnStartQR.UseVisualStyleBackColor = true;
+            btnStartQR.Click += btnStartQR_Click;
+            // 
+            // pbCamera
+            // 
+            pbCamera.Location = new System.Drawing.Point(55, 398);
+            pbCamera.Name = "pbCamera";
+            pbCamera.Size = new System.Drawing.Size(125, 62);
+            pbCamera.TabIndex = 10;
+            pbCamera.TabStop = false;
             // 
             // btnclose
             // 
@@ -531,6 +554,7 @@
             tabcontrolemp.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pbCamera).EndInit();
             flowLayoutPanel1.ResumeLayout(false);
             tabLeaveRequest.ResumeLayout(false);
             tabLeaveRequest.PerformLayout();
@@ -587,5 +611,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnStartQR;
+        private System.Windows.Forms.PictureBox pbCamera;
     }
 }

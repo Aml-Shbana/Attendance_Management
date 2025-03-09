@@ -34,6 +34,9 @@
             txtpass = new System.Windows.Forms.TextBox();
             btnlogin = new System.Windows.Forms.Button();
             sqlCommandBuilder1 = new Microsoft.Data.SqlClient.SqlCommandBuilder();
+            linkLabel1 = new System.Windows.Forms.LinkLabel();
+            chbshowpass = new System.Windows.Forms.CheckBox();
+            btnclear = new System.Windows.Forms.Button();
             SuspendLayout();
             // 
             // label1
@@ -78,18 +81,55 @@
             btnlogin.Text = "Login";
             btnlogin.UseVisualStyleBackColor = true;
             btnlogin.Click += btnlogin_Click;
+            btnlogin.Enter += btnlogin_Enter;
+            // 
+            // linkLabel1
+            // 
+            linkLabel1.AutoSize = true;
+            linkLabel1.Location = new System.Drawing.Point(245, 295);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new System.Drawing.Size(117, 20);
+            linkLabel1.TabIndex = 5;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "Forget Passowrd";
+            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
+            // 
+            // chbshowpass
+            // 
+            chbshowpass.AutoSize = true;
+            chbshowpass.Location = new System.Drawing.Point(303, 235);
+            chbshowpass.Name = "chbshowpass";
+            chbshowpass.Size = new System.Drawing.Size(132, 24);
+            chbshowpass.TabIndex = 6;
+            chbshowpass.Text = "Show Password";
+            chbshowpass.UseVisualStyleBackColor = true;
+            chbshowpass.CheckedChanged += chbshowpass_CheckedChanged;
+            // 
+            // btnclear
+            // 
+            btnclear.Location = new System.Drawing.Point(511, 282);
+            btnclear.Name = "btnclear";
+            btnclear.Size = new System.Drawing.Size(94, 29);
+            btnclear.TabIndex = 7;
+            btnclear.Text = "Clear";
+            btnclear.UseVisualStyleBackColor = true;
+            btnclear.Click += btnclear_Click;
             // 
             // login
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(800, 450);
+            Controls.Add(btnclear);
+            Controls.Add(chbshowpass);
+            Controls.Add(linkLabel1);
             Controls.Add(btnlogin);
             Controls.Add(txtpass);
             Controls.Add(txtemail);
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "login";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "login";
             ResumeLayout(false);
             PerformLayout();
@@ -103,5 +143,8 @@
         private System.Windows.Forms.TextBox txtpass;
         private System.Windows.Forms.Button btnlogin;
         private Microsoft.Data.SqlClient.SqlCommandBuilder sqlCommandBuilder1;
+        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.CheckBox chbshowpass;
+        private System.Windows.Forms.Button btnclear;
     }
 }
