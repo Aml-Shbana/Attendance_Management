@@ -1,3 +1,4 @@
+using Attendance_Management.Migrations;
 using Attendance_Management.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -51,6 +52,18 @@ namespace Attendance_Management.Forms_Folder
                 var now = DateTime.Now;
                 var isLate = now.TimeOfDay > late;
                 var isearly = now.TimeOfDay < early;
+
+                #region store log action
+                var log = new Logs
+                {
+                    EmployeeID = login.LoggedInEmployeeID,
+                    Action = Action_Type.check_in,
+                    Time_OfAction = now,
+                };
+                con.Logs.Add(log);
+                con.SaveChanges();
+                #endregion
+
                 var atten = new Attendance
                 {
                     EmployeeID = login.LoggedInEmployeeID,
@@ -92,6 +105,16 @@ namespace Attendance_Management.Forms_Folder
 
             if (attenCHOut != null)
             {
+                #region store log action
+                var log = new Logs
+                {
+                    EmployeeID = login.LoggedInEmployeeID,
+                    Action = Action_Type.check_out,
+                    Time_OfAction = DateTime.Now,
+                };
+                con.Logs.Add(log);
+                #endregion
+
                 attenCHOut.CheckOutTime = DateTime.Now;
                 con.SaveChanges();
                 loadcheckinout();
@@ -293,6 +316,16 @@ namespace Attendance_Management.Forms_Folder
                 Status = LeaveStatus.Pending,
                 Reason = txtReason.Text.Trim()
             };
+            #region store log action
+            var log = new Logs
+            {
+                EmployeeID = login.LoggedInEmployeeID,
+                Action = Action_Type.leave_request,
+                Time_OfAction = DateTime.Now,
+            };
+            con.Logs.Add(log);
+            #endregion
+
             con.Leaves.Add(leavreq);
             con.SaveChanges();
             lblleavestatus.Text = "Sent request";

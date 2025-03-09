@@ -4,6 +4,7 @@ using Attendance_Management.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Attendance_Management.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20250308204059_add_logstable")]
+    partial class add_logstable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -295,6 +298,31 @@ namespace Attendance_Management.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Attendance_Management.Models.EmployeeAttendanceSummary", b =>
+                {
+                    b.Property<int>("EmpSummaryID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EmployeeID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DailyAttendance")
+                        .HasColumnType("int");
+
+                    b.Property<int>("monthlyAttendance")
+                        .HasColumnType("int");
+
+                    b.Property<int>("weekAttendance")
+                        .HasColumnType("int");
+
+                    b.HasKey("EmpSummaryID", "EmployeeID");
+
+                    b.HasIndex("EmployeeID")
+                        .IsUnique();
+
+                    b.ToTable("AttendanceSummaries");
+                });
+
             modelBuilder.Entity("Attendance_Management.Models.LeaveRequest", b =>
                 {
                     b.Property<int>("LeaveRequestID")
@@ -413,78 +441,6 @@ namespace Attendance_Management.Migrations
                     b.HasIndex("EmployeeID");
 
                     b.ToTable("Logs");
-
-                    b.HasData(
-                        new
-                        {
-                            LogId = 1,
-                            Action = 0,
-                            EmployeeID = 1,
-                            Time_OfAction = new DateTime(2025, 3, 1, 8, 55, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            LogId = 2,
-                            Action = 1,
-                            EmployeeID = 1,
-                            Time_OfAction = new DateTime(2025, 3, 1, 17, 5, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            LogId = 3,
-                            Action = 0,
-                            EmployeeID = 2,
-                            Time_OfAction = new DateTime(2025, 3, 2, 9, 10, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            LogId = 4,
-                            Action = 1,
-                            EmployeeID = 2,
-                            Time_OfAction = new DateTime(2025, 3, 2, 16, 50, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            LogId = 5,
-                            Action = 0,
-                            EmployeeID = 3,
-                            Time_OfAction = new DateTime(2025, 3, 3, 8, 30, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            LogId = 6,
-                            Action = 1,
-                            EmployeeID = 3,
-                            Time_OfAction = new DateTime(2025, 3, 3, 17, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            LogId = 7,
-                            Action = 0,
-                            EmployeeID = 4,
-                            Time_OfAction = new DateTime(2025, 3, 4, 8, 45, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            LogId = 8,
-                            Action = 1,
-                            EmployeeID = 4,
-                            Time_OfAction = new DateTime(2025, 3, 4, 16, 40, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            LogId = 9,
-                            Action = 0,
-                            EmployeeID = 5,
-                            Time_OfAction = new DateTime(2025, 3, 5, 9, 5, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            LogId = 10,
-                            Action = 1,
-                            EmployeeID = 5,
-                            Time_OfAction = new DateTime(2025, 3, 5, 16, 55, 0, 0, DateTimeKind.Unspecified)
-                        });
                 });
 
             modelBuilder.Entity("Attendance_Management.Models.Attendance", b =>
@@ -492,6 +448,17 @@ namespace Attendance_Management.Migrations
                     b.HasOne("Attendance_Management.Models.Employee", "Employee")
                         .WithMany("Attendances")
                         .HasForeignKey("EmployeeID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+                });
+
+            modelBuilder.Entity("Attendance_Management.Models.EmployeeAttendanceSummary", b =>
+                {
+                    b.HasOne("Attendance_Management.Models.Employee", "Employee")
+                        .WithOne("EmployeeAttendanceSummary")
+                        .HasForeignKey("Attendance_Management.Models.EmployeeAttendanceSummary", "EmployeeID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -523,6 +490,9 @@ namespace Attendance_Management.Migrations
             modelBuilder.Entity("Attendance_Management.Models.Employee", b =>
                 {
                     b.Navigation("Attendances");
+
+                    b.Navigation("EmployeeAttendanceSummary")
+                        .IsRequired();
 
                     b.Navigation("Leaves");
 

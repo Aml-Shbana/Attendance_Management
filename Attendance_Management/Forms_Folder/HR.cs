@@ -26,6 +26,8 @@ namespace Attendance_Management.Forms_Folder
         {
             LoadEmployee();
             LoadAttendance();
+            LoadCMP_LogsData();
+            LoadLogsData_AtDate();
             LoadData_cmb();
             LoadLeaveReuset();
             clear_data();
@@ -559,8 +561,159 @@ namespace Attendance_Management.Forms_Folder
         }
 
         #endregion
-        
+
         #endregion
+
+        #region Reports Tab
+        #region functions
+        private void DailyReport()
+        {
+            var daily_report = _context.Attendances.Include(a => a.Employee)
+                                                         .Where(a => a.CheckInTime.HasValue && a.CheckInTime.Value.Date == DateTime.Today.Date && a.Employee.Role == UserRole.Employee)
+                                                         .Select(e => new
+                                                         {
+                                                             e.Employee.Name,
+                                                             e.CheckInTime,
+                                                             e.CheckOutTime,
+                                                             Status = e.LateArrival ? "Late" : "On Time",
+                                                             EarlyDeparture = e.EarlyDeparture ? "Leave Early" : "Leave On Time",
+                                                         }).ToList();
+            dgv_reports.DataSource = daily_report;
+        }
+
+        private void WeeklyReport()
+        {
+            var start_date = DateTime.Today.AddDays(-7).Date;
+            var weekly_report = _context.Attendances.Include(a => a.Employee)
+                                .Where(e => e.CheckInTime.Value.Date >= start_date && e.CheckInTime.Value.Date <= DateTime.Today.Date && e.Employee.Role == UserRole.Employee)
+                                .GroupBy(a => a.Employee.Name)
+                                .Select(e => new
+                                {
+                                    Name = e.Key,
+                                    TotalDaysPresent = e.Count(),
+                                    TotalDaysAbsence = 7 - e.Count(),
+                                    LateDays = e.Count(a => a.LateArrival == true),
+                                    EarlyLeavesDays = e.Count(a => a.EarlyDeparture == true),
+                                }).ToList();
+            dgv_reports.DataSource = weekly_report;
+        }
+
+        private void MonthlyReport()
+        {
+            var start_date = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1).Date;
+            var monthly_report = _context.Attendances.Include(a => a.Employee)
+                                 .Where(e => e.CheckInTime.Value.Date >= start_date && e.CheckInTime.Value.Date <= DateTime.Today.Date && e.Employee.Role == UserRole.Employee)
+                                 .GroupBy(a => a.Employee.Name)
+                                 .Select(e => new
+                                 {
+                                     Name = e.Key,
+                                     TotalDaysPresent = e.Count(),
+                                     TotalDaysAbsence = DateTime.Today.Day - e.Count(),
+                                     LateDays = e.Count(a => a.LateArrival == true),
+                                     EarlyLeavesDays = e.Count(a => a.EarlyDeparture == true),
+                                 }).ToList();
+            dgv_reports.DataSource = monthly_report;
+        }
+        private void periodReport()
+        {
+            var start_date = dtp_sdate.Value.Date;
+            var end_date = dtp_edate.Value.Date;
+
+            var report = _context.Attendances.Include(a => a.Employee)
+                                 .Where(e => e.CheckInTime.Value.Date >= start_date && e.CheckInTime.Value.Date <= end_date && e.Employee.Role == UserRole.Employee)
+                                 .GroupBy(a => a.Employee.Name)
+                                 .Select(e => new
+                                 {
+                                     Name = e.Key,
+                                     TotalDaysPresent = e.Count(),
+                                     TotalDaysAbsence = DateTime.Today.Day - e.Count(),
+                                     LateDays = e.Count(a => a.LateArrival == true),
+                                     EarlyLeavesDays = e.Count(a => a.EarlyDeparture == true),
+                                 }).ToList();
+            dgv_reports.DataSource = report;
+        }
+        #endregion
+
+        #region buttons
+        private void btn_daily_Click(object sender, EventArgs e)
+        {
+            DailyReport();
+        }
+
+        private void btn_monthly_Click(object sender, EventArgs e)
+        {
+            MonthlyReport();
+        }
+
+        private void btn_weekly_Click(object sender, EventArgs e)
+        {
+            WeeklyReport();
+        }
+
+        private void btn_RangeDate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                periodReport();
+            }
+            catch
+            {
+                MessageBox.Show("Select Start Date and End Date ");
+            }
+        }
+        #endregion
+
+        #endregion
+
+        #region Logging Tab
+        #region functions 
+        private void LoadLogsData()
+        {
+            dgv_logs.DataSource = _context.Logs.Include(e => e.Employee).Where(e => e.Employee.Role == UserRole.Employee && e.EmployeeID == (int)cmb_employeelogsname.SelectedValue)
+                                               .Select(e => new
+                                               {
+                                                   e.Employee.Name,
+                                                   e.Action,
+                                                   e.Time_OfAction
+                                               }).OrderByDescending(l => l.Time_OfAction).ToList();
+        }
+
+        private void LoadLogsData_AtDate()
+        {
+            dgv_logs.DataSource = _context.Logs.Include(e => e.Employee)
+                .Where(e => e.Employee.Role == UserRole.Employee && (e.Time_OfAction.Date == dtp_spacificdate.Value.Date || e.Time_OfAction.Date == DateTime.Now.Date))
+                                               .Select(e => new
+                                               {
+                                                   e.Employee.Name,
+                                                   e.Action,
+                                                   e.Time_OfAction
+                                               }).OrderByDescending(l => l.Time_OfAction).ToList();
+        }
+        private void LoadCMP_LogsData()
+        {
+            cmb_employeelogsname.DataSource = _context.Employees.Where(e => e.Role == UserRole.Employee).ToList();
+            cmb_employeelogsname.ValueMember = "EmployeeID";
+            cmb_employeelogsname.DisplayMember = "Name";
+        }
+
+
+        #endregion
+
+        #region btton of change data depend in employee name and date
+        private void btn_logsAtDate_Click(object sender, EventArgs e)
+        {
+            LoadLogsData_AtDate();
+        }
+
+        private void cmb_employeelogsname_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadLogsData();
+        }
+
+        #endregion
+
+        #endregion
+
 
 
     }
