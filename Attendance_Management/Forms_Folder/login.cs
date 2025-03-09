@@ -22,7 +22,9 @@ namespace Attendance_Management.Forms_Folder
             InitializeComponent();
 
         }
+        public static int LoggedInEmployeeID;
         #region button login
+
         private void log_infun()
         {
             string email = txtemail.Text.Trim();
