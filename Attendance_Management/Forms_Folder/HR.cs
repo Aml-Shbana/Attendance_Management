@@ -1,4 +1,5 @@
 ﻿using Attendance_Management.Models;
+using ClosedXML.Excel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -566,6 +567,30 @@ namespace Attendance_Management.Forms_Folder
 
         #region Reports Tab
         #region functions
+
+        public void ExportToExcel(DataGridView dataGridView, string filePath)
+        {
+            var workbook = new XLWorkbook();
+            var worksheet = workbook.Worksheets.Add("Report");
+
+            // إضافة عناوين الأعمدة
+            for (int i = 0; i < dataGridView.Columns.Count; i++)
+            {
+                worksheet.Cell(1, i + 1).Value = dataGridView.Columns[i].HeaderText;
+            }
+
+            // إضافة البيانات
+            for (int i = 0; i < dataGridView.Rows.Count; i++)
+            {
+                for (int j = 0; j < dataGridView.Columns.Count; j++)
+                {
+                    worksheet.Cell(i + 2, j + 1).Value = dataGridView.Rows[i].Cells[j].Value?.ToString();
+                }
+            }
+
+            workbook.SaveAs(filePath);
+        }
+
         private void DailyReport()
         {
             var daily_report = _context.Attendances.Include(a => a.Employee)
@@ -715,6 +740,14 @@ namespace Attendance_Management.Forms_Folder
         #endregion
 
 
+        private void btn_pdf_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void btn_excel_Click(object sender, EventArgs e)
+        {
+            ExportToExcel(dgv_reports, "D:\\MY Career\\ITI\\LINQ\\Project\\Attendance_Management\\Files");
+        }
     }
 }

@@ -102,6 +102,8 @@
             dtp_spacificdate = new System.Windows.Forms.DateTimePicker();
             dgv_logs = new System.Windows.Forms.DataGridView();
             cmb_employeelogsname = new System.Windows.Forms.ComboBox();
+            btn_excel = new System.Windows.Forms.Button();
+            btn_pdf = new System.Windows.Forms.Button();
             tab_HRManagement.SuspendLayout();
             tab_ManageEmployees.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pb_ceyes).BeginInit();
@@ -693,6 +695,8 @@
             // 
             // tabP_reports
             // 
+            tabP_reports.Controls.Add(btn_pdf);
+            tabP_reports.Controls.Add(btn_excel);
             tabP_reports.Controls.Add(label8);
             tabP_reports.Controls.Add(label7);
             tabP_reports.Controls.Add(dtp_edate);
@@ -744,9 +748,9 @@
             // 
             // btn_RangeDate
             // 
-            btn_RangeDate.Location = new System.Drawing.Point(42, 333);
+            btn_RangeDate.Location = new System.Drawing.Point(42, 273);
             btn_RangeDate.Name = "btn_RangeDate";
-            btn_RangeDate.Size = new System.Drawing.Size(333, 54);
+            btn_RangeDate.Size = new System.Drawing.Size(333, 32);
             btn_RangeDate.TabIndex = 4;
             btn_RangeDate.Text = "Generate Spacific Report";
             btn_RangeDate.UseVisualStyleBackColor = true;
@@ -754,9 +758,9 @@
             // 
             // btn_weekly
             // 
-            btn_weekly.Location = new System.Drawing.Point(42, 267);
+            btn_weekly.Location = new System.Drawing.Point(42, 181);
             btn_weekly.Name = "btn_weekly";
-            btn_weekly.Size = new System.Drawing.Size(333, 54);
+            btn_weekly.Size = new System.Drawing.Size(333, 32);
             btn_weekly.TabIndex = 3;
             btn_weekly.Text = "Weekly Report";
             btn_weekly.UseVisualStyleBackColor = true;
@@ -764,9 +768,9 @@
             // 
             // btn_monthly
             // 
-            btn_monthly.Location = new System.Drawing.Point(42, 201);
+            btn_monthly.Location = new System.Drawing.Point(42, 227);
             btn_monthly.Name = "btn_monthly";
-            btn_monthly.Size = new System.Drawing.Size(333, 54);
+            btn_monthly.Size = new System.Drawing.Size(333, 32);
             btn_monthly.TabIndex = 2;
             btn_monthly.Text = "Monthly Report";
             btn_monthly.UseVisualStyleBackColor = true;
@@ -776,7 +780,7 @@
             // 
             btn_daily.Location = new System.Drawing.Point(42, 135);
             btn_daily.Name = "btn_daily";
-            btn_daily.Size = new System.Drawing.Size(333, 54);
+            btn_daily.Size = new System.Drawing.Size(333, 32);
             btn_daily.TabIndex = 1;
             btn_daily.Text = "Daily Report";
             btn_daily.UseVisualStyleBackColor = true;
@@ -859,6 +863,26 @@
             cmb_employeelogsname.Size = new System.Drawing.Size(272, 28);
             cmb_employeelogsname.TabIndex = 0;
             cmb_employeelogsname.SelectedIndexChanged += cmb_employeelogsname_SelectedIndexChanged;
+            // 
+            // btn_excel
+            // 
+            btn_excel.Location = new System.Drawing.Point(42, 365);
+            btn_excel.Name = "btn_excel";
+            btn_excel.Size = new System.Drawing.Size(333, 32);
+            btn_excel.TabIndex = 9;
+            btn_excel.Text = "Export To Excel";
+            btn_excel.UseVisualStyleBackColor = true;
+            btn_excel.Click += btn_excel_Click;
+            // 
+            // btn_pdf
+            // 
+            btn_pdf.Location = new System.Drawing.Point(42, 319);
+            btn_pdf.Name = "btn_pdf";
+            btn_pdf.Size = new System.Drawing.Size(333, 32);
+            btn_pdf.TabIndex = 10;
+            btn_pdf.Text = "Export As PDF";
+            btn_pdf.UseVisualStyleBackColor = true;
+            btn_pdf.Click += btn_pdf_Click;
             // 
             // HR
             // 
@@ -969,5 +993,7 @@
         private System.Windows.Forms.Button btn_weekly;
         private System.Windows.Forms.Button btn_monthly;
         private System.Windows.Forms.Button btn_daily;
+        private System.Windows.Forms.Button btn_pdf;
+        private System.Windows.Forms.Button btn_excel;
     }
 }
