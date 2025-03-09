@@ -37,7 +37,7 @@ namespace Attendance_Management.Models
              new Employee { EmployeeID = 7, Name = "Fatma", Department = Department.HR, Role = UserRole.HR, Email = "fatma@company.com", Phone = "0667788990", Schedule = WorkSchedule.PartTime, Password = "123" },
              new Employee { EmployeeID = 8, Name = "new", Department = Department.HR, Role = UserRole.HR, Email = "new@company.com", Phone = "0667788990", Schedule = WorkSchedule.PartTime, Password = "123" },
              new Employee { EmployeeID = 9, Name = "emp", Department = Department.Marketing, Role = UserRole.Employee, Email = "emp@company.com", Phone = "0667788990", Schedule = WorkSchedule.PartTime, Password = "123" },
-             new Employee { EmployeeID = 10, Name = "emp01", Department = Department.Marketing, Role = UserRole.Employee, Email = "emp01@company.com", Phone = "0667788990", Schedule = WorkSchedule.PartTime, Password = "123" });
+             new Employee { EmployeeID = 10, Name = "Aml Shbana", Department = Department.Marketing, Role = UserRole.Employee, Email = "amlshbana28@gmail.com", Phone = "01008314776", Schedule = WorkSchedule.PartTime, Password = "123" });
 
 
 
