@@ -17,7 +17,6 @@ namespace Attendance_Management.Forms_Folder
     {
         //call dbcontext
         private readonly Context con = new Context();
-        public static int LoggedInEmployeeID;
         public login()
         {
             InitializeComponent();
@@ -44,7 +43,6 @@ namespace Attendance_Management.Forms_Folder
             {
                 //save id
                 LoggedInEmployeeID = user.EmployeeID;
-                MessageBox.Show("saved id");
             }
             //set role
             switch (user.Role)

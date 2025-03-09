@@ -1,4 +1,6 @@
 ﻿using Attendance_Management.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,13 +25,15 @@ namespace Attendance_Management.Forms_Folder
         private void HR_Load(object sender, EventArgs e)
         {
             LoadEmployee();
+            LoadAttendance();
+            LoadData_cmb();
         }
         #region Manage Employees Tab
         #region function
         // show employee in data grid view 
         private void LoadEmployee()
         {
-            dgv_employees.DataSource = _context.Employees.ToList();
+            dgv_employees.DataSource = _context.Employees.Where(e => e.Role == UserRole.Employee).ToList();
             dgv_employees.Columns["EmployeeID"].Visible = false;
             dgv_employees.Columns["Password"].Visible = false;
             dgv_employees.Columns["Role"].Visible = false;
@@ -150,7 +154,8 @@ namespace Attendance_Management.Forms_Folder
                 }
             }
         }
-        #endregion
+        #endregion  
+
 
         #region update button
 
@@ -176,7 +181,8 @@ namespace Attendance_Management.Forms_Folder
                 MessageBox.Show("Please select an employee to update.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        #endregion
+        #endregion 
+
 
         #region Delete Button 
         // delete button
@@ -205,11 +211,12 @@ namespace Attendance_Management.Forms_Folder
             }
         }
         #endregion
-       
+
+
         #region show and hide password
         private void pb_ceyes_Click(object sender, EventArgs e)
         {
-            if(txt_password.UseSystemPasswordChar == false)
+            if (txt_password.UseSystemPasswordChar == false)
             {
                 pb_ceyes.Visible = false;
                 pb_oeyes.Visible = true;
@@ -227,6 +234,190 @@ namespace Attendance_Management.Forms_Folder
             }
         }
         #endregion
+
+        #endregion
+
+        #region Attendance Tracking Tab
+        #region variables
+        int DailyAttendance = 0;
+        int monthlyAttendance = 0;
+        int weekAttendance = 0;
+        int MonthlyWorkingHours = 0;
+        int DailyWorkingHours = 0;
+
+        #endregion
+        #region function
+        private void LoadAttendance()
+        {
+            //load data in data grid view 
+            dgv_attendance.DataSource = _context.Attendances.Include(a => a.Employee)
+                                                            .Where(e => e.Employee.Role == UserRole.Employee)
+                                                            .Select(a => new
+                                                            {
+                                                                a.Employee.Name,
+                                                                a.CheckInTime,
+                                                                a.LateArrival,
+                                                                a.CheckOutTime,
+                                                                a.EarlyDeparture,
+                                                            })
+                                                            .ToList();
+
+        }
+        private void LoadData_cmb()
+        {
+            //load data in compo box
+            cmb_employee.DataSource = _context.Employees.Where(e => e.Role == UserRole.Employee).ToList();
+            cmb_employee.DisplayMember = "Name";
+            cmb_employee.ValueMember = "EmployeeID";
+        }
+        #endregion
+
+        #region close app button
+
+        private void lbl_closeApp_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+        #endregion
+
+        #region over view button
+        private void btn_overview_Click(object sender, EventArgs e)
+        {
+            LoadAttendance();
+            lbl_THD.Visible = false;
+            lbl_chickIN.Visible = false;
+            lbl_chickOUT.Visible = false;
+        }
+
+        #endregion
+
+        #region view Employee Data depending on Emp Name
+        private void Emp_Data()
+        {
+            lbl_THD.Visible = false;
+            var result = _context.Attendances
+                .Where(e => e.EmployeeID == (int)cmb_employee.SelectedValue
+                         && e.CheckInTime.HasValue
+                         && (e.CheckInTime.Value.Date == dtp_date.Value.Date || e.CheckInTime.Value.Date == DateTime.Today.Date))
+                .Select(e => new
+                {
+                    e.CheckInTime,
+                    e.CheckOutTime,
+                    e.LateArrival,
+                    e.EarlyDeparture
+                })
+                .FirstOrDefault();
+            lbl_chickIN.Visible = true;
+            lbl_chickOUT.Visible = true;
+
+            if (result != null)
+            {
+                lbl_chickIN.Text = result.CheckInTime.HasValue ? $"Check-In : {result.CheckInTime.Value.TimeOfDay.ToString()}" : "No Check-In";
+                lbl_chickOUT.Text = result.CheckOutTime.HasValue ? $"Check-Out :{result.CheckOutTime.Value.TimeOfDay.ToString()}" : "No Check-Out";
+            }
+            else
+            {
+                lbl_chickIN.Text = "No data available";
+                lbl_chickOUT.Text = "No data available";
+            }
+        }
+
+        #endregion
+
+        #region combo box
+        private void cmb_employee_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //chenge data depend on emp id and emp name 
+            Emp_Data();
+        }
+
+        #endregion
+
+        #region change data depend in date
+
+        //view Employee depending on date 
+        private void dtp_date_ValueChanged(object sender, EventArgs e)
+        {
+            dgv_attendance.DataSource = _context.Attendances
+                .Where(a => a.CheckInTime.Value.Date == dtp_date.Value.Date &&  a.Employee.Role == UserRole.Employee )
+                .Select(a => new
+                {
+                    a.Employee.Name,
+                    a.CheckInTime,
+                    a.CheckOutTime,
+                    a.LateArrival,
+                    a.EarlyDeparture
+                })
+                .ToList();
+        }
+        #endregion
+
+        #region ideal employee button
+
+        //view ideal Employee every month
+        private void btn_idealemployee_Click(object sender, EventArgs e)
+        {
+            var best_emp = _context.Attendances.Include(a => a.Employee).Where(a => a.CheckInTime.Value.Month == DateTime.Now.Month).AsEnumerable()
+                .GroupBy(a => a.Employee.Name)
+                .Select(g => new
+                {
+                    EmployeeName = g.Key,
+                    TotalHours = g.Sum(a => (a.CheckOutTime.Value - a.CheckInTime.Value).TotalHours)
+                })
+                .OrderByDescending(e => e.TotalHours).FirstOrDefault();
+            if (best_emp != null)
+            {
+                MessageBox.Show($"Best Employee : {best_emp.EmployeeName} with a total of {best_emp.TotalHours} working hours on Month :{DateTime.Now.Month}.", "Best Employee", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("No available data.", "Best Employee", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+        }
+        #endregion
+
+        #region Calc Total Hour button
+
+        private void btn_THD_Click(object sender, EventArgs e)
+        {
+            Emp_Data();
+            var totalHours = _context.Attendances
+                .AsEnumerable()
+                .Where(a => a.EmployeeID == (int)cmb_employee.SelectedValue
+                         && a.CheckInTime.HasValue
+                         && a.CheckOutTime.HasValue
+                         && a.CheckInTime.Value.Date == dtp_date.Value.Date)
+                .Sum(a => (a.CheckOutTime.Value - a.CheckInTime.Value).TotalHours);
+
+            lbl_THD.Visible = true;
+            lbl_THD.Text = $"Total Hours: {totalHours:F2}";
+        }
+
+        #endregion
+        
+        #region highlight late arrival and early departure
+
+        //highlight late arrival and early departure after load data in data grid view
+        private void dgv_attendance_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            foreach (DataGridViewRow row in dgv_attendance.Rows)
+            {
+                if (row.Cells["LateArrival"].Value !=  null && row.Cells["EarlyDeparture"].Value != null)
+                {
+                    var late = Convert.ToInt32(row.Cells["LateArrival"].Value); 
+                    var early = Convert.ToInt32(row.Cells["EarlyDeparture"].Value); 
+                    
+                    if( late > 0 || early > 0)
+                    {
+                        row.DefaultCellStyle.BackColor = Color.Red;
+                        row.DefaultCellStyle.ForeColor = Color.White;
+                    }
+                }
+            }
+        }
+        #endregion 
+        
         #endregion
     }
 }
