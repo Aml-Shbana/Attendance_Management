@@ -640,6 +640,35 @@ namespace Attendance_Management.Forms_Folder
                                  }).ToList();
             dgv_reports.DataSource = report;
         }
+        private void FrequentAbsenteesReport()
+        {
+            var start_date = dtp_sdate.Value.Date;
+            var end_date = dtp_edate.Value.Date;
+
+            int totalDays = (end_date - start_date).Days + 1; 
+
+            var EMP = _context.Attendances.Include(e => e.Employee)
+                                          .Where(e => e.Employee.Role == UserRole.Employee)
+                                          .Where(e => e.CheckInTime.HasValue &&
+                                                      e.CheckInTime.Value.Date >= start_date &&
+                                                      e.CheckInTime.Value.Date <= end_date)
+                                          .GroupBy(a => a.Employee.Name)
+                                          .Select(e => new
+                                          {
+                                              Name = e.Key,
+                                              TotalDaysPresent = e.Count(),
+                                              TotalDaysAbsence = totalDays - e.Count(), 
+                                              LateDays = e.Count(a => a.LateArrival == true),
+                                              EarlyLeavesDays = e.Count(a => a.EarlyDeparture == true),
+                                          })
+                                          .ToList();
+
+            var frequentabsences = EMP.Where(e => e.TotalDaysAbsence > 5).ToList();
+
+            dgv_reports.DataSource = frequentabsences;
+        }
+
+
         private void Export_To_Excel(DataGridView gridView, string filePath)
         {
             using (var package = new ExcelPackage())
@@ -665,16 +694,16 @@ namespace Attendance_Management.Forms_Folder
             }
         }
 
-        private void Export_To_PDF(DataGridView gridView , string filepath)
+        private void Export_To_PDF(DataGridView gridView, string filepath)
         {
-            using(PdfWriter pdfWriter = new PdfWriter(filepath))
+            using (PdfWriter pdfWriter = new PdfWriter(filepath))
             {
                 //create pdf file
                 PdfDocument pdf = new PdfDocument(pdfWriter);
                 //create document to wrire into
                 Document document = new Document(pdf);
                 //add address to document 
-                document.Add(new Paragraph ("Attendance Report") 
+                document.Add(new Paragraph("Attendance Report")
                     .SetTextAlignment(TextAlignment.CENTER)
                     .SetFontSize(20));
                 //create table have the same number of columns of data grid view 
@@ -702,17 +731,39 @@ namespace Attendance_Management.Forms_Folder
         #region buttons
         private void btn_daily_Click(object sender, EventArgs e)
         {
-            DailyReport();
+            try
+            {
+                DailyReport();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btn_monthly_Click(object sender, EventArgs e)
         {
-            MonthlyReport();
+
+            try
+            {
+                MonthlyReport();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btn_weekly_Click(object sender, EventArgs e)
         {
-            WeeklyReport();
+            try
+            {
+                WeeklyReport();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btn_RangeDate_Click(object sender, EventArgs e)
@@ -726,6 +777,17 @@ namespace Attendance_Management.Forms_Folder
                 MessageBox.Show("Select Start Date and End Date ");
             }
         }
+        private void btn_frequentabsences_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FrequentAbsenteesReport();
+            }
+            catch
+            {
+                MessageBox.Show("Select Start Date and End Date ");
+            }
+        }
         #endregion
 
         #region pdf button
@@ -733,11 +795,11 @@ namespace Attendance_Management.Forms_Folder
         {
             // create SaveFileDialog
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "PDF Files|*.pdf"; 
-            saveFileDialog.Title = "Save PDF File"; 
-            saveFileDialog.FileName = "Report.pdf"; 
+            saveFileDialog.Filter = "PDF Files|*.pdf";
+            saveFileDialog.Title = "Save PDF File";
+            saveFileDialog.FileName = "Report.pdf";
 
-            
+
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string filePath = saveFileDialog.FileName;
@@ -747,8 +809,9 @@ namespace Attendance_Management.Forms_Folder
                 MessageBox.Show("Report exported to PDF successfully!");
             }
         }
-    
+
         #endregion
+
         #region excel button
 
         private void btn_excel_Click(object sender, EventArgs e)
@@ -769,7 +832,8 @@ namespace Attendance_Management.Forms_Folder
             }
 
         }
-        #endregion 
+        #endregion    
+
 
         #endregion
 

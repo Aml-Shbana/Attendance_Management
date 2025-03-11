@@ -104,6 +104,7 @@
             dtp_spacificdate = new System.Windows.Forms.DateTimePicker();
             dgv_logs = new System.Windows.Forms.DataGridView();
             cmb_employeelogsname = new System.Windows.Forms.ComboBox();
+            btn_frequentabsences = new System.Windows.Forms.Button();
             tab_HRManagement.SuspendLayout();
             tab_ManageEmployees.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pb_ceyes).BeginInit();
@@ -695,6 +696,7 @@
             // 
             // tabP_reports
             // 
+            tabP_reports.Controls.Add(btn_frequentabsences);
             tabP_reports.Controls.Add(btn_pdf);
             tabP_reports.Controls.Add(btn_excel);
             tabP_reports.Controls.Add(label8);
@@ -716,7 +718,7 @@
             // 
             // btn_pdf
             // 
-            btn_pdf.Location = new System.Drawing.Point(42, 319);
+            btn_pdf.Location = new System.Drawing.Point(42, 325);
             btn_pdf.Name = "btn_pdf";
             btn_pdf.Size = new System.Drawing.Size(333, 32);
             btn_pdf.TabIndex = 10;
@@ -726,7 +728,7 @@
             // 
             // btn_excel
             // 
-            btn_excel.Location = new System.Drawing.Point(42, 365);
+            btn_excel.Location = new System.Drawing.Point(42, 367);
             btn_excel.Name = "btn_excel";
             btn_excel.Size = new System.Drawing.Size(333, 32);
             btn_excel.TabIndex = 9;
@@ -768,7 +770,7 @@
             // 
             // btn_RangeDate
             // 
-            btn_RangeDate.Location = new System.Drawing.Point(42, 273);
+            btn_RangeDate.Location = new System.Drawing.Point(42, 241);
             btn_RangeDate.Name = "btn_RangeDate";
             btn_RangeDate.Size = new System.Drawing.Size(333, 32);
             btn_RangeDate.TabIndex = 4;
@@ -778,7 +780,7 @@
             // 
             // btn_weekly
             // 
-            btn_weekly.Location = new System.Drawing.Point(42, 181);
+            btn_weekly.Location = new System.Drawing.Point(42, 157);
             btn_weekly.Name = "btn_weekly";
             btn_weekly.Size = new System.Drawing.Size(333, 32);
             btn_weekly.TabIndex = 3;
@@ -788,7 +790,7 @@
             // 
             // btn_monthly
             // 
-            btn_monthly.Location = new System.Drawing.Point(42, 227);
+            btn_monthly.Location = new System.Drawing.Point(42, 199);
             btn_monthly.Name = "btn_monthly";
             btn_monthly.Size = new System.Drawing.Size(333, 32);
             btn_monthly.TabIndex = 2;
@@ -798,7 +800,7 @@
             // 
             // btn_daily
             // 
-            btn_daily.Location = new System.Drawing.Point(42, 135);
+            btn_daily.Location = new System.Drawing.Point(42, 115);
             btn_daily.Name = "btn_daily";
             btn_daily.Size = new System.Drawing.Size(333, 32);
             btn_daily.TabIndex = 1;
@@ -883,6 +885,16 @@
             cmb_employeelogsname.Size = new System.Drawing.Size(272, 28);
             cmb_employeelogsname.TabIndex = 0;
             cmb_employeelogsname.SelectedIndexChanged += cmb_employeelogsname_SelectedIndexChanged;
+            // 
+            // btn_frequentabsences
+            // 
+            btn_frequentabsences.Location = new System.Drawing.Point(42, 283);
+            btn_frequentabsences.Name = "btn_frequentabsences";
+            btn_frequentabsences.Size = new System.Drawing.Size(333, 32);
+            btn_frequentabsences.TabIndex = 11;
+            btn_frequentabsences.Text = "View Employees with frequent absences";
+            btn_frequentabsences.UseVisualStyleBackColor = true;
+            btn_frequentabsences.Click += btn_frequentabsences_Click;
             // 
             // HR
             // 
@@ -995,5 +1007,6 @@
         private System.Windows.Forms.Button btn_daily;
         private System.Windows.Forms.Button btn_pdf;
         private System.Windows.Forms.Button btn_excel;
+        private System.Windows.Forms.Button btn_frequentabsences;
     }
 }
