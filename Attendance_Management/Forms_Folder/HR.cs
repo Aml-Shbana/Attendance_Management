@@ -1,16 +1,20 @@
 ﻿using Attendance_Management.Models;
-using ClosedXML.Excel;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using OfficeOpenXml;
+using iText.Kernel.Pdf;
+using iText.Layout.Properties;
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
+using iText.Layout.Properties;
+using System.IO;
+using Attendance_Management.Migrations;
 
 namespace Attendance_Management.Forms_Folder
 {
@@ -568,28 +572,7 @@ namespace Attendance_Management.Forms_Folder
         #region Reports Tab
         #region functions
 
-        public void ExportToExcel(DataGridView dataGridView, string filePath)
-        {
-            var workbook = new XLWorkbook();
-            var worksheet = workbook.Worksheets.Add("Report");
 
-            // إضافة عناوين الأعمدة
-            for (int i = 0; i < dataGridView.Columns.Count; i++)
-            {
-                worksheet.Cell(1, i + 1).Value = dataGridView.Columns[i].HeaderText;
-            }
-
-            // إضافة البيانات
-            for (int i = 0; i < dataGridView.Rows.Count; i++)
-            {
-                for (int j = 0; j < dataGridView.Columns.Count; j++)
-                {
-                    worksheet.Cell(i + 2, j + 1).Value = dataGridView.Rows[i].Cells[j].Value?.ToString();
-                }
-            }
-
-            workbook.SaveAs(filePath);
-        }
 
         private void DailyReport()
         {
@@ -657,8 +640,65 @@ namespace Attendance_Management.Forms_Folder
                                  }).ToList();
             dgv_reports.DataSource = report;
         }
-        #endregion
+        private void Export_To_Excel(DataGridView gridView, string filePath)
+        {
+            using (var package = new ExcelPackage())
+            {
+                var worksheet = package.Workbook.Worksheets.Add("Report");
+                //add header
+                for (int i = 1; i <= gridView.Columns.Count; i++)
+                {
+                    worksheet.Cells[1, i].Value = gridView.Columns[i - 1].HeaderText;
 
+                }
+                //add table data
+                for (int i = 0; i < gridView.Rows.Count; i++)
+                {
+                    for (int j = 0; j < gridView.Columns.Count; j++)
+                    {
+                        worksheet.Cells[i + 2, j + 1].Value = gridView.Rows[i].Cells[j].Value?.ToString();
+                    }
+
+                }
+                worksheet.Cells.AutoFitColumns();
+                package.SaveAs(new FileInfo(filePath));
+            }
+        }
+
+        private void Export_To_PDF(DataGridView gridView , string filepath)
+        {
+            using(PdfWriter pdfWriter = new PdfWriter(filepath))
+            {
+                //create pdf file
+                PdfDocument pdf = new PdfDocument(pdfWriter);
+                //create document to wrire into
+                Document document = new Document(pdf);
+                //add address to document 
+                document.Add(new Paragraph ("Attendance Report") 
+                    .SetTextAlignment(TextAlignment.CENTER)
+                    .SetFontSize(20));
+                //create table have the same number of columns of data grid view 
+                Table table = new Table(UnitValue.CreatePercentArray(gridView.Columns.Count)).UseAllAvailableWidth();
+                //add header
+                foreach (DataGridViewColumn column in gridView.Columns)
+                {
+                    table.AddHeaderCell(column.HeaderText);
+                }
+                //add table data 
+                foreach (DataGridViewRow row in gridView.Rows)
+                {
+                    foreach (DataGridViewCell cell in row.Cells)
+                    {
+                        table.AddCell(cell.Value?.ToString());
+                    }
+                }
+                //add table to document 
+                document.Add(table);
+                //close document 
+                document.Close();
+            }
+        }
+        #endregion
         #region buttons
         private void btn_daily_Click(object sender, EventArgs e)
         {
@@ -687,6 +727,49 @@ namespace Attendance_Management.Forms_Folder
             }
         }
         #endregion
+
+        #region pdf button
+        private void btn_pdf_Click(object sender, EventArgs e)
+        {
+            // create SaveFileDialog
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "PDF Files|*.pdf"; 
+            saveFileDialog.Title = "Save PDF File"; 
+            saveFileDialog.FileName = "Report.pdf"; 
+
+            
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = saveFileDialog.FileName;
+
+                Export_To_PDF(dgv_reports, filePath);
+
+                MessageBox.Show("Report exported to PDF successfully!");
+            }
+        }
+    
+        #endregion
+        #region excel button
+
+        private void btn_excel_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            //select type of file
+            saveFileDialog.Filter = "Excel Files|*.xlsx";
+            //title of save window
+            saveFileDialog.Title = "Save Excel File";
+            //take name from user 
+            saveFileDialog.FileName = "";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string path = saveFileDialog.FileName;
+                Export_To_Excel(dgv_reports, path);
+                MessageBox.Show("Report exported to Excel successfully!");
+            }
+
+        }
+        #endregion 
 
         #endregion
 
@@ -739,15 +822,6 @@ namespace Attendance_Management.Forms_Folder
 
         #endregion
 
-
-        private void btn_pdf_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn_excel_Click(object sender, EventArgs e)
-        {
-            ExportToExcel(dgv_reports, "D:\\MY Career\\ITI\\LINQ\\Project\\Attendance_Management\\Files");
-        }
     }
 }
+

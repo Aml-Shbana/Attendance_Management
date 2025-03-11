@@ -86,6 +86,8 @@
             btn_approve = new System.Windows.Forms.Button();
             btn_leaveRequest = new System.Windows.Forms.Button();
             tabP_reports = new System.Windows.Forms.TabPage();
+            btn_pdf = new System.Windows.Forms.Button();
+            btn_excel = new System.Windows.Forms.Button();
             label8 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
             dtp_edate = new System.Windows.Forms.DateTimePicker();
@@ -102,8 +104,6 @@
             dtp_spacificdate = new System.Windows.Forms.DateTimePicker();
             dgv_logs = new System.Windows.Forms.DataGridView();
             cmb_employeelogsname = new System.Windows.Forms.ComboBox();
-            btn_excel = new System.Windows.Forms.Button();
-            btn_pdf = new System.Windows.Forms.Button();
             tab_HRManagement.SuspendLayout();
             tab_ManageEmployees.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pb_ceyes).BeginInit();
@@ -714,6 +714,26 @@
             tabP_reports.Text = "Reports ";
             tabP_reports.UseVisualStyleBackColor = true;
             // 
+            // btn_pdf
+            // 
+            btn_pdf.Location = new System.Drawing.Point(42, 319);
+            btn_pdf.Name = "btn_pdf";
+            btn_pdf.Size = new System.Drawing.Size(333, 32);
+            btn_pdf.TabIndex = 10;
+            btn_pdf.Text = "Export As PDF";
+            btn_pdf.UseVisualStyleBackColor = true;
+            btn_pdf.Click += btn_pdf_Click;
+            // 
+            // btn_excel
+            // 
+            btn_excel.Location = new System.Drawing.Point(42, 365);
+            btn_excel.Name = "btn_excel";
+            btn_excel.Size = new System.Drawing.Size(333, 32);
+            btn_excel.TabIndex = 9;
+            btn_excel.Text = "Export To Excel";
+            btn_excel.UseVisualStyleBackColor = true;
+            btn_excel.Click += btn_excel_Click;
+            // 
             // label8
             // 
             label8.AutoSize = true;
@@ -863,26 +883,6 @@
             cmb_employeelogsname.Size = new System.Drawing.Size(272, 28);
             cmb_employeelogsname.TabIndex = 0;
             cmb_employeelogsname.SelectedIndexChanged += cmb_employeelogsname_SelectedIndexChanged;
-            // 
-            // btn_excel
-            // 
-            btn_excel.Location = new System.Drawing.Point(42, 365);
-            btn_excel.Name = "btn_excel";
-            btn_excel.Size = new System.Drawing.Size(333, 32);
-            btn_excel.TabIndex = 9;
-            btn_excel.Text = "Export To Excel";
-            btn_excel.UseVisualStyleBackColor = true;
-            btn_excel.Click += btn_excel_Click;
-            // 
-            // btn_pdf
-            // 
-            btn_pdf.Location = new System.Drawing.Point(42, 319);
-            btn_pdf.Name = "btn_pdf";
-            btn_pdf.Size = new System.Drawing.Size(333, 32);
-            btn_pdf.TabIndex = 10;
-            btn_pdf.Text = "Export As PDF";
-            btn_pdf.UseVisualStyleBackColor = true;
-            btn_pdf.Click += btn_pdf_Click;
             // 
             // HR
             // 
