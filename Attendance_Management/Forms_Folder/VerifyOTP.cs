@@ -22,20 +22,53 @@ namespace Attendance_Management.Forms_Folder
             correctOTP = otp; // حفظ كود التحقق
         }
         #region button verify code
-      
+
         private void btnVerify_Click(object sender, EventArgs e)
         {
             if (txtsetcode.Text.Trim() == correctOTP) // التحقق من  الكود المدخل هو هو الكود الصحيح
             {
-                MessageBox.Show("success"," success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close(); 
-                new ResetPassword(userEmail).Show(); 
+                MessageBox.Show("success", " success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+                new ResetPassword(userEmail).Show();
             }
             else
             {
                 MessageBox.Show("correct code", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         #endregion
+
+        private void txtsetcode_MouseHover(object sender, EventArgs e)
+        {
+            txtsetcode.BackColor = Color.White;
+        }
+
+        private void btnVerify_MouseHover(object sender, EventArgs e)
+        {
+            btnVerify.BackColor = Color.DarkGreen;
+        }
+
+        private void btnVerify_MouseLeave(object sender, EventArgs e)
+        {
+            btnVerify.BackColor = Color.DeepSkyBlue;
+        }
+
+        private void txtsetcode_MouseLeave(object sender, EventArgs e)
+        {
+            txtsetcode.BackColor = Color.AliceBlue;
+        }
+
+        private void chbshowpass_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbshowpass.Checked)
+            {
+                txtsetcode.PasswordChar = '\0';
+            }
+            else
+            {
+                txtsetcode.PasswordChar = '●';
+            }
+        }
     }
 }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Formats.Nrbf;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -65,7 +66,8 @@ namespace Attendance_Management.Forms_Folder
             }
             else
             {
-                MessageBox.Show("Warning!!", "Attendance was already taken!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Attendance has already been recorded for today.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
             }
 
         }
@@ -91,8 +93,9 @@ namespace Attendance_Management.Forms_Folder
             }
             else
             {
-                MessageBox.Show("Warning!!", "Attendance must be registered first!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("You must register your attendance first.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
         }
         #endregion
 
@@ -108,37 +111,55 @@ namespace Attendance_Management.Forms_Folder
         //function checkin checkout
         public void loadcheckinout()
         {
-
             var today = DateTime.Today;
+
+
             var check = con.Attendances.Where(w => w.EmployeeID == login.LoggedInEmployeeID && w.CheckInTime
             .Value.Date == today).OrderBy(o => o.CheckInTime).FirstOrDefault();
             if (check != null)
             {
-
-                lblAttendanceStatus.Text = "Attendance taken ,thank you";
-                lblAttendanceStatus.ForeColor = Color.Green;
-                lblLastCheckIn.BackColor = Color.Green;
-                lblLastCheckIn.Text = "Take CheckIn ✔";
+                lbllatelychecked.Text = "";
+                lbltodaycom.Text = "";
+                lblAttendanceStatus.Text = "Attendance recorded successfully. Thank you!";
+                lblAttendanceStatus.ForeColor = Color.CornflowerBlue;
+                lblLastCheckIn.BackColor = Color.Transparent;
+                lblLastCheckIn.ForeColor = Color.CornflowerBlue;
+                lblLastCheckIn.Text = "Check-In Completed ✔";
                 btnCheckIn.Enabled = false;
                 if (check.CheckOutTime == null)
                 {
+                    lbllatelychecked.Text = "";
+                    lbltodaycom.Text = "";
+
                     btnCheckOut.Enabled = true;
+                    lblLastCheckOut.Text = "Check-Out Pending...⏰";
+                    lblLastCheckOut.BackColor = Color.Transparent;
+                    lblLastCheckOut.ForeColor = Color.CornflowerBlue;
                 }
                 else
                 {
-                    lblAttendanceStatus.Text = "Exit taken ,thank you";
-                    lblAttendanceStatus.ForeColor = Color.Green;
-                    lblLastCheckOut.BackColor = Color.Green;
-                    lblLastCheckOut.Text = "Take CheckOut ✔";
+                    lbllatelychecked.Text = "";
+                    lbltodaycom.Text = "Today's check has been successfully completed";
+
+                    lblAttendanceStatus.Text = "Check-Out recorded successfully. Have a great day!";
+                    lblAttendanceStatus.ForeColor = Color.CornflowerBlue;
+                    lblLastCheckOut.BackColor = Color.Transparent;
+                    lblLastCheckOut.Text = "Check-Out Completed ✔";
+                    lblLastCheckOut.ForeColor = Color.CornflowerBlue;
                     btnCheckOut.Enabled = false;
                 }
             }
             else
             {
-                lblLastCheckIn.Text = "No Check-In Today";
-                lblLastCheckIn.BackColor = Color.Red;
-                lblAttendanceStatus.Text = "Please check in.";
-                lblAttendanceStatus.ForeColor = Color.Red;
+
+                lbllatelychecked.Text = $"📅 Last Check-Out";
+
+                lbltodaycom.Text = "";
+
+                lblLastCheckIn.Text = "No Check-In Recorded Today🔺";
+                lblLastCheckIn.BackColor = Color.Transparent;
+                lblAttendanceStatus.Text = "Please check in to start your work day.";
+                lblAttendanceStatus.ForeColor = Color.CornflowerBlue;
                 btnCheckIn.Enabled = true;
                 btnCheckOut.Enabled = false;
             }
@@ -155,14 +176,18 @@ namespace Attendance_Management.Forms_Folder
                 .OrderByDescending(o => o.CheckInTime).Select(s => new
                 {
                     Date = s.CheckInTime.Value.Date.ToShortDateString(),
-                    CheckIn = s.CheckInTime.Value.ToString("HH:mm"),
+                    CheckIn = s.CheckInTime.HasValue
+    ? s.CheckInTime.Value.ToString("HH:mm")
+    : "Check-In Not Recorded",
 
-                    CheckOut = s.CheckOutTime.Value.ToString("HH:mm"),
+                    CheckOut = s.CheckOutTime.HasValue
+    ? s.CheckOutTime.Value.ToString("HH:mm")
+    : "Check-Out Not Recorded",
                     TotalHours = s.TotalHoursWorked.HasValue ? $"{s.TotalHoursWorked.Value.TotalHours:F2}hour" : "N/A",
                     LateArrival = s.LateArrival ? "Yes" : "No",
                     EarlyDeparture = s.CheckOutTime.HasValue
                          ? (s.CheckOutTime.Value.TimeOfDay < early ? "Yes" : "No")
-                         : "Not out"
+                         : "Not Checked Out"
                 }).ToList();
             #endregion
             #region loaded data of employee
@@ -176,44 +201,73 @@ namespace Attendance_Management.Forms_Folder
 
             //labels desighn
             dgvAttendanceHistory.DataSource = historyAteend;
+
             if (historyAteend.Any())
             {
-                if (historyAteend.First().LateArrival == "Yes")
+                var latestAttendance = historyAteend.First();
+                if (latestAttendance.LateArrival == "Yes")
                 {
-                    lblLateArrival.BackColor = Color.Red;
-                    lblLateArrival.Text = "Late Arrival 😡";
+
+                    lblLateArrival.BackColor = Color.Transparent;
+                    lblLateArrival.ForeColor = Color.CornflowerBlue;
+                    lblLateArrival.Text = "⚠ Late Arrival - Please be on time!";
+
+                }
+                else if (latestAttendance.CheckIn == "Check-In Not Recorded")
+                {
+
+                    lblLastCheckIn.ForeColor = Color.CornflowerBlue;
+                    lblLastCheckIn.BackColor = Color.Transparent;
+                    lblLateArrival.Text = "⌛ No Check-In Recorded - Awaiting Attendance";
+
+                }
+                else if (latestAttendance.CheckOut == "Check-Out Not Recorded")
+                {
+
+                    lblLastCheckOut.BackColor = Color.Transparent;
+                    lblLastCheckOut.ForeColor = Color.CornflowerBlue;
+                    lblLateArrival.Text = "⌛ Still at Work - No Check-Out Recorded";
 
                 }
                 else
                 {
-                    lblLateArrival.Text = "EXCLANT NO Late Arrival 😁👍🥰";
-                    lblLateArrival.BackColor = Color.Green;
+
+                    lblLateArrival.Text = "✅ Punctual Arrival - Keep it up! 😊👍";
+                    lblLateArrival.BackColor = Color.Transparent;
+                    lblLateArrival.ForeColor = Color.CornflowerBlue;
 
                 }
 
-            }
 
-            if (historyAteend.Any())
-            {
                 // 
-                if (historyAteend.First().EarlyDeparture == "Yes")
+                if (latestAttendance.EarlyDeparture == "Yes")
                 {
-                    lblEarlyDeparture.Text = "Checked out early 🤔";
-                    lblEarlyDeparture.BackColor = Color.Red;
+                    lblEarlyDeparture.Text = "🚨 Early Check-Out - Please follow work hours!";
+                    // lblEarlyDeparture.BackColor = Color.CornflowerBlue;
+                    lblEarlyDeparture.ForeColor = Color.CornflowerBlue;
                 }
-                else if (historyAteend.First().EarlyDeparture == "Not out")
+                else if (latestAttendance.EarlyDeparture == "Not Checked Out")
                 {
-                    lblEarlyDeparture.Text = "still in work 🧐👩‍💻⏳";
-                    lblEarlyDeparture.BackColor = Color.Orange;
+
+                    lblEarlyDeparture.Text = "⌛ Still at Work - No Check-Out Yet";
+                    //  lblEarlyDeparture.BackColor = Color.CornflowerBlue;
+                    lblEarlyDeparture.ForeColor = Color.CornflowerBlue;
+
                 }
                 else
                 {
-                    lblEarlyDeparture.Text = "Checked out on time 👌❤";
-                    lblEarlyDeparture.BackColor = Color.Green;
+
+                    lblEarlyDeparture.Text = "✅ Checked Out on Time - Great Job!";
+                    // lblEarlyDeparture.BackColor = Color.CornflowerBlue;
+                    lblEarlyDeparture.ForeColor = Color.CornflowerBlue;
                 }
             }
+
+
             #endregion
+
         }
+
         private void TimerClock_Tick(object? sender, EventArgs e)
         {
             //to show time
@@ -327,11 +381,70 @@ namespace Attendance_Management.Forms_Folder
         #endregion
 
 
-      
+        #region Button QR
         private void btnStartQR_Click(object sender, EventArgs e)
         {
             GenerateQR generateQR = new GenerateQR();
+
             generateQR.ShowDialog();
+            var today = DateTime.Today;
+
+            var attendata = con.Attendances.FirstOrDefault(a => a.EmployeeID == login.LoggedInEmployeeID
+                && a.CheckInTime.Value.Date == today);
+
+            if (attendata == null)
+            {
+                btnCheckIn_Click(sender, e);
+            }
+            else if (attendata.CheckOutTime == null)
+            {
+                btnCheckOut_Click(sender, e);
+            }
+            else
+            {
+                MessageBox.Show("Attendance was already taken!!", "Warning",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
+        }
+
+        #endregion
+
+        private void chbshowpassold_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbshowpassold.Checked)
+            {
+                txtoldpass.PasswordChar = '\0';
+            }
+            else
+            {
+                txtoldpass.PasswordChar = '●';
+            }
+        }
+
+        private void checkBox1mew_CheckedChanged(object sender, EventArgs e)
+        {
+
+            if (checkBox1new.Checked)
+            {
+                txtnewpass.PasswordChar = '\0';
+            }
+            else
+            {
+                txtnewpass.PasswordChar = '●';
+            }
+        }
+
+        private void confirm_CheckedChanged(object sender, EventArgs e)
+        {
+            if (confirm.Checked)
+            {
+                txtconfirmpass.PasswordChar = '\0';
+            }
+            else
+            {
+                txtconfirmpass.PasswordChar = '●';
+            }
         }
     }
 }

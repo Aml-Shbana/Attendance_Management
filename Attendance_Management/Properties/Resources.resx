@@ -117,4 +117,68 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="69dcb7feb96d5be3f7de530840edef4b" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\69dcb7feb96d5be3f7de530840edef4b.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WhatsApp Image 2025-03-10 at 16.31.11_f1f228b2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\WhatsApp Image 2025-03-10 at 16.31.11_f1f228b2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WhatsApp Image 2025-03-10 at 16.32.40_50c1d017" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WhatsApp Image 2025-03-10 at 16.32.40_50c1d017.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WhatsApp Image 2025-03-10 at 16.30.40_772cdfa5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\WhatsApp Image 2025-03-10 at 16.30.40_772cdfa5.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="7c6ea2bd31ac5abd0122ae95ce348ffa" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\7c6ea2bd31ac5abd0122ae95ce348ffa.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="a628df4df4722812ebab6f13d8b76bff" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\a628df4df4722812ebab6f13d8b76bff.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="6ef229cae6c257981957dde16ae16ba3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\6ef229cae6c257981957dde16ae16ba3.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WhatsApp Image 2025-03-10 at 16.32.28_fd578727" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\WhatsApp Image 2025-03-10 at 16.32.28_fd578727.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="f0cf2cda9329570151bbf3ae349b6b0e" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\f0cf2cda9329570151bbf3ae349b6b0e.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WhatsApp Image 2025-03-10 at 16.32.42_899dd55a" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\WhatsApp Image 2025-03-10 at 16.32.42_899dd55a.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ca521f10aa62e6a90b0f6cb54a3721f31" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\ca521f10aa62e6a90b0f6cb54a3721f3.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="6ef229cae6c257981957dde16ae16ba31" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\6ef229cae6c257981957dde16ae16ba3.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="54cdbe9cf9605f8dc968a38b3198d64f" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\54cdbe9cf9605f8dc968a38b3198d64f.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dd3b283e47743f60d0a2233523cd918d" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\dd3b283e47743f60d0a2233523cd918d.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WhatsApp Image 2025-03-10 at 16.31.03_7bf11fb5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\WhatsApp Image 2025-03-10 at 16.31.03_7bf11fb5.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="d91d3481289abb8511ec5b64429ef165" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\d91d3481289abb8511ec5b64429ef165.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="b4d0a0ba4c9bbffaf88a8ac2a7a607fe" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\b4d0a0ba4c9bbffaf88a8ac2a7a607fe.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="25cda6cd3f9584511a1c1209932de4e1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\25cda6cd3f9584511a1c1209932de4e1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="c1464369e9ddb234afbe55d6df7c4b16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\c1464369e9ddb234afbe55d6df7c4b16.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ca521f10aa62e6a90b0f6cb54a3721f3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\ca521f10aa62e6a90b0f6cb54a3721f3.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="9bfefbf30b89308559cb8fb16d5d7373" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\9bfefbf30b89308559cb8fb16d5d7373.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

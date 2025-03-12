@@ -21,9 +21,10 @@ namespace Attendance_Management.Forms_Folder
         {
             InitializeComponent();
             userEmail = email;
+
         }
         #region save new password
-       
+
         private void btnsave_Click(object sender, EventArgs e)
         {
             string newPassword = txtnewpass.Text.Trim();
@@ -35,24 +36,89 @@ namespace Attendance_Management.Forms_Folder
                 return;
             }
 
-            if (newPassword != confirmPassword) 
+            if (newPassword != confirmPassword)
             {
                 MessageBox.Show("new != confirm", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             //string hashedPassword = BCrypt.Net.BCrypt.HashPassword(newPassword); // تشفير كلمة المرور
             var user = con.Employees.FirstOrDefault(x => x.Email == userEmail);
-            if (user != null) { 
-                user.Password = newPassword; 
-            con.SaveChanges(); 
-            MessageBox.Show("success change password!", "success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Close(); 
-        }
+            if (user != null)
+            {
+                user.Password = newPassword;
+                con.SaveChanges();
+                MessageBox.Show("success change password!", "success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            }
             else
             {
                 MessageBox.Show("Error change password", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void lblreset_MouseHover(object sender, EventArgs e)
+        {
+            lblreset.ForeColor = Color.MediumBlue;
+        }
+
+        private void btnsave_MouseHover(object sender, EventArgs e)
+        {
+            btnsave.BackColor = Color.MediumBlue;
+        }
+
+        private void txtnewpass_MouseHover(object sender, EventArgs e)
+        {
+            txtnewpass.BackColor = Color.White;
+        }
+
+        private void txtconfirmpass_MouseHover(object sender, EventArgs e)
+        {
+            txtconfirmpass.BackColor = Color.White;
+        }
+
+        private void lblreset_MouseLeave(object sender, EventArgs e)
+        {
+            lblreset.ForeColor = Color.RoyalBlue;
+        }
+
+        private void btnsave_MouseLeave(object sender, EventArgs e)
+        {
+            btnsave.BackColor = Color.RoyalBlue;
+        }
+
+        private void txtnewpass_MouseLeave(object sender, EventArgs e)
+        {
+            txtnewpass.BackColor = Color.AliceBlue;
+        }
+
+        private void txtconfirmpass_MouseLeave(object sender, EventArgs e)
+        {
+            txtconfirmpass.BackColor = Color.AliceBlue;
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                txtnewpass.PasswordChar = '\0';
             }
+            else
+            {
+                txtnewpass.PasswordChar = '●';
+            }
+        }
+
+        private void chbshowpassold_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbshowpassold.Checked)
+            {
+                txtconfirmpass.PasswordChar = '\0';
+            }
+            else
+            {
+                txtconfirmpass.PasswordChar = '●';
+            }
+        }
     }
     #endregion
 }

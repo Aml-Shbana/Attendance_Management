@@ -32,57 +32,91 @@
             txtenteremail = new System.Windows.Forms.TextBox();
             btnSendOTP = new System.Windows.Forms.Button();
             btnback = new System.Windows.Forms.Button();
+            panel1 = new System.Windows.Forms.Panel();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // enteremail
             // 
             enteremail.AutoSize = true;
-            enteremail.Location = new System.Drawing.Point(109, 137);
+            enteremail.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            enteremail.ForeColor = System.Drawing.Color.LightSkyBlue;
+            enteremail.Location = new System.Drawing.Point(23, 94);
             enteremail.Name = "enteremail";
-            enteremail.Size = new System.Drawing.Size(84, 20);
+            enteremail.Size = new System.Drawing.Size(101, 23);
             enteremail.TabIndex = 0;
             enteremail.Text = "Enter Email";
             // 
             // txtenteremail
             // 
-            txtenteremail.Location = new System.Drawing.Point(224, 134);
+            txtenteremail.BackColor = System.Drawing.Color.AliceBlue;
+            txtenteremail.Cursor = System.Windows.Forms.Cursors.IBeam;
+            txtenteremail.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            txtenteremail.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            txtenteremail.Location = new System.Drawing.Point(23, 120);
             txtenteremail.Name = "txtenteremail";
-            txtenteremail.Size = new System.Drawing.Size(125, 27);
+            txtenteremail.Size = new System.Drawing.Size(254, 31);
             txtenteremail.TabIndex = 1;
+            txtenteremail.MouseLeave += txtenteremail_MouseLeave;
+            txtenteremail.MouseHover += txtenteremail_MouseHover;
             // 
             // btnSendOTP
             // 
-            btnSendOTP.Location = new System.Drawing.Point(469, 284);
+            btnSendOTP.BackColor = System.Drawing.Color.LightSkyBlue;
+            btnSendOTP.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnSendOTP.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            btnSendOTP.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            btnSendOTP.Location = new System.Drawing.Point(23, 236);
             btnSendOTP.Name = "btnSendOTP";
-            btnSendOTP.Size = new System.Drawing.Size(94, 29);
+            btnSendOTP.Size = new System.Drawing.Size(254, 40);
             btnSendOTP.TabIndex = 2;
-            btnSendOTP.Text = "SendOTP";
-            btnSendOTP.UseVisualStyleBackColor = true;
+            btnSendOTP.Text = "Send";
+            btnSendOTP.UseVisualStyleBackColor = false;
             btnSendOTP.Click += btnSendOTP_Click;
+            btnSendOTP.MouseLeave += btnSendOTP_MouseLeave;
+            btnSendOTP.MouseHover += btnSendOTP_MouseHover;
             // 
             // btnback
             // 
-            btnback.Location = new System.Drawing.Point(102, 380);
+            btnback.BackColor = System.Drawing.Color.LightSkyBlue;
+            btnback.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnback.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            btnback.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            btnback.Location = new System.Drawing.Point(23, 316);
             btnback.Name = "btnback";
-            btnback.Size = new System.Drawing.Size(94, 29);
+            btnback.Size = new System.Drawing.Size(254, 40);
             btnback.TabIndex = 3;
             btnback.Text = "Back";
-            btnback.UseVisualStyleBackColor = true;
+            btnback.UseVisualStyleBackColor = false;
             btnback.Click += btnback_Click;
+            btnback.MouseLeave += btnback_MouseLeave;
+            btnback.MouseHover += btnback_MouseHover;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = System.Drawing.Color.White;
+            panel1.Controls.Add(txtenteremail);
+            panel1.Controls.Add(btnback);
+            panel1.Controls.Add(enteremail);
+            panel1.Controls.Add(btnSendOTP);
+            panel1.Location = new System.Drawing.Point(511, 1);
+            panel1.Name = "panel1";
+            panel1.Size = new System.Drawing.Size(289, 452);
+            panel1.TabIndex = 4;
             // 
             // Forgetpassword
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources._69dcb7feb96d5be3f7de530840edef4b;
             ClientSize = new System.Drawing.Size(800, 450);
-            Controls.Add(btnback);
-            Controls.Add(btnSendOTP);
-            Controls.Add(txtenteremail);
-            Controls.Add(enteremail);
+            Controls.Add(panel1);
             Name = "Forgetpassword";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Forgetpassword";
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -91,5 +125,6 @@
         private System.Windows.Forms.TextBox txtenteremail;
         private System.Windows.Forms.Button btnSendOTP;
         private System.Windows.Forms.Button btnback;
+        private System.Windows.Forms.Panel panel1;
     }
 }

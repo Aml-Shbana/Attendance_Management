@@ -30,75 +30,156 @@
         {
             txtconfirmpass = new System.Windows.Forms.TextBox();
             txtnewpass = new System.Windows.Forms.TextBox();
-            label3 = new System.Windows.Forms.Label();
-            label2 = new System.Windows.Forms.Label();
             btnsave = new System.Windows.Forms.Button();
+            panel1 = new System.Windows.Forms.Panel();
+            checkBox1 = new System.Windows.Forms.CheckBox();
+            chbshowpassold = new System.Windows.Forms.CheckBox();
+            label4 = new System.Windows.Forms.Label();
+            panel2 = new System.Windows.Forms.Panel();
+            lblreset = new System.Windows.Forms.Label();
+            panel1.SuspendLayout();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // txtconfirmpass
             // 
-            txtconfirmpass.Location = new System.Drawing.Point(412, 251);
+            txtconfirmpass.BackColor = System.Drawing.Color.AliceBlue;
+            txtconfirmpass.Cursor = System.Windows.Forms.Cursors.IBeam;
+            txtconfirmpass.Font = new System.Drawing.Font("Segoe UI", 9F);
+            txtconfirmpass.ForeColor = System.Drawing.Color.FromArgb(0, 0, 192);
+            txtconfirmpass.Location = new System.Drawing.Point(107, 302);
             txtconfirmpass.Name = "txtconfirmpass";
-            txtconfirmpass.Size = new System.Drawing.Size(125, 27);
+            txtconfirmpass.PasswordChar = '●';
+            txtconfirmpass.PlaceholderText = "Confirm Passowrd";
+            txtconfirmpass.Size = new System.Drawing.Size(309, 27);
             txtconfirmpass.TabIndex = 16;
+            txtconfirmpass.MouseLeave += txtconfirmpass_MouseLeave;
+            txtconfirmpass.MouseHover += txtconfirmpass_MouseHover;
             // 
             // txtnewpass
             // 
-            txtnewpass.Location = new System.Drawing.Point(412, 173);
+            txtnewpass.BackColor = System.Drawing.Color.AliceBlue;
+            txtnewpass.Cursor = System.Windows.Forms.Cursors.IBeam;
+            txtnewpass.Font = new System.Drawing.Font("Segoe UI", 9F);
+            txtnewpass.ForeColor = System.Drawing.Color.FromArgb(0, 0, 192);
+            txtnewpass.Location = new System.Drawing.Point(107, 231);
             txtnewpass.Name = "txtnewpass";
-            txtnewpass.Size = new System.Drawing.Size(125, 27);
+            txtnewpass.PasswordChar = '●';
+            txtnewpass.PlaceholderText = "New Passord";
+            txtnewpass.Size = new System.Drawing.Size(309, 27);
             txtnewpass.TabIndex = 15;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(263, 258);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(127, 20);
-            label3.TabIndex = 14;
-            label3.Text = "Confirm Password";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(263, 176);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(104, 20);
-            label2.TabIndex = 13;
-            label2.Text = "New Password";
+            txtnewpass.MouseLeave += txtnewpass_MouseLeave;
+            txtnewpass.MouseHover += txtnewpass_MouseHover;
             // 
             // btnsave
             // 
-            btnsave.Location = new System.Drawing.Point(579, 347);
+            btnsave.BackColor = System.Drawing.Color.RoyalBlue;
+            btnsave.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnsave.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            btnsave.ForeColor = System.Drawing.Color.White;
+            btnsave.Location = new System.Drawing.Point(107, 386);
             btnsave.Name = "btnsave";
-            btnsave.Size = new System.Drawing.Size(94, 29);
+            btnsave.Size = new System.Drawing.Size(309, 40);
             btnsave.TabIndex = 17;
             btnsave.Text = "Save";
-            btnsave.UseVisualStyleBackColor = true;
+            btnsave.UseVisualStyleBackColor = false;
             btnsave.Click += btnsave_Click;
+            btnsave.MouseLeave += btnsave_MouseLeave;
+            btnsave.MouseHover += btnsave_MouseHover;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = System.Drawing.Color.White;
+            panel1.Controls.Add(checkBox1);
+            panel1.Controls.Add(chbshowpassold);
+            panel1.Controls.Add(label4);
+            panel1.Controls.Add(btnsave);
+            panel1.Controls.Add(txtnewpass);
+            panel1.Controls.Add(txtconfirmpass);
+            panel1.Location = new System.Drawing.Point(296, 1);
+            panel1.Name = "panel1";
+            panel1.Size = new System.Drawing.Size(513, 498);
+            panel1.TabIndex = 18;
+            // 
+            // checkBox1
+            // 
+            checkBox1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            checkBox1.Location = new System.Drawing.Point(422, 231);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new System.Drawing.Size(30, 27);
+            checkBox1.TabIndex = 20;
+            checkBox1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            checkBox1.UseVisualStyleBackColor = true;
+            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
+            // 
+            // chbshowpassold
+            // 
+            chbshowpassold.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            chbshowpassold.Location = new System.Drawing.Point(422, 302);
+            chbshowpassold.Name = "chbshowpassold";
+            chbshowpassold.Size = new System.Drawing.Size(30, 26);
+            chbshowpassold.TabIndex = 19;
+            chbshowpassold.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            chbshowpassold.UseVisualStyleBackColor = true;
+            chbshowpassold.CheckedChanged += chbshowpassold_CheckedChanged;
+            // 
+            // label4
+            // 
+            label4.Image = Properties.Resources._9bfefbf30b89308559cb8fb16d5d7373;
+            label4.Location = new System.Drawing.Point(107, 22);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(312, 176);
+            label4.TabIndex = 18;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = System.Drawing.Color.White;
+            panel2.Controls.Add(lblreset);
+            panel2.Location = new System.Drawing.Point(0, 1);
+            panel2.Name = "panel2";
+            panel2.Size = new System.Drawing.Size(299, 258);
+            panel2.TabIndex = 19;
+            // 
+            // lblreset
+            // 
+            lblreset.AutoSize = true;
+            lblreset.Font = new System.Drawing.Font("Elephant", 16.1999989F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            lblreset.ForeColor = System.Drawing.Color.RoyalBlue;
+            lblreset.Location = new System.Drawing.Point(45, 91);
+            lblreset.Name = "lblreset";
+            lblreset.Size = new System.Drawing.Size(245, 35);
+            lblreset.TabIndex = 0;
+            lblreset.Text = "Reset Password";
+            lblreset.MouseLeave += lblreset_MouseLeave;
+            lblreset.MouseHover += lblreset_MouseHover;
             // 
             // ResetPassword
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(800, 450);
-            Controls.Add(btnsave);
-            Controls.Add(txtconfirmpass);
-            Controls.Add(txtnewpass);
-            Controls.Add(label3);
-            Controls.Add(label2);
+            BackgroundImage = Properties.Resources.a628df4df4722812ebab6f13d8b76bff;
+            ClientSize = new System.Drawing.Size(809, 498);
+            Controls.Add(panel2);
+            Controls.Add(panel1);
             Name = "ResetPassword";
             Text = "ResetPassword";
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
         private System.Windows.Forms.TextBox txtconfirmpass;
         private System.Windows.Forms.TextBox txtnewpass;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnsave;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label lblreset;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox chbshowpassold;
     }
 }

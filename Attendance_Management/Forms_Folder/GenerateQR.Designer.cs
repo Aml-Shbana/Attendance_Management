@@ -34,9 +34,11 @@
             // 
             // pictureBoxQR
             // 
-            pictureBoxQR.Location = new System.Drawing.Point(281, 137);
+            pictureBoxQR.BackColor = System.Drawing.Color.Transparent;
+            pictureBoxQR.ErrorImage = null;
+            pictureBoxQR.Location = new System.Drawing.Point(336, 165);
             pictureBoxQR.Name = "pictureBoxQR";
-            pictureBoxQR.Size = new System.Drawing.Size(171, 168);
+            pictureBoxQR.Size = new System.Drawing.Size(155, 91);
             pictureBoxQR.TabIndex = 0;
             pictureBoxQR.TabStop = false;
             // 
@@ -44,9 +46,12 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(800, 450);
+            BackgroundImage = Properties.Resources.WhatsApp_Image_2025_03_10_at_16_32_42_899dd55a;
+            BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            ClientSize = new System.Drawing.Size(806, 384);
             Controls.Add(pictureBoxQR);
             Name = "GenerateQR";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "GenerateQR";
             Load += GenerateQR_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBoxQR).EndInit();

@@ -4,6 +4,7 @@ using Attendance_Management.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Attendance_Management.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20250309145026_alaa")]
+    partial class alaa
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -299,39 +302,6 @@ namespace Attendance_Management.Migrations
                             Department = "Marketing",
                             Email = "alaa@gmail.com",
                             Name = "alaa",
-                            Password = "123",
-                            Phone = "01008314776",
-                            Role = 2,
-                            Schedule = 1
-                        },
-                        new
-                        {
-                            EmployeeID = 12,
-                            Department = "Marketing",
-                            Email = "ahmed@gmail.com",
-                            Name = "ahmed",
-                            Password = "123",
-                            Phone = "01008314776",
-                            Role = 2,
-                            Schedule = 1
-                        },
-                        new
-                        {
-                            EmployeeID = 13,
-                            Department = "Marketing",
-                            Email = "yasser@gmail.com",
-                            Name = "yasser",
-                            Password = "123",
-                            Phone = "01008314776",
-                            Role = 2,
-                            Schedule = 1
-                        },
-                        new
-                        {
-                            EmployeeID = 14,
-                            Department = "Marketing",
-                            Email = "mohamed@gmail.com",
-                            Name = "mohamed",
                             Password = "123",
                             Phone = "01008314776",
                             Role = 2,

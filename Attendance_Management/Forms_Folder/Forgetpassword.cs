@@ -23,7 +23,7 @@ namespace Attendance_Management.Forms_Folder
             InitializeComponent();
         }
         #region button send otp
-        
+
         private void btnSendOTP_Click(object sender, EventArgs e)
         {
             userEmail = txtenteremail.Text;
@@ -56,7 +56,7 @@ namespace Attendance_Management.Forms_Folder
             try
             {
                 var smtp = new SmtpClient("smtp.gmail.com", 587)
-                {            
+                {
                     Credentials = new NetworkCredential("amlshbana28@gmail.com", "uurb sohj tkhl mlnj"),
                     EnableSsl = true // تفعيل تشفير SSL
                 };
@@ -65,7 +65,7 @@ namespace Attendance_Management.Forms_Folder
             }
             catch
             {
-                return false; 
+                return false;
             }
         }
         #endregion
@@ -73,10 +73,40 @@ namespace Attendance_Management.Forms_Folder
 
         private void btnback_Click(object sender, EventArgs e)
         {
-            login l=new login();
+            login l = new login();
             l.Show();
             this.Close();
         }
         #endregion
+
+        private void txtenteremail_MouseHover(object sender, EventArgs e)
+        {
+            txtenteremail.BackColor = Color.White;
+        }
+
+        private void btnSendOTP_MouseHover(object sender, EventArgs e)
+        {
+            btnSendOTP.BackColor = Color.MediumBlue;
+        }
+
+        private void btnback_MouseHover(object sender, EventArgs e)
+        {
+            btnback.BackColor = Color.MediumBlue;
+        }
+
+        private void btnSendOTP_MouseLeave(object sender, EventArgs e)
+        {
+            btnSendOTP.BackColor = Color.LightSkyBlue;
+        }
+
+        private void btnback_MouseLeave(object sender, EventArgs e)
+        {
+            btnback.BackColor = Color.LightSkyBlue;
+        }
+
+        private void txtenteremail_MouseLeave(object sender, EventArgs e)
+        {
+            txtenteremail.BackColor = Color.AliceBlue;
+        }
     }
 }
