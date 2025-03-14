@@ -49,8 +49,7 @@ namespace Attendance_Management.Forms_Folder
             switch (user.Role)
             {
                 case UserRole.Admin:
-                    //new admindashboard().Show();
-                    MessageBox.Show("admin", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    new Admin().Show();
                     break;
                   case UserRole.HR:
                      new HR().Show();

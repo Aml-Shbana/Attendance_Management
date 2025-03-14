@@ -9,22 +9,31 @@ using System.Windows.Forms;
 using OfficeOpenXml;
 using iText.Kernel.Pdf;
 using iText.Layout.Properties;
-using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
-using iText.Layout.Properties;
-using System.IO;
-using Attendance_Management.Migrations;
+using Microsoft.Data.SqlClient;
+using System.Collections.Generic;
 
 namespace Attendance_Management.Forms_Folder
 {
     public partial class HR : Form
     {
         private readonly Context _context;
+        private string connectionString = "Server =.; database = Attendance_Management; Trusted_Connection = True; TrustServerCertificate = True";
+        private Timer pollTimer;
+        private DateTime lastCheckTime = DateTime.Now;
         public HR()
         {
             InitializeComponent();
             _context = new Context();
+            InitializePolling();
+        }
+        private void InitializePolling()
+        {
+            pollTimer = new Timer();
+            pollTimer.Interval = 4000;
+            pollTimer.Tick += PollTimer_Tick;
+            pollTimer.Start();
         }
 
         private void HR_Load(object sender, EventArgs e)
@@ -36,7 +45,70 @@ namespace Attendance_Management.Forms_Folder
             LoadData_cmb();
             LoadLeaveReuset();
             clear_data();
+            CustomizeDataGridView(dgv_attendance);
+            CustomizeDataGridView(dgv_employees);
+            CustomizeDataGridView(dgv_Leaves);
+            CustomizeDataGridView(dgv_logs);
+            CustomizeDataGridView(dgv_reports);
         }
+        #region Real Time Notification
+
+        private void PollTimer_Tick(object sender, EventArgs e)
+        {
+            CheckForChanges();
+        }
+        private Dictionary<string, DateTime> notifiedEmployees = new Dictionary<string, DateTime>();
+
+        private void CheckForChanges()
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlCommand cmd = new SqlCommand(@"
+                 SELECT E.Name, A.CheckInTime 
+                 FROM Attendances A 
+                 INNER JOIN Employees E ON A.EmployeeID = E.EmployeeID
+                 WHERE A.LateArrival = 1 
+                 AND A.CheckInTime > @LastCheckTime
+                 ORDER BY A.CheckInTime ASC", conn))
+                {
+                    cmd.Parameters.AddWithValue("@LastCheckTime", lastCheckTime);
+                    conn.Open();
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        DateTime maxCheckInTime = lastCheckTime;
+
+                        while (reader.Read())
+                        {
+                            string employeeName = reader["Name"].ToString();
+                            DateTime checkInTime = Convert.ToDateTime(reader["CheckInTime"]);
+
+                            // التحقق مما إذا كان الموظف لم يتم إشعاره بنفس الوقت
+                            if (!notifiedEmployees.ContainsKey(employeeName) || notifiedEmployees[employeeName] < checkInTime)
+                            {
+                                MessageBox.Show($"🚨 Employee {employeeName} was late and checked in at {checkInTime:hh:mm tt}!", "Late Arrival Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                                notifiedEmployees[employeeName] = checkInTime; // تخزين وقت إشعار الموظف
+
+                                // تحديث أكبر قيمة لـ CheckInTime
+                                if (checkInTime > maxCheckInTime)
+                                    maxCheckInTime = checkInTime;
+                            }
+                        }
+
+                        // تحديث `lastCheckTime` فقط إذا وجدنا سجلات جديدة
+                        lastCheckTime = maxCheckInTime;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error while fetching data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        #endregion
+
         #region Manage Employees Tab
         #region function
         // show employee in data grid view 
@@ -46,6 +118,7 @@ namespace Attendance_Management.Forms_Folder
             dgv_employees.Columns["EmployeeID"].Visible = false;
             dgv_employees.Columns["Password"].Visible = false;
             dgv_employees.Columns["Role"].Visible = false;
+            dgv_employees.Columns["ConfirmPassword"].Visible = false;
 
             cmb_department.DataSource = Enum.GetValues(typeof(Department));
             cmb_schedule.DataSource = Enum.GetValues(typeof(WorkSchedule));
@@ -72,12 +145,11 @@ namespace Attendance_Management.Forms_Folder
             txt_name.Text = string.Empty;
             txt_email.Text = string.Empty;
             txt_phone.Text = string.Empty;
-            txt_password.Text = string.Empty;
         }
         #endregion
 
         #region close label
-        private void lbl_close_Click(object sender, EventArgs e)
+        private void pb_close_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
@@ -93,7 +165,12 @@ namespace Attendance_Management.Forms_Folder
                 MessageBox.Show("Please enter the employee's name.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
+            //validation password
+            if (string.IsNullOrWhiteSpace(txt_pass.Text))
+            {
+                MessageBox.Show("Please enter the  Password", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             //validation department 
             if (cmb_department.SelectedItem == null)
             {
@@ -126,8 +203,10 @@ namespace Attendance_Management.Forms_Folder
                 Department = (Department)Enum.Parse(typeof(Department), cmb_department.SelectedItem.ToString()),
                 Email = txt_email.Text.Trim(),
                 Phone = txt_phone.Text.Trim(),
+                Password = txt_pass.Text.Trim(),
+                ConfirmPassword = txt_pass.Text.Trim(),
                 Schedule = (WorkSchedule)Enum.Parse(typeof(WorkSchedule), cmb_schedule.SelectedItem.ToString()),
-                Password = txt_password.Text.Trim(),
+                Role = UserRole.Employee
             };
             try
             {
@@ -156,8 +235,8 @@ namespace Attendance_Management.Forms_Folder
                 {
                     txt_name.Text = EMB.Name;
                     txt_email.Text = EMB.Email;
-                    txt_password.Text = EMB.Password;
                     txt_phone.Text = EMB.Phone;
+                    txt_pass.Text = EMB.Password;
                     cmb_schedule.SelectedItem = EMB.Schedule;
                     cmb_department.SelectedItem = EMB.Department;
                 }
@@ -178,11 +257,16 @@ namespace Attendance_Management.Forms_Folder
                 EMP.Email = txt_email.Text.Trim();
                 EMP.Phone = txt_phone.Text.Trim();
                 EMP.Schedule = (WorkSchedule)Enum.Parse(typeof(WorkSchedule), cmb_schedule.SelectedItem.ToString());
-                EMP.Password = txt_password.Text.Trim();
-
-                _context.SaveChanges();
-                MessageBox.Show("Employee updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadEmployee();
+                if (txt_pass.Text != EMP.Password)
+                {
+                    MessageBox.Show("You Don't Have Permission to Reset Password!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                }
+                else
+                {
+                    _context.SaveChanges();
+                    MessageBox.Show("Employee updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadEmployee();
+                }
             }
             else
             {
@@ -220,28 +304,6 @@ namespace Attendance_Management.Forms_Folder
         }
         #endregion
 
-
-        #region show and hide password
-        private void pb_ceyes_Click(object sender, EventArgs e)
-        {
-            if (txt_password.UseSystemPasswordChar == false)
-            {
-                pb_ceyes.Visible = false;
-                pb_oeyes.Visible = true;
-                txt_password.UseSystemPasswordChar = true;
-            }
-        }
-
-        private void pb_oeyes_Click(object sender, EventArgs e)
-        {
-            if (txt_password.UseSystemPasswordChar == true)
-            {
-                pb_ceyes.Visible = true;
-                pb_oeyes.Visible = false;
-                txt_password.UseSystemPasswordChar = false;
-            }
-        }
-        #endregion
 
         #endregion
 
@@ -358,17 +420,23 @@ namespace Attendance_Management.Forms_Folder
         //view ideal Employee every month
         private void btn_idealemployee_Click(object sender, EventArgs e)
         {
-            var best_emp = _context.Attendances.Include(a => a.Employee).Where(a => a.CheckInTime.Value.Month == DateTime.Now.Month).AsEnumerable()
-                .GroupBy(a => a.Employee.Name)
-                .Select(g => new
-                {
-                    EmployeeName = g.Key,
-                    TotalHours = g.Sum(a => (a.CheckOutTime.Value - a.CheckInTime.Value).TotalHours)
-                })
-                .OrderByDescending(e => e.TotalHours).FirstOrDefault();
+            var currentMonth = DateTime.Now.Month;
+            var best_emp = _context.Attendances
+                    .Include(a => a.Employee)
+                    .Where(a => a.CheckInTime.HasValue && a.CheckOutTime.HasValue && a.CheckInTime.Value.Month == currentMonth)
+                    .ToList() // جلب البيانات كـ List لتجنب أخطاء Null
+                    .GroupBy(a => a.Employee.Name)
+                    .Select(g => new
+                    {
+                        EmployeeName = g.Key,
+                        TotalHours = g.Sum(a => (a.CheckOutTime.Value - a.CheckInTime.Value).TotalHours),
+                        Month = currentMonth
+                    })
+                    .OrderByDescending(e => e.TotalHours)
+                    .FirstOrDefault();
             if (best_emp != null)
             {
-                MessageBox.Show($"Best Employee : {best_emp.EmployeeName} with a total of {best_emp.TotalHours} working hours on Month :{DateTime.Now.Month}.", "Best Employee", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                new Ideal_Employee(best_emp.EmployeeName, best_emp.TotalHours, best_emp.Month).Show();
             }
             else
             {
@@ -645,7 +713,7 @@ namespace Attendance_Management.Forms_Folder
             var start_date = dtp_sdate.Value.Date;
             var end_date = dtp_edate.Value.Date;
 
-            int totalDays = (end_date - start_date).Days + 1; 
+            int totalDays = (end_date - start_date).Days + 1;
 
             var EMP = _context.Attendances.Include(e => e.Employee)
                                           .Where(e => e.Employee.Role == UserRole.Employee)
@@ -657,7 +725,7 @@ namespace Attendance_Management.Forms_Folder
                                           {
                                               Name = e.Key,
                                               TotalDaysPresent = e.Count(),
-                                              TotalDaysAbsence = totalDays - e.Count(), 
+                                              TotalDaysAbsence = totalDays - e.Count(),
                                               LateDays = e.Count(a => a.LateArrival == true),
                                               EarlyLeavesDays = e.Count(a => a.EarlyDeparture == true),
                                           })
@@ -883,9 +951,39 @@ namespace Attendance_Management.Forms_Folder
         }
 
         #endregion
-
         #endregion
 
+        #region Data Grid View
+        private void CustomizeDataGridView(DataGridView dataGrid)
+        {
+            // تخصيص الـ DataGridView
+            dataGrid.DefaultCellStyle.BackColor = Color.White; // خلفية الخلايا بيضاء
+            dataGrid.DefaultCellStyle.ForeColor = Color.DarkBlue; // لون النص Dark Blue
+            dataGrid.DefaultCellStyle.Font = new Font("Arial", 10, FontStyle.Regular); // تصغير حجم الخط
+            dataGrid.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            // تخصيص الـ Header
+            dataGrid.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkBlue; // رأس الجدول Dark Blue
+            dataGrid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White; // النص داخل الرأس أبيض
+            dataGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 10, FontStyle.Bold); // تصغير حجم الخط
+            dataGrid.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            // تعطيل التصميم الافتراضي للرأس
+            dataGrid.EnableHeadersVisualStyles = false;
+
+            // لون حدود الجدول
+            dataGrid.GridColor = Color.DarkBlue;
+
+            // ارتفاع الصفوف
+            dataGrid.RowTemplate.Height = 35; // تصغير ارتفاع الصفوف
+
+            // ضبط حجم الأعمدة والصفوف تلقائيًا
+            dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGrid.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+
+
+        }
+        #endregion
     }
 }
 
