@@ -56,8 +56,7 @@ namespace Attendance_Management.Forms_Folder
                    // this.Hide();
                     break;
                 case UserRole.Employee:
-                    new empdashboard().Show();
-                    this.Hide();
+                    
                     break;
             }
 

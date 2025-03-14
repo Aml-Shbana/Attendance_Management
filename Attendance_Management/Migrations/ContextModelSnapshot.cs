@@ -49,7 +49,7 @@ namespace Attendance_Management.Migrations
 
                     b.HasIndex("EmployeeID");
 
-                    b.ToTable("Attendances");
+                    b.ToTable("Attendances", (string)null);
 
                     b.HasData(
                         new
@@ -180,7 +180,7 @@ namespace Attendance_Management.Migrations
 
                     b.HasKey("EmployeeID");
 
-                    b.ToTable("Employees");
+                    b.ToTable("Employees", (string)null);
 
                     b.HasData(
                         new
@@ -326,7 +326,7 @@ namespace Attendance_Management.Migrations
 
                     b.HasIndex("EmployeeID");
 
-                    b.ToTable("Leaves");
+                    b.ToTable("Leaves", (string)null);
 
                     b.HasData(
                         new
@@ -412,7 +412,7 @@ namespace Attendance_Management.Migrations
 
                     b.HasIndex("EmployeeID");
 
-                    b.ToTable("Logs");
+                    b.ToTable("Logs", (string)null);
 
                     b.HasData(
                         new
