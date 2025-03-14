@@ -63,9 +63,49 @@ namespace Attendance_Management.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _0976f66c99b63fd54402e6f5e9e0bc00_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("0976f66c99b63fd54402e6f5e9e0bc00-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _25cda6cd3f9584511a1c1209932de4e1 {
             get {
                 object obj = ResourceManager.GetObject("25cda6cd3f9584511a1c1209932de4e1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _39824ef6f753f63ff02a4fd27f4d51d7 {
+            get {
+                object obj = ResourceManager.GetObject("39824ef6f753f63ff02a4fd27f4d51d7", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _39824ef6f753f63ff02a4fd27f4d51d71 {
+            get {
+                object obj = ResourceManager.GetObject("39824ef6f753f63ff02a4fd27f4d51d71", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _39824ef6f753f63ff02a4fd27f4d51d72 {
+            get {
+                object obj = ResourceManager.GetObject("39824ef6f753f63ff02a4fd27f4d51d72", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +163,49 @@ namespace Attendance_Management.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _932418d4485c1c342cb91df9b0cc899a {
+            get {
+                object obj = ResourceManager.GetObject("932418d4485c1c342cb91df9b0cc899a", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _9bfefbf30b89308559cb8fb16d5d7373 {
             get {
                 object obj = ResourceManager.GetObject("9bfefbf30b89308559cb8fb16d5d7373", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _9bfefbf30b89308559cb8fb16d5d73731 {
+            get {
+                object obj = ResourceManager.GetObject("9bfefbf30b89308559cb8fb16d5d73731", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _new {
+            get {
+                object obj = ResourceManager.GetObject("new", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap a28ff7a58c84d8d6dd33d7bac2d96c69_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("a28ff7a58c84d8d6dd33d7bac2d96c69-removebg-preview", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -183,6 +263,16 @@ namespace Attendance_Management.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Capture {
+            get {
+                object obj = ResourceManager.GetObject("Capture", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap d91d3481289abb8511ec5b64429ef165 {
             get {
                 object obj = ResourceManager.GetObject("d91d3481289abb8511ec5b64429ef165", resourceCulture);
@@ -203,9 +293,49 @@ namespace Attendance_Management.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap dept {
+            get {
+                object obj = ResourceManager.GetObject("dept", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap f0cf2cda9329570151bbf3ae349b6b0e {
             get {
                 object obj = ResourceManager.GetObject("f0cf2cda9329570151bbf3ae349b6b0e", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap f9b06eea4f4f576ca92fa2f35e6206f7 {
+            get {
+                object obj = ResourceManager.GetObject("f9b06eea4f4f576ca92fa2f35e6206f7", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap gray_open {
+            get {
+                object obj = ResourceManager.GetObject("gray open", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap resized_bear {
+            get {
+                object obj = ResourceManager.GetObject("resized_bear", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -266,6 +396,16 @@ namespace Attendance_Management.Properties {
         internal static System.Drawing.Bitmap WhatsApp_Image_2025_03_10_at_16_32_42_899dd55a {
             get {
                 object obj = ResourceManager.GetObject("WhatsApp Image 2025-03-10 at 16.32.42_899dd55a", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WhatsApp_Image_2025_03_13_at_01_18_48_c396954e {
+            get {
+                object obj = ResourceManager.GetObject("WhatsApp Image 2025-03-13 at 01.18.48_c396954e", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

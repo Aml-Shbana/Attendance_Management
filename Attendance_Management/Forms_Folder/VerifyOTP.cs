@@ -38,7 +38,7 @@ namespace Attendance_Management.Forms_Folder
         }
 
         #endregion
-
+        #region ui color
         private void txtsetcode_MouseHover(object sender, EventArgs e)
         {
             txtsetcode.BackColor = Color.White;
@@ -58,7 +58,8 @@ namespace Attendance_Management.Forms_Folder
         {
             txtsetcode.BackColor = Color.AliceBlue;
         }
-
+        #endregion
+        #region show password
         private void chbshowpass_CheckedChanged(object sender, EventArgs e)
         {
             if (chbshowpass.Checked)
@@ -70,5 +71,6 @@ namespace Attendance_Management.Forms_Folder
                 txtsetcode.PasswordChar = '●';
             }
         }
+        #endregion
     }
 }

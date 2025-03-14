@@ -40,7 +40,7 @@
             // 
             enteremail.AutoSize = true;
             enteremail.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            enteremail.ForeColor = System.Drawing.Color.LightSkyBlue;
+            enteremail.ForeColor = System.Drawing.Color.DimGray;
             enteremail.Location = new System.Drawing.Point(23, 94);
             enteremail.Name = "enteremail";
             enteremail.Size = new System.Drawing.Size(101, 23);
@@ -62,10 +62,10 @@
             // 
             // btnSendOTP
             // 
-            btnSendOTP.BackColor = System.Drawing.Color.LightSkyBlue;
+            btnSendOTP.BackColor = System.Drawing.Color.DimGray;
             btnSendOTP.Cursor = System.Windows.Forms.Cursors.Hand;
             btnSendOTP.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            btnSendOTP.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            btnSendOTP.ForeColor = System.Drawing.Color.White;
             btnSendOTP.Location = new System.Drawing.Point(23, 236);
             btnSendOTP.Name = "btnSendOTP";
             btnSendOTP.Size = new System.Drawing.Size(254, 40);
@@ -78,19 +78,17 @@
             // 
             // btnback
             // 
-            btnback.BackColor = System.Drawing.Color.LightSkyBlue;
+            btnback.BackColor = System.Drawing.Color.Transparent;
             btnback.Cursor = System.Windows.Forms.Cursors.Hand;
             btnback.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            btnback.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            btnback.Location = new System.Drawing.Point(23, 316);
+            btnback.ForeColor = System.Drawing.Color.Transparent;
+            btnback.Image = Properties.Resources.gray_open;
+            btnback.Location = new System.Drawing.Point(219, 372);
             btnback.Name = "btnback";
-            btnback.Size = new System.Drawing.Size(254, 40);
+            btnback.Size = new System.Drawing.Size(67, 77);
             btnback.TabIndex = 3;
-            btnback.Text = "Back";
             btnback.UseVisualStyleBackColor = false;
             btnback.Click += btnback_Click;
-            btnback.MouseLeave += btnback_MouseLeave;
-            btnback.MouseHover += btnback_MouseHover;
             // 
             // panel1
             // 

@@ -37,6 +37,7 @@
             label4 = new System.Windows.Forms.Label();
             panel2 = new System.Windows.Forms.Panel();
             lblreset = new System.Windows.Forms.Label();
+            btnback = new System.Windows.Forms.Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -77,7 +78,7 @@
             btnsave.Cursor = System.Windows.Forms.Cursors.Hand;
             btnsave.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             btnsave.ForeColor = System.Drawing.Color.White;
-            btnsave.Location = new System.Drawing.Point(107, 386);
+            btnsave.Location = new System.Drawing.Point(107, 367);
             btnsave.Name = "btnsave";
             btnsave.Size = new System.Drawing.Size(309, 40);
             btnsave.TabIndex = 17;
@@ -90,6 +91,7 @@
             // panel1
             // 
             panel1.BackColor = System.Drawing.Color.White;
+            panel1.Controls.Add(btnback);
             panel1.Controls.Add(checkBox1);
             panel1.Controls.Add(chbshowpassold);
             panel1.Controls.Add(label4);
@@ -153,6 +155,20 @@
             lblreset.MouseLeave += lblreset_MouseLeave;
             lblreset.MouseHover += lblreset_MouseHover;
             // 
+            // btnback
+            // 
+            btnback.BackColor = System.Drawing.Color.Transparent;
+            btnback.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnback.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            btnback.ForeColor = System.Drawing.Color.Transparent;
+            btnback.Image = Properties.Resources.gray_open;
+            btnback.Location = new System.Drawing.Point(452, 435);
+            btnback.Name = "btnback";
+            btnback.Size = new System.Drawing.Size(58, 60);
+            btnback.TabIndex = 21;
+            btnback.UseVisualStyleBackColor = false;
+            btnback.Click += btnback_Click;
+            // 
             // ResetPassword
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -181,5 +197,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox chbshowpassold;
+        private System.Windows.Forms.Button btnback;
     }
 }

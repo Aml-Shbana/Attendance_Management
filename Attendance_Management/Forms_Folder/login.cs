@@ -50,10 +50,10 @@ namespace Attendance_Management.Forms_Folder
             switch (user.Role)
             {
 
-                case UserRole.HR:
-                    new HR().Show();
+                //case UserRole.HR:
+                //    new HR().Show();
                     // this.Hide();
-                    break;
+                    //break;
                 case UserRole.Employee:
                     new empdashboard().Show();
                     break;
@@ -103,7 +103,7 @@ namespace Attendance_Management.Forms_Folder
         #endregion
 
 
-
+        #region ui color
         private void btnclear_MouseHover(object sender, EventArgs e)
         {
             btnclear.BackColor = Color.MediumBlue;
@@ -169,5 +169,6 @@ namespace Attendance_Management.Forms_Folder
             linkLabel1.ForeColor = Color.MediumBlue;
            
         }
+        #endregion
     }
 }

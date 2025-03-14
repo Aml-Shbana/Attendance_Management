@@ -123,7 +123,7 @@ namespace Attendance_Management.Forms_Folder
                 lblAttendanceStatus.Text = "Attendance recorded successfully. Thank you!";
                 lblAttendanceStatus.ForeColor = Color.CornflowerBlue;
                 lblLastCheckIn.BackColor = Color.Transparent;
-                lblLastCheckIn.ForeColor = Color.CornflowerBlue;
+                lblLastCheckIn.ForeColor = Color.DarkGreen;
                 lblLastCheckIn.Text = "Check-In Completed ✔";
                 btnCheckIn.Enabled = false;
                 if (check.CheckOutTime == null)
@@ -134,7 +134,7 @@ namespace Attendance_Management.Forms_Folder
                     btnCheckOut.Enabled = true;
                     lblLastCheckOut.Text = "Check-Out Pending...⏰";
                     lblLastCheckOut.BackColor = Color.Transparent;
-                    lblLastCheckOut.ForeColor = Color.CornflowerBlue;
+                    lblLastCheckOut.ForeColor = Color.Orange;
                 }
                 else
                 {
@@ -145,7 +145,7 @@ namespace Attendance_Management.Forms_Folder
                     lblAttendanceStatus.ForeColor = Color.CornflowerBlue;
                     lblLastCheckOut.BackColor = Color.Transparent;
                     lblLastCheckOut.Text = "Check-Out Completed ✔";
-                    lblLastCheckOut.ForeColor = Color.CornflowerBlue;
+                    lblLastCheckOut.ForeColor = Color.DarkGreen;
                     btnCheckOut.Enabled = false;
                 }
             }
@@ -159,7 +159,7 @@ namespace Attendance_Management.Forms_Folder
                 lblLastCheckIn.Text = "No Check-In Recorded Today🔺";
                 lblLastCheckIn.BackColor = Color.Transparent;
                 lblAttendanceStatus.Text = "Please check in to start your work day.";
-                lblAttendanceStatus.ForeColor = Color.CornflowerBlue;
+                lblAttendanceStatus.ForeColor = Color.Red;
                 btnCheckIn.Enabled = true;
                 btnCheckOut.Enabled = false;
             }
@@ -209,14 +209,14 @@ namespace Attendance_Management.Forms_Folder
                 {
 
                     lblLateArrival.BackColor = Color.Transparent;
-                    lblLateArrival.ForeColor = Color.CornflowerBlue;
+                    lblLateArrival.ForeColor = Color.Red;
                     lblLateArrival.Text = "⚠ Late Arrival - Please be on time!";
 
                 }
                 else if (latestAttendance.CheckIn == "Check-In Not Recorded")
                 {
 
-                    lblLastCheckIn.ForeColor = Color.CornflowerBlue;
+                    lblLastCheckIn.ForeColor = Color.Red;
                     lblLastCheckIn.BackColor = Color.Transparent;
                     lblLateArrival.Text = "⌛ No Check-In Recorded - Awaiting Attendance";
 
@@ -225,7 +225,7 @@ namespace Attendance_Management.Forms_Folder
                 {
 
                     lblLastCheckOut.BackColor = Color.Transparent;
-                    lblLastCheckOut.ForeColor = Color.CornflowerBlue;
+                    lblLastCheckOut.ForeColor = Color.Orange;
                     lblLateArrival.Text = "⌛ Still at Work - No Check-Out Recorded";
 
                 }
@@ -234,7 +234,7 @@ namespace Attendance_Management.Forms_Folder
 
                     lblLateArrival.Text = "✅ Punctual Arrival - Keep it up! 😊👍";
                     lblLateArrival.BackColor = Color.Transparent;
-                    lblLateArrival.ForeColor = Color.CornflowerBlue;
+                    lblLateArrival.ForeColor = Color.DarkGreen;
 
                 }
 
@@ -244,14 +244,14 @@ namespace Attendance_Management.Forms_Folder
                 {
                     lblEarlyDeparture.Text = "🚨 Early Check-Out - Please follow work hours!";
                     // lblEarlyDeparture.BackColor = Color.CornflowerBlue;
-                    lblEarlyDeparture.ForeColor = Color.CornflowerBlue;
+                    lblEarlyDeparture.ForeColor = Color.Red;
                 }
                 else if (latestAttendance.EarlyDeparture == "Not Checked Out")
                 {
 
                     lblEarlyDeparture.Text = "⌛ Still at Work - No Check-Out Yet";
                     //  lblEarlyDeparture.BackColor = Color.CornflowerBlue;
-                    lblEarlyDeparture.ForeColor = Color.CornflowerBlue;
+                    lblEarlyDeparture.ForeColor = Color.Orange;
 
                 }
                 else
@@ -259,7 +259,7 @@ namespace Attendance_Management.Forms_Folder
 
                     lblEarlyDeparture.Text = "✅ Checked Out on Time - Great Job!";
                     // lblEarlyDeparture.BackColor = Color.CornflowerBlue;
-                    lblEarlyDeparture.ForeColor = Color.CornflowerBlue;
+                    lblEarlyDeparture.ForeColor = Color.DarkGreen;
                 }
             }
 
@@ -267,13 +267,13 @@ namespace Attendance_Management.Forms_Folder
             #endregion
 
         }
-
+        #region time
         private void TimerClock_Tick(object? sender, EventArgs e)
         {
             //to show time
             lblCurrentTime.Text = DateTime.Now.ToString("hh:mm:ss tt");
         }
-
+        #endregion
         #endregion
 
         #region save changed of password 
@@ -361,22 +361,47 @@ namespace Attendance_Management.Forms_Folder
 
         private void btnclose_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Exit Confirmation",
+                                         MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
+          
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Exit Confirmation",
+                                         MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Exit Confirmation",
+                                         MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Exit Confirmation",
+                                         MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
         #endregion
 
@@ -409,7 +434,7 @@ namespace Attendance_Management.Forms_Folder
         }
 
         #endregion
-
+        #region show password
         private void chbshowpassold_CheckedChanged(object sender, EventArgs e)
         {
             if (chbshowpassold.Checked)
@@ -421,7 +446,7 @@ namespace Attendance_Management.Forms_Folder
                 txtoldpass.PasswordChar = '●';
             }
         }
-
+       
         private void checkBox1mew_CheckedChanged(object sender, EventArgs e)
         {
 
@@ -446,5 +471,130 @@ namespace Attendance_Management.Forms_Folder
                 txtconfirmpass.PasswordChar = '●';
             }
         }
+
+        private void btnCheckIn_MouseHover(object sender, EventArgs e)
+        {
+            btnCheckIn.BackColor = Color.Black;
+        }
+        #endregion
+        #region ui color
+        private void btnCheckIn_MouseLeave(object sender, EventArgs e)
+        {
+            btnCheckIn.BackColor = Color.RoyalBlue;
+        }
+
+        private void btnCheckOut_MouseHover(object sender, EventArgs e)
+        {
+            btnCheckOut.BackColor = Color.Black;
+        }
+
+        private void btnCheckOut_MouseLeave(object sender, EventArgs e)
+        {
+            btnCheckOut.BackColor = Color.RoyalBlue;
+
+        }
+
+        private void btnStartQR_MouseHover(object sender, EventArgs e)
+        {
+            btnStartQR.BackColor = Color.Black;
+
+        }
+
+        private void btnStartQR_MouseLeave(object sender, EventArgs e)
+        {
+            btnStartQR.BackColor = Color.RoyalBlue;
+
+        }
+
+        private void btnclose_MouseHover(object sender, EventArgs e)
+        {
+            btnclose.BackColor = Color.Black;
+
+        }
+
+        private void btnclose_MouseLeave(object sender, EventArgs e)
+        {
+            btnclose.BackColor = Color.RoyalBlue;
+
+        }
+
+        private void button2_MouseHover(object sender, EventArgs e)
+        {
+            button2.BackColor = Color.DarkGreen;
+            button2.ForeColor = Color.White;
+        }
+
+        private void button2_MouseLeave(object sender, EventArgs e)
+        {
+            button2.BackColor = Color.Yellow;
+            button2.ForeColor = Color.Black;
+        }
+
+        private void btnsave_MouseHover(object sender, EventArgs e)
+        {
+            btnsave.BackColor = Color.DarkBlue;
+            btnsave.ForeColor = Color.White;
+        }
+
+        private void btnsave_MouseLeave(object sender, EventArgs e)
+        {
+            btnsave.BackColor = Color.Tomato;
+            btnsave.ForeColor = Color.DarkBlue;
+        }
+
+        private void button3_MouseHover(object sender, EventArgs e)
+        {
+            button3.BackColor = Color.DarkBlue;
+            button3.ForeColor = Color.White;
+        }
+
+        private void button3_MouseLeave(object sender, EventArgs e)
+        {
+            button3.BackColor = Color.Tomato;
+            button3.ForeColor = Color.DarkBlue;
+        }
+
+        private void txtoldpass_MouseHover(object sender, EventArgs e)
+        {
+            txtoldpass.BackColor = Color.White;
+        }
+
+        private void txtoldpass_MouseLeave(object sender, EventArgs e)
+        {
+            txtoldpass.BackColor = Color.WhiteSmoke;
+        }
+
+        private void txtnewpass_MouseHover(object sender, EventArgs e)
+        {
+            txtnewpass.BackColor = Color.White;
+        }
+
+        private void txtnewpass_MouseLeave(object sender, EventArgs e)
+        {
+            txtnewpass.BackColor = Color.WhiteSmoke;
+        }
+
+        private void txtconfirmpass_MouseHover(object sender, EventArgs e)
+        {
+            txtconfirmpass.BackColor = Color.White;
+        }
+
+        private void txtconfirmpass_MouseLeave(object sender, EventArgs e)
+        {
+            txtconfirmpass.BackColor = Color.WhiteSmoke;
+        }
+
+        
+
+        private void txtReason_MouseHover(object sender, EventArgs e)
+        {
+            txtReason.BackColor = Color.White;
+        }
+
+        private void txtReason_MouseLeave(object sender, EventArgs e)
+        {
+            txtReason.BackColor = SystemColors.GradientInactiveCaption;
+        }
+        #endregion
     }
 }

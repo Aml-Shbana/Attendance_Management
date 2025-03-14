@@ -14,6 +14,7 @@ namespace Attendance_Management.Forms_Folder
 {
     public partial class ResetPassword : Form
     {
+        #region save new password
         private readonly Context con = new Context();
 
         private string userEmail; // البريد الإلكتروني لل user الحالي
@@ -23,8 +24,8 @@ namespace Attendance_Management.Forms_Folder
             userEmail = email;
 
         }
-        #region save new password
-
+        
+        #region save button
         private void btnsave_Click(object sender, EventArgs e)
         {
             string newPassword = txtnewpass.Text.Trim();
@@ -55,7 +56,8 @@ namespace Attendance_Management.Forms_Folder
                 MessageBox.Show("Error change password", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        #endregion
+        #region color design
         private void lblreset_MouseHover(object sender, EventArgs e)
         {
             lblreset.ForeColor = Color.MediumBlue;
@@ -107,7 +109,8 @@ namespace Attendance_Management.Forms_Folder
                 txtnewpass.PasswordChar = '●';
             }
         }
-
+        #endregion
+        #region ui show password
         private void chbshowpassold_CheckedChanged(object sender, EventArgs e)
         {
             if (chbshowpassold.Checked)
@@ -119,6 +122,21 @@ namespace Attendance_Management.Forms_Folder
                 txtconfirmpass.PasswordChar = '●';
             }
         }
+        #endregion
+        #region close app
+        private void btnback_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Exit Confirmation",
+                                         MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                login l = new login();
+                l.Show();
+                this.Close();
+            }
+        }
+        #endregion
     }
     #endregion
 }

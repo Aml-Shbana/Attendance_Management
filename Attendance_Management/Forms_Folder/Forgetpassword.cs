@@ -70,14 +70,22 @@ namespace Attendance_Management.Forms_Folder
         }
         #endregion
         #region button back
-
+      
         private void btnback_Click(object sender, EventArgs e)
         {
-            login l = new login();
-            l.Show();
-            this.Close();
+           
+            DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Exit Confirmation",
+                                          MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                login l = new login();
+                l.Show();
+                this.Close();
+            }
         }
         #endregion
+        #region ui color forget password
 
         private void txtenteremail_MouseHover(object sender, EventArgs e)
         {
@@ -86,27 +94,22 @@ namespace Attendance_Management.Forms_Folder
 
         private void btnSendOTP_MouseHover(object sender, EventArgs e)
         {
-            btnSendOTP.BackColor = Color.MediumBlue;
+            btnSendOTP.BackColor = Color.DarkGreen;
         }
 
-        private void btnback_MouseHover(object sender, EventArgs e)
-        {
-            btnback.BackColor = Color.MediumBlue;
-        }
+      
 
         private void btnSendOTP_MouseLeave(object sender, EventArgs e)
         {
-            btnSendOTP.BackColor = Color.LightSkyBlue;
+            btnSendOTP.BackColor = Color.DimGray;
         }
 
-        private void btnback_MouseLeave(object sender, EventArgs e)
-        {
-            btnback.BackColor = Color.LightSkyBlue;
-        }
+
 
         private void txtenteremail_MouseLeave(object sender, EventArgs e)
         {
             txtenteremail.BackColor = Color.AliceBlue;
         }
+        #endregion
     }
 }

@@ -57,11 +57,10 @@
             label5 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
             tabAttendanceHistory = new System.Windows.Forms.TabPage();
-            lbltodaycom = new System.Windows.Forms.Label();
-            lbllatelychecked = new System.Windows.Forms.Label();
-            panel2 = new System.Windows.Forms.Panel();
             lblLastCheckOut = new System.Windows.Forms.Label();
+            lbltodaycom = new System.Windows.Forms.Label();
             lblLastCheckIn = new System.Windows.Forms.Label();
+            lbllatelychecked = new System.Windows.Forms.Label();
             button2 = new System.Windows.Forms.Button();
             lblEarlyDeparture = new System.Windows.Forms.Label();
             lblLateArrival = new System.Windows.Forms.Label();
@@ -83,7 +82,6 @@
             ((System.ComponentModel.ISupportInitialize)pbCamera).BeginInit();
             tabLeaveRequest.SuspendLayout();
             tabAttendanceHistory.SuspendLayout();
-            panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAttendanceHistory).BeginInit();
             tabchange.SuspendLayout();
             SuspendLayout();
@@ -98,7 +96,7 @@
             tabControl1.Location = new System.Drawing.Point(0, 0);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new System.Drawing.Size(1005, 556);
+            tabControl1.Size = new System.Drawing.Size(1128, 556);
             tabControl1.TabIndex = 0;
             // 
             // tabcontrolemp
@@ -107,7 +105,7 @@
             tabcontrolemp.Location = new System.Drawing.Point(4, 29);
             tabcontrolemp.Name = "tabcontrolemp";
             tabcontrolemp.Padding = new System.Windows.Forms.Padding(3);
-            tabcontrolemp.Size = new System.Drawing.Size(997, 523);
+            tabcontrolemp.Size = new System.Drawing.Size(1120, 523);
             tabcontrolemp.TabIndex = 0;
             tabcontrolemp.Text = "CheckInOut";
             tabcontrolemp.UseVisualStyleBackColor = true;
@@ -131,52 +129,61 @@
             panel1.Location = new System.Drawing.Point(3, 3);
             panel1.Name = "panel1";
             panel1.Padding = new System.Windows.Forms.Padding(20);
-            panel1.Size = new System.Drawing.Size(991, 517);
+            panel1.Size = new System.Drawing.Size(1114, 517);
             panel1.TabIndex = 0;
             // 
             // btnCheckIn
             // 
-            btnCheckIn.BackColor = System.Drawing.Color.CornflowerBlue;
+            btnCheckIn.BackColor = System.Drawing.Color.RoyalBlue;
+            btnCheckIn.Cursor = System.Windows.Forms.Cursors.Hand;
             btnCheckIn.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             btnCheckIn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            btnCheckIn.Location = new System.Drawing.Point(771, 203);
+            btnCheckIn.Location = new System.Drawing.Point(438, 254);
             btnCheckIn.Name = "btnCheckIn";
-            btnCheckIn.Size = new System.Drawing.Size(150, 50);
+            btnCheckIn.Size = new System.Drawing.Size(205, 40);
             btnCheckIn.TabIndex = 2;
             btnCheckIn.Text = "Check In";
             btnCheckIn.UseVisualStyleBackColor = false;
             btnCheckIn.Click += btnCheckIn_Click;
+            btnCheckIn.MouseLeave += btnCheckIn_MouseLeave;
+            btnCheckIn.MouseHover += btnCheckIn_MouseHover;
             // 
             // btnStartQR
             // 
-            btnStartQR.BackColor = System.Drawing.Color.CornflowerBlue;
+            btnStartQR.BackColor = System.Drawing.Color.RoyalBlue;
+            btnStartQR.Cursor = System.Windows.Forms.Cursors.Hand;
             btnStartQR.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             btnStartQR.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            btnStartQR.Location = new System.Drawing.Point(455, 450);
+            btnStartQR.Location = new System.Drawing.Point(438, 358);
             btnStartQR.Name = "btnStartQR";
-            btnStartQR.Size = new System.Drawing.Size(205, 38);
+            btnStartQR.Size = new System.Drawing.Size(205, 40);
             btnStartQR.TabIndex = 11;
             btnStartQR.Text = "Start QR Scan";
             btnStartQR.UseVisualStyleBackColor = false;
             btnStartQR.Click += btnStartQR_Click;
+            btnStartQR.MouseLeave += btnStartQR_MouseLeave;
+            btnStartQR.MouseHover += btnStartQR_MouseHover;
             // 
             // btnCheckOut
             // 
-            btnCheckOut.BackColor = System.Drawing.Color.CornflowerBlue;
+            btnCheckOut.BackColor = System.Drawing.Color.RoyalBlue;
+            btnCheckOut.Cursor = System.Windows.Forms.Cursors.Hand;
             btnCheckOut.Enabled = false;
             btnCheckOut.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             btnCheckOut.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            btnCheckOut.Location = new System.Drawing.Point(771, 283);
+            btnCheckOut.Location = new System.Drawing.Point(765, 254);
             btnCheckOut.Name = "btnCheckOut";
-            btnCheckOut.Size = new System.Drawing.Size(150, 50);
+            btnCheckOut.Size = new System.Drawing.Size(205, 40);
             btnCheckOut.TabIndex = 3;
             btnCheckOut.Text = "Check Out";
             btnCheckOut.UseVisualStyleBackColor = false;
             btnCheckOut.Click += btnCheckOut_Click;
+            btnCheckOut.MouseLeave += btnCheckOut_MouseLeave;
+            btnCheckOut.MouseHover += btnCheckOut_MouseHover;
             // 
             // pbCamera
             // 
-            pbCamera.Location = new System.Drawing.Point(508, 356);
+            pbCamera.Location = new System.Drawing.Point(612, 432);
             pbCamera.Name = "pbCamera";
             pbCamera.Size = new System.Drawing.Size(125, 62);
             pbCamera.TabIndex = 10;
@@ -184,58 +191,63 @@
             // 
             // btnclose
             // 
-            btnclose.BackColor = System.Drawing.Color.CornflowerBlue;
-            btnclose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            btnclose.BackColor = System.Drawing.Color.RoyalBlue;
+            btnclose.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnclose.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             btnclose.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            btnclose.Location = new System.Drawing.Point(853, 459);
+            btnclose.Location = new System.Drawing.Point(765, 363);
             btnclose.Name = "btnclose";
-            btnclose.Size = new System.Drawing.Size(101, 29);
+            btnclose.Size = new System.Drawing.Size(205, 40);
             btnclose.TabIndex = 9;
-            btnclose.Text = "Close App";
+            btnclose.Text = "Close ";
             btnclose.UseVisualStyleBackColor = false;
             btnclose.Click += btnclose_Click;
+            btnclose.MouseLeave += btnclose_MouseLeave;
+            btnclose.MouseHover += btnclose_MouseHover;
             // 
             // label9
             // 
-            label9.AutoSize = true;
+            label9.Cursor = System.Windows.Forms.Cursors.No;
             label9.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             label9.ForeColor = System.Drawing.Color.CornflowerBlue;
-            label9.Location = new System.Drawing.Point(419, 264);
+            label9.Image = Properties.Resources.dept;
+            label9.Location = new System.Drawing.Point(587, 168);
             label9.Name = "label9";
-            label9.Size = new System.Drawing.Size(185, 38);
+            label9.Size = new System.Drawing.Size(87, 38);
             label9.TabIndex = 8;
-            label9.Text = "Department:";
             // 
             // label8
             // 
-            label8.AutoSize = true;
+            label8.Cursor = System.Windows.Forms.Cursors.No;
             label8.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             label8.ForeColor = System.Drawing.Color.CornflowerBlue;
-            label8.Location = new System.Drawing.Point(419, 193);
+            label8.Image = Properties.Resources.Capture;
+            label8.Location = new System.Drawing.Point(587, 100);
             label8.Name = "label8";
-            label8.Size = new System.Drawing.Size(164, 38);
+            label8.Size = new System.Drawing.Size(79, 40);
             label8.TabIndex = 7;
-            label8.Text = "User name:";
             // 
             // lbldept
             // 
             lbldept.AutoSize = true;
-            lbldept.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lbldept.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            lbldept.Location = new System.Drawing.Point(612, 274);
+            lbldept.Cursor = System.Windows.Forms.Cursors.No;
+            lbldept.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            lbldept.ForeColor = System.Drawing.Color.Black;
+            lbldept.Location = new System.Drawing.Point(696, 178);
             lbldept.Name = "lbldept";
-            lbldept.Size = new System.Drawing.Size(114, 25);
+            lbldept.Size = new System.Drawing.Size(115, 25);
             lbldept.TabIndex = 6;
             lbldept.Text = "Department";
             // 
             // lblname
             // 
             lblname.AutoSize = true;
-            lblname.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblname.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            lblname.Location = new System.Drawing.Point(612, 203);
+            lblname.Cursor = System.Windows.Forms.Cursors.No;
+            lblname.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            lblname.ForeColor = System.Drawing.Color.Black;
+            lblname.Location = new System.Drawing.Point(696, 107);
             lblname.Name = "lblname";
-            lblname.Size = new System.Drawing.Size(66, 28);
+            lblname.Size = new System.Drawing.Size(62, 25);
             lblname.TabIndex = 5;
             lblname.Text = "Name";
             // 
@@ -243,20 +255,22 @@
             // 
             lblAttendanceStatus.Anchor = System.Windows.Forms.AnchorStyles.None;
             lblAttendanceStatus.AutoSize = true;
-            lblAttendanceStatus.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblAttendanceStatus.ForeColor = System.Drawing.Color.CornflowerBlue;
-            lblAttendanceStatus.Location = new System.Drawing.Point(23, 20);
+            lblAttendanceStatus.Cursor = System.Windows.Forms.Cursors.No;
+            lblAttendanceStatus.Font = new System.Drawing.Font("Segoe UI Black", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            lblAttendanceStatus.ForeColor = System.Drawing.Color.Black;
+            lblAttendanceStatus.Location = new System.Drawing.Point(85, 20);
             lblAttendanceStatus.Name = "lblAttendanceStatus";
-            lblAttendanceStatus.Size = new System.Drawing.Size(256, 38);
+            lblAttendanceStatus.Size = new System.Drawing.Size(274, 38);
             lblAttendanceStatus.TabIndex = 1;
             lblAttendanceStatus.Text = "Attendance Status";
             // 
             // lblCurrentTime
             // 
             lblCurrentTime.Anchor = System.Windows.Forms.AnchorStyles.None;
+            lblCurrentTime.Cursor = System.Windows.Forms.Cursors.No;
             lblCurrentTime.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblCurrentTime.ForeColor = System.Drawing.Color.CornflowerBlue;
-            lblCurrentTime.Location = new System.Drawing.Point(0, 91);
+            lblCurrentTime.ForeColor = System.Drawing.Color.Black;
+            lblCurrentTime.Location = new System.Drawing.Point(3, 97);
             lblCurrentTime.Name = "lblCurrentTime";
             lblCurrentTime.Size = new System.Drawing.Size(131, 37);
             lblCurrentTime.TabIndex = 0;
@@ -281,7 +295,7 @@
             tabLeaveRequest.Location = new System.Drawing.Point(4, 29);
             tabLeaveRequest.Name = "tabLeaveRequest";
             tabLeaveRequest.Padding = new System.Windows.Forms.Padding(3);
-            tabLeaveRequest.Size = new System.Drawing.Size(997, 523);
+            tabLeaveRequest.Size = new System.Drawing.Size(1120, 523);
             tabLeaveRequest.TabIndex = 1;
             tabLeaveRequest.Text = "LeaveRequest";
             tabLeaveRequest.UseVisualStyleBackColor = true;
@@ -289,13 +303,14 @@
             // button1
             // 
             button1.BackColor = System.Drawing.Color.MediumBlue;
+            button1.Cursor = System.Windows.Forms.Cursors.Hand;
             button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             button1.Location = new System.Drawing.Point(669, 347);
             button1.Name = "button1";
             button1.Size = new System.Drawing.Size(233, 41);
             button1.TabIndex = 12;
-            button1.Text = "Close App";
+            button1.Text = "Close ";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
@@ -313,6 +328,7 @@
             // btnSubmitLeave
             // 
             btnSubmitLeave.BackColor = System.Drawing.Color.MediumBlue;
+            btnSubmitLeave.Cursor = System.Windows.Forms.Cursors.Hand;
             btnSubmitLeave.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             btnSubmitLeave.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             btnSubmitLeave.Location = new System.Drawing.Point(669, 273);
@@ -326,16 +342,20 @@
             // txtReason
             // 
             txtReason.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            txtReason.Cursor = System.Windows.Forms.Cursors.IBeam;
             txtReason.ForeColor = System.Drawing.Color.FromArgb(0, 0, 192);
             txtReason.Location = new System.Drawing.Point(739, 105);
             txtReason.Name = "txtReason";
             txtReason.Size = new System.Drawing.Size(241, 27);
             txtReason.TabIndex = 9;
+            txtReason.MouseLeave += txtReason_MouseLeave;
+            txtReason.MouseHover += txtReason_MouseHover;
             // 
             // dtpEndDate
             // 
             dtpEndDate.CalendarFont = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             dtpEndDate.CalendarForeColor = System.Drawing.Color.MediumBlue;
+            dtpEndDate.Cursor = System.Windows.Forms.Cursors.PanSouth;
             dtpEndDate.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             dtpEndDate.Location = new System.Drawing.Point(8, 159);
             dtpEndDate.Name = "dtpEndDate";
@@ -349,6 +369,7 @@
             dtpStartDate.CalendarMonthBackground = System.Drawing.Color.White;
             dtpStartDate.CalendarTitleForeColor = System.Drawing.SystemColors.MenuHighlight;
             dtpStartDate.CalendarTrailingForeColor = System.Drawing.Color.Gray;
+            dtpStartDate.Cursor = System.Windows.Forms.Cursors.PanSouth;
             dtpStartDate.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             dtpStartDate.Location = new System.Drawing.Point(8, 62);
             dtpStartDate.Name = "dtpStartDate";
@@ -358,6 +379,7 @@
             // cmbLeaveType
             // 
             cmbLeaveType.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            cmbLeaveType.Cursor = System.Windows.Forms.Cursors.PanSouth;
             cmbLeaveType.ForeColor = System.Drawing.Color.FromArgb(0, 0, 192);
             cmbLeaveType.FormattingEnabled = true;
             cmbLeaveType.Location = new System.Drawing.Point(739, 31);
@@ -423,98 +445,95 @@
             // 
             // tabAttendanceHistory
             // 
-            tabAttendanceHistory.BackgroundImage = Properties.Resources._25cda6cd3f9584511a1c1209932de4e1;
+            tabAttendanceHistory.BackgroundImage = Properties.Resources._0976f66c99b63fd54402e6f5e9e0bc00_removebg_preview;
             tabAttendanceHistory.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            tabAttendanceHistory.Controls.Add(lblLastCheckOut);
             tabAttendanceHistory.Controls.Add(lbltodaycom);
+            tabAttendanceHistory.Controls.Add(lblLastCheckIn);
             tabAttendanceHistory.Controls.Add(lbllatelychecked);
-            tabAttendanceHistory.Controls.Add(panel2);
             tabAttendanceHistory.Controls.Add(button2);
             tabAttendanceHistory.Controls.Add(lblEarlyDeparture);
             tabAttendanceHistory.Controls.Add(lblLateArrival);
             tabAttendanceHistory.Controls.Add(dgvAttendanceHistory);
             tabAttendanceHistory.Location = new System.Drawing.Point(4, 29);
             tabAttendanceHistory.Name = "tabAttendanceHistory";
-            tabAttendanceHistory.Size = new System.Drawing.Size(997, 523);
+            tabAttendanceHistory.Size = new System.Drawing.Size(1120, 523);
             tabAttendanceHistory.TabIndex = 2;
             tabAttendanceHistory.Text = "AttendanceHistory";
             tabAttendanceHistory.UseVisualStyleBackColor = true;
             tabAttendanceHistory.Click += tabAttendanceHistory_Click;
             // 
+            // lblLastCheckOut
+            // 
+            lblLastCheckOut.AutoSize = true;
+            lblLastCheckOut.Cursor = System.Windows.Forms.Cursors.No;
+            lblLastCheckOut.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            lblLastCheckOut.ForeColor = System.Drawing.Color.Black;
+            lblLastCheckOut.Location = new System.Drawing.Point(22, 471);
+            lblLastCheckOut.Name = "lblLastCheckOut";
+            lblLastCheckOut.Size = new System.Drawing.Size(172, 31);
+            lblLastCheckOut.TabIndex = 1;
+            lblLastCheckOut.Text = "Take CheckOut";
+            // 
             // lbltodaycom
             // 
             lbltodaycom.AutoSize = true;
+            lbltodaycom.Cursor = System.Windows.Forms.Cursors.No;
             lbltodaycom.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lbltodaycom.ForeColor = System.Drawing.Color.CornflowerBlue;
-            lbltodaycom.Location = new System.Drawing.Point(204, 345);
+            lbltodaycom.ForeColor = System.Drawing.Color.Black;
+            lbltodaycom.Location = new System.Drawing.Point(571, 11);
             lbltodaycom.Name = "lbltodaycom";
             lbltodaycom.Size = new System.Drawing.Size(513, 31);
             lbltodaycom.TabIndex = 15;
             lbltodaycom.Text = "Today's check has been successfully completed";
             // 
+            // lblLastCheckIn
+            // 
+            lblLastCheckIn.AutoSize = true;
+            lblLastCheckIn.Cursor = System.Windows.Forms.Cursors.No;
+            lblLastCheckIn.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            lblLastCheckIn.ForeColor = System.Drawing.Color.Black;
+            lblLastCheckIn.Location = new System.Drawing.Point(22, 404);
+            lblLastCheckIn.Name = "lblLastCheckIn";
+            lblLastCheckIn.Size = new System.Drawing.Size(153, 31);
+            lblLastCheckIn.TabIndex = 0;
+            lblLastCheckIn.Text = "Take CheckIn";
+            // 
             // lbllatelychecked
             // 
             lbllatelychecked.AutoSize = true;
             lbllatelychecked.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lbllatelychecked.ForeColor = System.Drawing.Color.CornflowerBlue;
-            lbllatelychecked.Location = new System.Drawing.Point(367, 345);
+            lbllatelychecked.ForeColor = System.Drawing.Color.Black;
+            lbllatelychecked.Location = new System.Drawing.Point(723, 11);
             lbllatelychecked.Name = "lbllatelychecked";
             lbllatelychecked.Size = new System.Drawing.Size(201, 31);
             lbllatelychecked.TabIndex = 14;
             lbllatelychecked.Text = "Recently Checked";
             lbllatelychecked.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panel2
-            // 
-            panel2.BackColor = System.Drawing.Color.White;
-            panel2.Controls.Add(lblLastCheckOut);
-            panel2.Controls.Add(lblLastCheckIn);
-            panel2.Location = new System.Drawing.Point(3, 261);
-            panel2.Name = "panel2";
-            panel2.Size = new System.Drawing.Size(998, 81);
-            panel2.TabIndex = 16;
-            // 
-            // lblLastCheckOut
-            // 
-            lblLastCheckOut.AutoSize = true;
-            lblLastCheckOut.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblLastCheckOut.ForeColor = System.Drawing.Color.CornflowerBlue;
-            lblLastCheckOut.Location = new System.Drawing.Point(572, 26);
-            lblLastCheckOut.Name = "lblLastCheckOut";
-            lblLastCheckOut.Size = new System.Drawing.Size(172, 31);
-            lblLastCheckOut.TabIndex = 1;
-            lblLastCheckOut.Text = "Take CheckOut";
-            // 
-            // lblLastCheckIn
-            // 
-            lblLastCheckIn.AutoSize = true;
-            lblLastCheckIn.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblLastCheckIn.ForeColor = System.Drawing.Color.CornflowerBlue;
-            lblLastCheckIn.Location = new System.Drawing.Point(165, 26);
-            lblLastCheckIn.Name = "lblLastCheckIn";
-            lblLastCheckIn.Size = new System.Drawing.Size(153, 31);
-            lblLastCheckIn.TabIndex = 0;
-            lblLastCheckIn.Text = "Take CheckIn";
-            // 
             // button2
             // 
-            button2.BackColor = System.Drawing.Color.CornflowerBlue;
+            button2.BackColor = System.Drawing.Color.Yellow;
             button2.Cursor = System.Windows.Forms.Cursors.Hand;
             button2.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            button2.Location = new System.Drawing.Point(854, 480);
+            button2.ForeColor = System.Drawing.Color.Black;
+            button2.Location = new System.Drawing.Point(8, 11);
             button2.Name = "button2";
             button2.Size = new System.Drawing.Size(135, 35);
             button2.TabIndex = 13;
-            button2.Text = "Close App";
+            button2.Text = "Close ";
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
+            button2.MouseLeave += button2_MouseLeave;
+            button2.MouseHover += button2_MouseHover;
             // 
             // lblEarlyDeparture
             // 
             lblEarlyDeparture.AutoSize = true;
+            lblEarlyDeparture.Cursor = System.Windows.Forms.Cursors.No;
             lblEarlyDeparture.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblEarlyDeparture.ForeColor = System.Drawing.Color.CornflowerBlue;
-            lblEarlyDeparture.Location = new System.Drawing.Point(21, 414);
+            lblEarlyDeparture.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            lblEarlyDeparture.Location = new System.Drawing.Point(620, 143);
             lblEarlyDeparture.Name = "lblEarlyDeparture";
             lblEarlyDeparture.Size = new System.Drawing.Size(181, 31);
             lblEarlyDeparture.TabIndex = 4;
@@ -523,9 +542,10 @@
             // lblLateArrival
             // 
             lblLateArrival.AutoSize = true;
+            lblLateArrival.Cursor = System.Windows.Forms.Cursors.No;
             lblLateArrival.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblLateArrival.ForeColor = System.Drawing.Color.CornflowerBlue;
-            lblLateArrival.Location = new System.Drawing.Point(21, 469);
+            lblLateArrival.ForeColor = System.Drawing.Color.Black;
+            lblLateArrival.Location = new System.Drawing.Point(620, 87);
             lblLateArrival.Name = "lblLateArrival";
             lblLateArrival.Size = new System.Drawing.Size(137, 31);
             lblLateArrival.TabIndex = 3;
@@ -536,10 +556,10 @@
             dgvAttendanceHistory.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
             dgvAttendanceHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvAttendanceHistory.GridColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dgvAttendanceHistory.Location = new System.Drawing.Point(414, 0);
+            dgvAttendanceHistory.Location = new System.Drawing.Point(487, 284);
             dgvAttendanceHistory.Name = "dgvAttendanceHistory";
             dgvAttendanceHistory.RowHeadersWidth = 51;
-            dgvAttendanceHistory.Size = new System.Drawing.Size(584, 237);
+            dgvAttendanceHistory.Size = new System.Drawing.Size(625, 218);
             dgvAttendanceHistory.TabIndex = 2;
             // 
             // tabchange
@@ -558,15 +578,16 @@
             tabchange.Location = new System.Drawing.Point(4, 29);
             tabchange.Name = "tabchange";
             tabchange.Padding = new System.Windows.Forms.Padding(3);
-            tabchange.Size = new System.Drawing.Size(997, 523);
+            tabchange.Size = new System.Drawing.Size(1120, 523);
             tabchange.TabIndex = 3;
             tabchange.Text = "change password";
             tabchange.UseVisualStyleBackColor = true;
             // 
             // confirm
             // 
+            confirm.Cursor = System.Windows.Forms.Cursors.Hand;
             confirm.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            confirm.Location = new System.Drawing.Point(897, 308);
+            confirm.Location = new System.Drawing.Point(906, 307);
             confirm.Name = "confirm";
             confirm.Size = new System.Drawing.Size(16, 26);
             confirm.TabIndex = 18;
@@ -576,8 +597,9 @@
             // 
             // checkBox1new
             // 
+            checkBox1new.Cursor = System.Windows.Forms.Cursors.Hand;
             checkBox1new.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            checkBox1new.Location = new System.Drawing.Point(897, 253);
+            checkBox1new.Location = new System.Drawing.Point(906, 253);
             checkBox1new.Name = "checkBox1new";
             checkBox1new.Size = new System.Drawing.Size(21, 24);
             checkBox1new.TabIndex = 17;
@@ -587,8 +609,9 @@
             // 
             // chbshowpassold
             // 
+            chbshowpassold.Cursor = System.Windows.Forms.Cursors.Hand;
             chbshowpassold.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            chbshowpassold.Location = new System.Drawing.Point(897, 201);
+            chbshowpassold.Location = new System.Drawing.Point(906, 202);
             chbshowpassold.Name = "chbshowpassold";
             chbshowpassold.Size = new System.Drawing.Size(30, 26);
             chbshowpassold.TabIndex = 16;
@@ -599,70 +622,85 @@
             // label1
             // 
             label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            label1.Image = Properties.Resources._7c6ea2bd31ac5abd0122ae95ce348ffa;
-            label1.Location = new System.Drawing.Point(691, 3);
+            label1.Image = Properties.Resources.a28ff7a58c84d8d6dd33d7bac2d96c69_removebg_preview;
+            label1.Location = new System.Drawing.Point(633, 26);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(166, 188);
+            label1.Size = new System.Drawing.Size(280, 161);
             label1.TabIndex = 15;
             // 
             // button3
             // 
-            button3.BackColor = System.Drawing.Color.AliceBlue;
+            button3.BackColor = System.Drawing.Color.Tomato;
+            button3.Cursor = System.Windows.Forms.Cursors.Hand;
             button3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            button3.ForeColor = System.Drawing.Color.MediumBlue;
+            button3.ForeColor = System.Drawing.Color.DarkBlue;
             button3.Location = new System.Drawing.Point(633, 435);
             button3.Name = "button3";
-            button3.Size = new System.Drawing.Size(258, 43);
+            button3.Size = new System.Drawing.Size(289, 43);
             button3.TabIndex = 14;
             button3.Text = "Close ";
             button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
+            button3.MouseLeave += button3_MouseLeave;
+            button3.MouseHover += button3_MouseHover;
             // 
             // btnsave
             // 
-            btnsave.BackColor = System.Drawing.Color.AliceBlue;
+            btnsave.BackColor = System.Drawing.Color.Tomato;
+            btnsave.Cursor = System.Windows.Forms.Cursors.Hand;
             btnsave.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            btnsave.ForeColor = System.Drawing.Color.MediumBlue;
+            btnsave.ForeColor = System.Drawing.Color.DarkBlue;
             btnsave.Location = new System.Drawing.Point(633, 370);
             btnsave.Name = "btnsave";
-            btnsave.Size = new System.Drawing.Size(258, 43);
+            btnsave.Size = new System.Drawing.Size(289, 43);
             btnsave.TabIndex = 13;
             btnsave.Text = "Save";
             btnsave.UseVisualStyleBackColor = false;
             btnsave.Click += btnsave_Click;
+            btnsave.MouseLeave += btnsave_MouseLeave;
+            btnsave.MouseHover += btnsave_MouseHover;
             // 
             // txtconfirmpass
             // 
-            txtconfirmpass.BackColor = System.Drawing.Color.AliceBlue;
+            txtconfirmpass.BackColor = System.Drawing.Color.WhiteSmoke;
+            txtconfirmpass.Cursor = System.Windows.Forms.Cursors.IBeam;
             txtconfirmpass.ForeColor = System.Drawing.Color.MediumBlue;
-            txtconfirmpass.Location = new System.Drawing.Point(633, 307);
+            txtconfirmpass.Location = new System.Drawing.Point(642, 306);
             txtconfirmpass.Name = "txtconfirmpass";
             txtconfirmpass.PasswordChar = '●';
             txtconfirmpass.PlaceholderText = "Confirm Password";
             txtconfirmpass.Size = new System.Drawing.Size(258, 27);
             txtconfirmpass.TabIndex = 12;
+            txtconfirmpass.MouseLeave += txtconfirmpass_MouseLeave;
+            txtconfirmpass.MouseHover += txtconfirmpass_MouseHover;
             // 
             // txtnewpass
             // 
-            txtnewpass.BackColor = System.Drawing.Color.AliceBlue;
+            txtnewpass.BackColor = System.Drawing.Color.WhiteSmoke;
+            txtnewpass.Cursor = System.Windows.Forms.Cursors.IBeam;
             txtnewpass.ForeColor = System.Drawing.Color.MediumBlue;
-            txtnewpass.Location = new System.Drawing.Point(633, 253);
+            txtnewpass.Location = new System.Drawing.Point(642, 250);
             txtnewpass.Name = "txtnewpass";
             txtnewpass.PasswordChar = '●';
             txtnewpass.PlaceholderText = "New Password";
             txtnewpass.Size = new System.Drawing.Size(258, 27);
             txtnewpass.TabIndex = 11;
+            txtnewpass.MouseLeave += txtnewpass_MouseLeave;
+            txtnewpass.MouseHover += txtnewpass_MouseHover;
             // 
             // txtoldpass
             // 
-            txtoldpass.BackColor = System.Drawing.Color.AliceBlue;
+            txtoldpass.BackColor = System.Drawing.Color.WhiteSmoke;
+            txtoldpass.Cursor = System.Windows.Forms.Cursors.IBeam;
             txtoldpass.ForeColor = System.Drawing.Color.MediumBlue;
-            txtoldpass.Location = new System.Drawing.Point(633, 201);
+            txtoldpass.Location = new System.Drawing.Point(642, 201);
             txtoldpass.Name = "txtoldpass";
             txtoldpass.PasswordChar = '●';
             txtoldpass.PlaceholderText = "Old Password";
             txtoldpass.Size = new System.Drawing.Size(258, 27);
             txtoldpass.TabIndex = 10;
+            txtoldpass.MouseLeave += txtoldpass_MouseLeave;
+            txtoldpass.MouseHover += txtoldpass_MouseHover;
             // 
             // TimerClock
             // 
@@ -673,7 +711,7 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1005, 556);
+            ClientSize = new System.Drawing.Size(1128, 556);
             Controls.Add(tabControl1);
             Name = "empdashboard";
             Text = "empdashboard";
@@ -687,8 +725,6 @@
             tabLeaveRequest.PerformLayout();
             tabAttendanceHistory.ResumeLayout(false);
             tabAttendanceHistory.PerformLayout();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAttendanceHistory).EndInit();
             tabchange.ResumeLayout(false);
             tabchange.PerformLayout();
@@ -740,7 +776,6 @@
         private System.Windows.Forms.PictureBox pbCamera;
         private System.Windows.Forms.Label lbllatelychecked;
         private System.Windows.Forms.Label lbltodaycom;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox confirm;
         private System.Windows.Forms.CheckBox checkBox1new;

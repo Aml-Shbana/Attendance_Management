@@ -25,6 +25,7 @@ namespace Attendance_Management.Forms_Folder
             Initialize();
         }
         //ui QR
+        #region ui
         private void Initialize()
         {
             this.pictureBoxQR = new System.Windows.Forms.PictureBox();
@@ -47,12 +48,13 @@ namespace Attendance_Management.Forms_Folder
             this.Load += new System.EventHandler(this.GenerateQR_Load);
             this.ResumeLayout(false);
         }
-
+        #endregion
         private void GenerateQR_Load(object sender, EventArgs e)
         {
             GenerateQRCode();
 
         }
+        #region generate qr
         private void GenerateQRCode()
         {
             int employeeid = login.LoggedInEmployeeID;
@@ -75,5 +77,6 @@ namespace Attendance_Management.Forms_Folder
             pictureBoxQR.Image = qrbitmao;
 
         }
+        #endregion
     }
 }
