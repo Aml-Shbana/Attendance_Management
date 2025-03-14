@@ -1,5 +1,6 @@
 ﻿using Attendance_Management.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic.Logging;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,6 +37,8 @@ namespace Attendance_Management.Forms_Folder
             cmbLeaveType.DataSource = Enum.GetValues(typeof(LeaveType));
             loadcheckinout();
             loadattendance();
+            
+                CustomizeDataGridView(dgvAttendanceHistory);
         }
         #endregion
         #region checkin
@@ -53,6 +56,16 @@ namespace Attendance_Management.Forms_Folder
                 var now = DateTime.Now;
                 var isLate = now.TimeOfDay > late;
                 var atten = new Attendance
+                #region store log action
+ //var log = new Logs
+ //{
+ //    EmployeeID = login.LoggedInEmployeeID,
+ //    Action = Action_Type.check_in,
+ //    Time_OfAction = now,
+ //};
+ //               con.Logs.Add(log);
+ //               con.SaveChanges();
+                #endregion
                 {
                     EmployeeID = login.LoggedInEmployeeID,
                     CheckInTime = DateTime.Now,
@@ -85,6 +98,15 @@ namespace Attendance_Management.Forms_Folder
 
             if (attenCHOut != null)
             {
+                #region store log action
+                //var log = new Logs
+                //{
+                //    EmployeeID = login.LoggedInEmployeeID,
+                //    Action = Action_Type.check_out,
+                //    Time_OfAction = DateTime.Now,
+                //};
+                //con.Logs.Add(log);
+                #endregion
                 attenCHOut.CheckOutTime = DateTime.Now;
                 con.SaveChanges();
                 loadcheckinout();
@@ -338,6 +360,16 @@ namespace Attendance_Management.Forms_Folder
                 Status = LeaveStatus.Pending,
                 Reason = txtReason.Text.Trim()
             };
+
+            #region store log action
+            //var log = new Logs
+            //{
+            //    EmployeeID = login.LoggedInEmployeeID,
+            //    Action = Action_Type.leave_request,
+            //    Time_OfAction = DateTime.Now,
+            //};
+            //con.Logs.Add(log);
+            #endregion
             con.Leaves.Add(leavreq);
             con.SaveChanges();
             lblleavestatus.Text = "Sent request";
@@ -368,7 +400,7 @@ namespace Attendance_Management.Forms_Folder
             {
                 this.Close();
             }
-          
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -405,7 +437,37 @@ namespace Attendance_Management.Forms_Folder
         }
         #endregion
 
+        #region Data Grid View
+        private void CustomizeDataGridView(DataGridView dataGrid)
+        {
+            // تخصيص الـ DataGridView
+            dataGrid.DefaultCellStyle.BackColor = Color.White; // خلفية الخلايا بيضاء
+            dataGrid.DefaultCellStyle.ForeColor = Color.DarkGreen; // لون النص Dark Blue
+            dataGrid.DefaultCellStyle.Font = new Font("Arial", 10, FontStyle.Regular); // تصغير حجم الخط
+            dataGrid.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
+            // تخصيص الـ Header
+            dataGrid.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkGreen; // رأس الجدول Dark Blue
+            dataGrid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White; // النص داخل الرأس أبيض
+            dataGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Bold); // تصغير حجم الخط
+            dataGrid.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            // تعطيل التصميم الافتراضي للرأس
+            dataGrid.EnableHeadersVisualStyles = false;
+
+            // لون حدود الجدول
+            dataGrid.GridColor = Color.DarkGreen;
+
+            // ارتفاع الصفوف
+            dataGrid.RowTemplate.Height = 30; // تصغير ارتفاع الصفوف
+
+            // ضبط حجم الأعمدة والصفوف تلقائيًا
+            //dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            //dataGrid.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+
+
+        }
+        #endregion
         #region Button QR
         private void btnStartQR_Click(object sender, EventArgs e)
         {
@@ -446,7 +508,7 @@ namespace Attendance_Management.Forms_Folder
                 txtoldpass.PasswordChar = '●';
             }
         }
-       
+
         private void checkBox1mew_CheckedChanged(object sender, EventArgs e)
         {
 
@@ -584,7 +646,7 @@ namespace Attendance_Management.Forms_Folder
             txtconfirmpass.BackColor = Color.WhiteSmoke;
         }
 
-        
+
 
         private void txtReason_MouseHover(object sender, EventArgs e)
         {
@@ -595,6 +657,7 @@ namespace Attendance_Management.Forms_Folder
         {
             txtReason.BackColor = SystemColors.GradientInactiveCaption;
         }
-        #endregion
+
+#endregion
     }
 }
