@@ -49,11 +49,15 @@ namespace Attendance_Management.Forms_Folder
             //set role
             switch (user.Role)
             {
+                //case UserRole.Admin:
+                //    new Admin().Show();
+                //    this.Hide();
+                //    break;
 
                 //case UserRole.HR:
                 //    new HR().Show();
-                    // this.Hide();
-                    //break;
+                // this.Hide();
+                //break;
                 case UserRole.Employee:
                     new empdashboard().Show();
                     break;
