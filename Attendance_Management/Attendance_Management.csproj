@@ -9,6 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Forms_Folder\NewFolder\**" />
+    <Compile Remove="Properties\**" />
+    <EmbeddedResource Remove="Forms_Folder\NewFolder\**" />
+    <EmbeddedResource Remove="Properties\**" />
+    <None Remove="Forms_Folder\NewFolder\**" />
+    <None Remove="Properties\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AForge.Video" Version="2.2.5" />
     <PackageReference Include="AForge.Video.DirectShow" Version="2.2.5" />
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
@@ -28,11 +37,6 @@
     <PackageReference Include="QRCoder" Version="1.6.0" />
     <PackageReference Include="ZXing.Net" Version="0.16.10" />
     <PackageReference Include="ZXing.Net.Bindings.Windows.Compatibility" Version="0.16.13" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Forms_Folder\NewFolder\" />
-    <Folder Include="Properties\" />
   </ItemGroup>
 
 </Project>
