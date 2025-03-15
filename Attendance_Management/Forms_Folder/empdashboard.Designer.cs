@@ -112,7 +112,7 @@
             // 
             // panel1
             // 
-           
+            panel1.BackgroundImage = Properties.Resources.dd3b283e47743f60d0a2233523cd918d;
             panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             panel1.Controls.Add(btnCheckIn);
             panel1.Controls.Add(btnStartQR);
@@ -210,6 +210,7 @@
             label9.Cursor = System.Windows.Forms.Cursors.No;
             label9.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             label9.ForeColor = System.Drawing.Color.CornflowerBlue;
+            label9.Image = Properties.Resources.dept;
             label9.Location = new System.Drawing.Point(587, 168);
             label9.Name = "label9";
             label9.Size = new System.Drawing.Size(87, 38);
@@ -220,7 +221,7 @@
             label8.Cursor = System.Windows.Forms.Cursors.No;
             label8.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             label8.ForeColor = System.Drawing.Color.CornflowerBlue;
-            
+            label8.Image = Properties.Resources.Capture;
             label8.Location = new System.Drawing.Point(587, 100);
             label8.Name = "label8";
             label8.Size = new System.Drawing.Size(79, 40);
@@ -277,7 +278,7 @@
             // 
             // tabLeaveRequest
             // 
-            
+            tabLeaveRequest.BackgroundImage = Properties.Resources._206a07c4104b5195664e2d4877ac2e0e;
             tabLeaveRequest.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             tabLeaveRequest.Controls.Add(button1);
             tabLeaveRequest.Controls.Add(lblstatus);
@@ -444,7 +445,7 @@
             // 
             // tabAttendanceHistory
             // 
-            
+            tabAttendanceHistory.BackgroundImage = Properties.Resources._0976f66c99b63fd54402e6f5e9e0bc00_removebg_preview;
             tabAttendanceHistory.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             tabAttendanceHistory.Controls.Add(lblLastCheckOut);
             tabAttendanceHistory.Controls.Add(lbltodaycom);
@@ -563,6 +564,7 @@
             // 
             // tabchange
             // 
+            tabchange.BackgroundImage = Properties.Resources._6ef229cae6c257981957dde16ae16ba3;
             tabchange.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             tabchange.Controls.Add(confirm);
             tabchange.Controls.Add(checkBox1new);
@@ -620,6 +622,7 @@
             // label1
             // 
             label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            label1.Image = Properties.Resources.a28ff7a58c84d8d6dd33d7bac2d96c69_removebg_preview;
             label1.Location = new System.Drawing.Point(633, 26);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(280, 161);

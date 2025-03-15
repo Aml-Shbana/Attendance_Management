@@ -118,22 +118,70 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="34a5682a85ded5a87827d766ff5f58ea (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\34a5682a85ded5a87827d766ff5f58ea (1).jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="69dcb7feb96d5be3f7de530840edef4b" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\69dcb7feb96d5be3f7de530840edef4b.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="door closed" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\door closed.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="a28ff7a58c84d8d6dd33d7bac2d96c69-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\a28ff7a58c84d8d6dd33d7bac2d96c69-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dept" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\dept.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="a9785a89c577639ecd44057b273099ba" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\a9785a89c577639ecd44057b273099ba.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="dc370715ecb31c4c97ea00df8369ccb6" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\dc370715ecb31c4c97ea00df8369ccb6.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="7645bacf29b7a773d2e5065fcd4893a4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\7645bacf29b7a773d2e5065fcd4893a4.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="gray open1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\gray open.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="a628df4df4722812ebab6f13d8b76bff" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\a628df4df4722812ebab6f13d8b76bff.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="0976f66c99b63fd54402e6f5e9e0bc00-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\0976f66c99b63fd54402e6f5e9e0bc00-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dc370715ecb31c4c97ea00df8369ccb6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\dc370715ecb31c4c97ea00df8369ccb6.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Capture" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\Capture.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WhatsApp Image 2025-03-10 at 16.32.42_899dd55a" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\WhatsApp Image 2025-03-10 at 16.32.42_899dd55a.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ca521f10aa62e6a90b0f6cb54a3721f3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\ca521f10aa62e6a90b0f6cb54a3721f3.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="74b13e346e915a2d38a36d509e709f30" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\74b13e346e915a2d38a36d509e709f30.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dd3b283e47743f60d0a2233523cd918d" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\dd3b283e47743f60d0a2233523cd918d.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="door closed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\door closed.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="6ef229cae6c257981957dde16ae16ba3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\6ef229cae6c257981957dde16ae16ba3.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gray open" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\gray open.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="206a07c4104b5195664e2d4877ac2e0e" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\206a07c4104b5195664e2d4877ac2e0e.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="34a5682a85ded5a87827d766ff5f58ea (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\34a5682a85ded5a87827d766ff5f58ea (1).jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="309c7e593c27ba04c6d379dc705be666" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\309c7e593c27ba04c6d379dc705be666.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="9bfefbf30b89308559cb8fb16d5d7373" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\9bfefbf30b89308559cb8fb16d5d7373.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="54cdbe9cf9605f8dc968a38b3198d64f" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\54cdbe9cf9605f8dc968a38b3198d64f.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

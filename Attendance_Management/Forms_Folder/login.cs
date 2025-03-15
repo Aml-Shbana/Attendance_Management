@@ -51,12 +51,12 @@ namespace Attendance_Management.Forms_Folder
             {
                 case UserRole.Admin:
                     new Admin().Show();
-                    this.Hide();
+                    
                     break;
 
                 case UserRole.HR:
                     new HR().Show();
-                    this.Hide();
+                    
                     break;
                 case UserRole.Employee:
                     new empdashboard().Show();

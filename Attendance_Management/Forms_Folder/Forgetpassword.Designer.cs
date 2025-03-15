@@ -82,6 +82,7 @@
             btnback.Cursor = System.Windows.Forms.Cursors.Hand;
             btnback.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             btnback.ForeColor = System.Drawing.Color.Transparent;
+            btnback.Image = Properties.Resources.gray_open;
             btnback.Location = new System.Drawing.Point(219, 372);
             btnback.Name = "btnback";
             btnback.Size = new System.Drawing.Size(67, 77);
@@ -105,6 +106,7 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources._69dcb7feb96d5be3f7de530840edef4b;
             ClientSize = new System.Drawing.Size(800, 450);
             Controls.Add(panel1);
             Name = "Forgetpassword";
