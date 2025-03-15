@@ -32,6 +32,8 @@
             tab_HRManagement = new System.Windows.Forms.TabControl();
             tab_ManageEmployees = new System.Windows.Forms.TabPage();
             panel3 = new System.Windows.Forms.Panel();
+            txt_pass = new System.Windows.Forms.TextBox();
+            lbl_password = new System.Windows.Forms.Label();
             dgv_employees = new System.Windows.Forms.DataGridView();
             pb_close = new System.Windows.Forms.PictureBox();
             btn_delete = new System.Windows.Forms.Button();
@@ -110,8 +112,6 @@
             btn_logsAtDate = new System.Windows.Forms.Button();
             dtp_spacificdate = new System.Windows.Forms.DateTimePicker();
             cmb_employeelogsname = new System.Windows.Forms.ComboBox();
-            txt_pass = new System.Windows.Forms.TextBox();
-            lbl_password = new System.Windows.Forms.Label();
             tab_HRManagement.SuspendLayout();
             tab_ManageEmployees.SuspendLayout();
             panel3.SuspendLayout();
@@ -160,7 +160,7 @@
             // panel3
             // 
             panel3.BackColor = System.Drawing.Color.FromArgb(230, 231, 233);
-            //panel3.BackgroundImage = Properties.Resources.dc370715ecb31c4c97ea00df8369ccb6;
+            panel3.BackgroundImage = Properties.Resources.dc370715ecb31c4c97ea00df8369ccb6;
             panel3.Controls.Add(txt_pass);
             panel3.Controls.Add(lbl_password);
             panel3.Controls.Add(dgv_employees);
@@ -184,6 +184,29 @@
             panel3.Size = new System.Drawing.Size(1330, 379);
             panel3.TabIndex = 17;
             // 
+            // txt_pass
+            // 
+            txt_pass.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            txt_pass.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            txt_pass.Location = new System.Drawing.Point(469, 150);
+            txt_pass.Name = "txt_pass";
+            txt_pass.PasswordChar = '●';
+            txt_pass.Size = new System.Drawing.Size(222, 27);
+            txt_pass.TabIndex = 24;
+            txt_pass.UseSystemPasswordChar = true;
+            // 
+            // lbl_password
+            // 
+            lbl_password.AutoSize = true;
+            lbl_password.BackColor = System.Drawing.Color.FromArgb(251, 251, 239);
+            lbl_password.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            lbl_password.ForeColor = System.Drawing.Color.FromArgb(14, 77, 135);
+            lbl_password.Location = new System.Drawing.Point(371, 155);
+            lbl_password.Name = "lbl_password";
+            lbl_password.Size = new System.Drawing.Size(76, 20);
+            lbl_password.TabIndex = 23;
+            lbl_password.Text = "Password";
+            // 
             // dgv_employees
             // 
             dgv_employees.BackgroundColor = System.Drawing.Color.FromArgb(251, 251, 239);
@@ -198,7 +221,7 @@
             // pb_close
             // 
             pb_close.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            //pb_close.Image = Properties.Resources.f64b46ef1b1cfb0ce37a4e8a7cba004c;
+            pb_close.Image = Properties.Resources.door_closed;
             pb_close.Location = new System.Drawing.Point(3, 5);
             pb_close.Name = "pb_close";
             pb_close.Size = new System.Drawing.Size(45, 36);
@@ -862,7 +885,7 @@
             // 
             // pictureBox3
             // 
-            //pictureBox3.Image = Properties.Resources.a9785a89c577639ecd44057b273099ba;
+            pictureBox3.Image = Properties.Resources.a9785a89c577639ecd44057b273099ba;
             pictureBox3.Location = new System.Drawing.Point(-6, -5);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new System.Drawing.Size(374, 421);
@@ -1048,7 +1071,7 @@
             // 
             // pictureBox4
             // 
-            //pictureBox4.Image = Properties.Resources._34a5682a85ded5a87827d766ff5f58ea__1_;
+            pictureBox4.Image = Properties.Resources._34a5682a85ded5a87827d766ff5f58ea__1_;
             pictureBox4.Location = new System.Drawing.Point(865, 0);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new System.Drawing.Size(508, 412);
@@ -1106,29 +1129,6 @@
             cmb_employeelogsname.Size = new System.Drawing.Size(272, 28);
             cmb_employeelogsname.TabIndex = 0;
             cmb_employeelogsname.SelectedIndexChanged += cmb_employeelogsname_SelectedIndexChanged;
-            // 
-            // txt_pass
-            // 
-            txt_pass.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            txt_pass.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            txt_pass.Location = new System.Drawing.Point(469, 150);
-            txt_pass.Name = "txt_pass";
-            txt_pass.PasswordChar = '●';
-            txt_pass.Size = new System.Drawing.Size(222, 27);
-            txt_pass.TabIndex = 24;
-            txt_pass.UseSystemPasswordChar = true;
-            // 
-            // lbl_password
-            // 
-            lbl_password.AutoSize = true;
-            lbl_password.BackColor = System.Drawing.Color.FromArgb(251, 251, 239);
-            lbl_password.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            lbl_password.ForeColor = System.Drawing.Color.FromArgb(14, 77, 135);
-            lbl_password.Location = new System.Drawing.Point(371, 155);
-            lbl_password.Name = "lbl_password";
-            lbl_password.Size = new System.Drawing.Size(76, 20);
-            lbl_password.TabIndex = 23;
-            lbl_password.Text = "Password";
             // 
             // HR
             // 
