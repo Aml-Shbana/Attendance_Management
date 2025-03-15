@@ -11,8 +11,6 @@ using System.Windows.Forms;
 
 namespace Attendance_Management.Forms_Folder
 {
-
-
     public partial class login : Form
     {
         //call dbcontext
