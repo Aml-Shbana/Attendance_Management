@@ -4,6 +4,7 @@ using Attendance_Management.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Attendance_Management.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20250310144645_newwdata")]
+    partial class newwdata
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,7 +52,7 @@ namespace Attendance_Management.Migrations
 
                     b.HasIndex("EmployeeID");
 
-                    b.ToTable("Attendances", (string)null);
+                    b.ToTable("Attendances");
 
                     b.HasData(
                         new
@@ -180,7 +183,7 @@ namespace Attendance_Management.Migrations
 
                     b.HasKey("EmployeeID");
 
-                    b.ToTable("Employees", (string)null);
+                    b.ToTable("Employees");
 
                     b.HasData(
                         new
@@ -330,10 +333,10 @@ namespace Attendance_Management.Migrations
                         {
                             EmployeeID = 14,
                             Department = "Marketing",
-                            Email = "emp01@company.com",
-                            Name = "emp01",
+                            Email = "mohamed@gmail.com",
+                            Name = "mohamed",
                             Password = "123",
-                            Phone = "0667788990",
+                            Phone = "01008314776",
                             Role = 2,
                             Schedule = 1
                         });
@@ -370,7 +373,7 @@ namespace Attendance_Management.Migrations
 
                     b.HasIndex("EmployeeID");
 
-                    b.ToTable("Leaves", (string)null);
+                    b.ToTable("Leaves");
 
                     b.HasData(
                         new
@@ -435,102 +438,6 @@ namespace Attendance_Management.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Attendance_Management.Models.Logs", b =>
-                {
-                    b.Property<int>("LogId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LogId"));
-
-                    b.Property<int>("Action")
-                        .HasColumnType("int");
-
-                    b.Property<int>("EmployeeID")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("Time_OfAction")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("LogId");
-
-                    b.HasIndex("EmployeeID");
-
-                    b.ToTable("Logs", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            LogId = 1,
-                            Action = 0,
-                            EmployeeID = 1,
-                            Time_OfAction = new DateTime(2025, 3, 1, 8, 55, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            LogId = 2,
-                            Action = 1,
-                            EmployeeID = 1,
-                            Time_OfAction = new DateTime(2025, 3, 1, 17, 5, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            LogId = 3,
-                            Action = 0,
-                            EmployeeID = 2,
-                            Time_OfAction = new DateTime(2025, 3, 2, 9, 10, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            LogId = 4,
-                            Action = 1,
-                            EmployeeID = 2,
-                            Time_OfAction = new DateTime(2025, 3, 2, 16, 50, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            LogId = 5,
-                            Action = 0,
-                            EmployeeID = 3,
-                            Time_OfAction = new DateTime(2025, 3, 3, 8, 30, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            LogId = 6,
-                            Action = 1,
-                            EmployeeID = 3,
-                            Time_OfAction = new DateTime(2025, 3, 3, 17, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            LogId = 7,
-                            Action = 0,
-                            EmployeeID = 4,
-                            Time_OfAction = new DateTime(2025, 3, 4, 8, 45, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            LogId = 8,
-                            Action = 1,
-                            EmployeeID = 4,
-                            Time_OfAction = new DateTime(2025, 3, 4, 16, 40, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            LogId = 9,
-                            Action = 0,
-                            EmployeeID = 5,
-                            Time_OfAction = new DateTime(2025, 3, 5, 9, 5, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            LogId = 10,
-                            Action = 1,
-                            EmployeeID = 5,
-                            Time_OfAction = new DateTime(2025, 3, 5, 16, 55, 0, 0, DateTimeKind.Unspecified)
-                        });
-                });
-
             modelBuilder.Entity("Attendance_Management.Models.Attendance", b =>
                 {
                     b.HasOne("Attendance_Management.Models.Employee", "Employee")
@@ -553,24 +460,11 @@ namespace Attendance_Management.Migrations
                     b.Navigation("Employee");
                 });
 
-            modelBuilder.Entity("Attendance_Management.Models.Logs", b =>
-                {
-                    b.HasOne("Attendance_Management.Models.Employee", "Employee")
-                        .WithMany("Logs")
-                        .HasForeignKey("EmployeeID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Employee");
-                });
-
             modelBuilder.Entity("Attendance_Management.Models.Employee", b =>
                 {
                     b.Navigation("Attendances");
 
                     b.Navigation("Leaves");
-
-                    b.Navigation("Logs");
                 });
 #pragma warning restore 612, 618
         }

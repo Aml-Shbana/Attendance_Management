@@ -10,8 +10,11 @@
 
   <ItemGroup>
     <Compile Remove="Forms_Folder\NewFolder\**" />
+    <Compile Remove="Properties\**" />
     <EmbeddedResource Remove="Forms_Folder\NewFolder\**" />
+    <EmbeddedResource Remove="Properties\**" />
     <None Remove="Forms_Folder\NewFolder\**" />
+    <None Remove="Properties\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,19 +39,5 @@
     <PackageReference Include="ZXing.Net.Bindings.Windows.Compatibility" Version="0.16.13" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Update="Properties\Resources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
 
 </Project>

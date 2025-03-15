@@ -117,41 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="baf442dfbecbbb333ae1bf61dea5254c" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\baf442dfbecbbb333ae1bf61dea5254c.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="38e24583556ec368140620174068f71a" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\38e24583556ec368140620174068f71a.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="7645bacf29b7a773d2e5065fcd4893a4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\7645bacf29b7a773d2e5065fcd4893a4.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="f64b46ef1b1cfb0ce37a4e8a7cba004c" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\f64b46ef1b1cfb0ce37a4e8a7cba004c.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="8bdb6a74440d12dfd67528157ec08ac5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\8bdb6a74440d12dfd67528157ec08ac5.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="a9785a89c577639ecd44057b273099ba" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\a9785a89c577639ecd44057b273099ba.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="627c059344604fe8bde3184a991672ff" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\627c059344604fe8bde3184a991672ff.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="63808880d1f7c821edcc976c603cb242" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\63808880d1f7c821edcc976c603cb242.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="34a5682a85ded5a87827d766ff5f58ea (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\34a5682a85ded5a87827d766ff5f58ea (1).jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="a7af4bc8ec5fee31e75220036bf13492" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\a7af4bc8ec5fee31e75220036bf13492.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="dc370715ecb31c4c97ea00df8369ccb6" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\dc370715ecb31c4c97ea00df8369ccb6.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="309c7e593c27ba04c6d379dc705be666" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\309c7e593c27ba04c6d379dc705be666.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
 </root>

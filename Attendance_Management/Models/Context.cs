@@ -28,16 +28,20 @@ namespace Attendance_Management.Models
             modelBuilder.Entity<Employee>().Property(e => e.Department).HasConversion<string>();
 
             modelBuilder.Entity<Employee>().HasData(
-             new Employee { EmployeeID = 1, Name = "Alice Johnson", Department = Department.IT, Role = UserRole.Admin, Email = "alice.johnson@company.com", Phone = "0123456789", Schedule = WorkSchedule.FullTime, Password = "hashedpass1" },
-             new Employee { EmployeeID = 2, Name = "Bob Smith", Department = Department.HR, Role = UserRole.Employee, Email = "bob.smith@company.com", Phone = "0987654321", Schedule = WorkSchedule.Remote, Password = "hashedpass2" },
-             new Employee { EmployeeID = 3, Name = "Charlie Brown", Department = Department.Finance, Role = UserRole.HR, Email = "charlie.brown@company.com", Phone = "0543216789", Schedule = WorkSchedule.PartTime, Password = "hashedpass3" },
-             new Employee { EmployeeID = 4, Name = "Diana Green", Department = Department.IT, Role = UserRole.Employee, Email = "diana.green@company.com", Phone = "0778899000", Schedule = WorkSchedule.FullTime, Password = "hashedpass4" },
-             new Employee { EmployeeID = 5, Name = "Ethan White", Department = Department.Marketing, Role = UserRole.Employee, Email = "ethan.white@company.com", Phone = "0667788990", Schedule = WorkSchedule.PartTime, Password = "hashedpass5" },
-             new Employee { EmployeeID = 6, Name = "AML", Department = Department.Marketing, Role = UserRole.Employee, Email = "aml@company.com", Phone = "0667788990", Schedule = WorkSchedule.PartTime, Password = "123" },
-             new Employee { EmployeeID = 7, Name = "Fatma", Department = Department.HR, Role = UserRole.HR, Email = "fatma@company.com", Phone = "0667788990", Schedule = WorkSchedule.PartTime, Password = "123" },
-             new Employee { EmployeeID = 8, Name = "new", Department = Department.HR, Role = UserRole.HR, Email = "new@company.com", Phone = "0667788990", Schedule = WorkSchedule.PartTime, Password = "123" },
-             new Employee { EmployeeID = 9, Name = "emp", Department = Department.Marketing, Role = UserRole.Employee, Email = "emp@company.com", Phone = "0667788990", Schedule = WorkSchedule.PartTime, Password = "123" },
-             new Employee { EmployeeID = 10, Name = "emp01", Department = Department.Marketing, Role = UserRole.Employee, Email = "emp01@company.com", Phone = "0667788990", Schedule = WorkSchedule.PartTime, Password = "123" });
+            new Employee { EmployeeID = 1, Name = "Alice Johnson", Department = Department.IT, Role = UserRole.Admin, Email = "alice.johnson@company.com", Phone = "0123456789", Schedule = WorkSchedule.FullTime, Password = "hashedpass1" },
+            new Employee { EmployeeID = 2, Name = "Bob Smith", Department = Department.HR, Role = UserRole.Employee, Email = "bob.smith@company.com", Phone = "0987654321", Schedule = WorkSchedule.Remote, Password = "hashedpass2" },
+            new Employee { EmployeeID = 3, Name = "Charlie Brown", Department = Department.Finance, Role = UserRole.HR, Email = "charlie.brown@company.com", Phone = "0543216789", Schedule = WorkSchedule.PartTime, Password = "hashedpass3" },
+            new Employee { EmployeeID = 4, Name = "Diana Green", Department = Department.IT, Role = UserRole.Employee, Email = "diana.green@company.com", Phone = "0778899000", Schedule = WorkSchedule.FullTime, Password = "hashedpass4" },
+            new Employee { EmployeeID = 5, Name = "Ethan White", Department = Department.Marketing, Role = UserRole.Employee, Email = "ethan.white@company.com", Phone = "0667788990", Schedule = WorkSchedule.PartTime, Password = "hashedpass5" },
+            new Employee { EmployeeID = 6, Name = "AML", Department = Department.Marketing, Role = UserRole.Employee, Email = "aml@company.com", Phone = "0667788990", Schedule = WorkSchedule.PartTime, Password = "123" },
+            new Employee { EmployeeID = 7, Name = "Fatma", Department = Department.HR, Role = UserRole.HR, Email = "fatma@company.com", Phone = "0667788990", Schedule = WorkSchedule.PartTime, Password = "123" },
+            new Employee { EmployeeID = 8, Name = "new", Department = Department.HR, Role = UserRole.HR, Email = "new@company.com", Phone = "0667788990", Schedule = WorkSchedule.PartTime, Password = "123" },
+            new Employee { EmployeeID = 9, Name = "emp", Department = Department.Marketing, Role = UserRole.Employee, Email = "emp@company.com", Phone = "0667788990", Schedule = WorkSchedule.PartTime, Password = "123" },
+            new Employee { EmployeeID = 10, Name = "Aml Shbana", Department = Department.Marketing, Role = UserRole.Employee, Email = "amlshbana28@gmail.com", Phone = "01008314776", Schedule = WorkSchedule.PartTime, Password = "123" },
+            new Employee { EmployeeID = 11, Name = "alaa", Department = Department.Marketing, Role = UserRole.Employee, Email = "alaa@gmail.com", Phone = "01008314776", Schedule = WorkSchedule.PartTime, Password = "123" },
+            new Employee { EmployeeID = 12, Name = "ahmed", Department = Department.Marketing, Role = UserRole.Employee, Email = "ahmed@gmail.com", Phone = "01008314776", Schedule = WorkSchedule.PartTime, Password = "123" },
+            new Employee { EmployeeID = 13, Name = "yasser", Department = Department.Marketing, Role = UserRole.Employee, Email = "yasser@gmail.com", Phone = "01008314776", Schedule = WorkSchedule.PartTime, Password = "123" },
+            new Employee { EmployeeID = 14, Name = "mohamed", Department = Department.Marketing, Role = UserRole.Employee, Email = "mohamed@gmail.com", Phone = "01008314776", Schedule = WorkSchedule.PartTime, Password = "123" });
 
 
 

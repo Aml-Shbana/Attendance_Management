@@ -160,7 +160,7 @@
             // panel3
             // 
             panel3.BackColor = System.Drawing.Color.FromArgb(230, 231, 233);
-            panel3.BackgroundImage = Properties.Resources.dc370715ecb31c4c97ea00df8369ccb6;
+            //panel3.BackgroundImage = Properties.Resources.dc370715ecb31c4c97ea00df8369ccb6;
             panel3.Controls.Add(txt_pass);
             panel3.Controls.Add(lbl_password);
             panel3.Controls.Add(dgv_employees);
@@ -198,7 +198,7 @@
             // pb_close
             // 
             pb_close.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            pb_close.Image = Properties.Resources.f64b46ef1b1cfb0ce37a4e8a7cba004c;
+            //pb_close.Image = Properties.Resources.f64b46ef1b1cfb0ce37a4e8a7cba004c;
             pb_close.Location = new System.Drawing.Point(3, 5);
             pb_close.Name = "pb_close";
             pb_close.Size = new System.Drawing.Size(45, 36);
@@ -862,7 +862,7 @@
             // 
             // pictureBox3
             // 
-            pictureBox3.Image = Properties.Resources.a9785a89c577639ecd44057b273099ba;
+            //pictureBox3.Image = Properties.Resources.a9785a89c577639ecd44057b273099ba;
             pictureBox3.Location = new System.Drawing.Point(-6, -5);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new System.Drawing.Size(374, 421);
@@ -1048,7 +1048,7 @@
             // 
             // pictureBox4
             // 
-            pictureBox4.Image = Properties.Resources._34a5682a85ded5a87827d766ff5f58ea__1_;
+            //pictureBox4.Image = Properties.Resources._34a5682a85ded5a87827d766ff5f58ea__1_;
             pictureBox4.Location = new System.Drawing.Point(865, 0);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new System.Drawing.Size(508, 412);

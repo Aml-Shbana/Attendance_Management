@@ -144,7 +144,6 @@
             // pb_close
             // 
             pb_close.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            pb_close.Image = Properties.Resources.f64b46ef1b1cfb0ce37a4e8a7cba004c;
             pb_close.Location = new System.Drawing.Point(15, 15);
             pb_close.Name = "pb_close";
             pb_close.Size = new System.Drawing.Size(45, 36);
@@ -301,7 +300,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources._7645bacf29b7a773d2e5065fcd4893a4;
+            
             pictureBox1.Location = new System.Drawing.Point(0, 0);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new System.Drawing.Size(445, 426);
