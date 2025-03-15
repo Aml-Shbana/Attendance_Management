@@ -4,6 +4,7 @@ using Attendance_Management.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Attendance_Management.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20250309015613_drop_table")]
+    partial class drop_table
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,7 +52,7 @@ namespace Attendance_Management.Migrations
 
                     b.HasIndex("EmployeeID");
 
-                    b.ToTable("Attendances", (string)null);
+                    b.ToTable("Attendances");
 
                     b.HasData(
                         new
@@ -180,7 +183,7 @@ namespace Attendance_Management.Migrations
 
                     b.HasKey("EmployeeID");
 
-                    b.ToTable("Employees", (string)null);
+                    b.ToTable("Employees");
 
                     b.HasData(
                         new
@@ -286,50 +289,6 @@ namespace Attendance_Management.Migrations
                         {
                             EmployeeID = 10,
                             Department = "Marketing",
-                            Email = "amlshbana28@gmail.com",
-                            Name = "Aml Shbana",
-                            Password = "123",
-                            Phone = "01008314776",
-                            Role = 2,
-                            Schedule = 1
-                        },
-                        new
-                        {
-                            EmployeeID = 11,
-                            Department = "Marketing",
-                            Email = "alaa@gmail.com",
-                            Name = "alaa",
-                            Password = "123",
-                            Phone = "01008314776",
-                            Role = 2,
-                            Schedule = 1
-                        },
-                        new
-                        {
-                            EmployeeID = 12,
-                            Department = "Marketing",
-                            Email = "ahmed@gmail.com",
-                            Name = "ahmed",
-                            Password = "123",
-                            Phone = "01008314776",
-                            Role = 2,
-                            Schedule = 1
-                        },
-                        new
-                        {
-                            EmployeeID = 13,
-                            Department = "Marketing",
-                            Email = "yasser@gmail.com",
-                            Name = "yasser",
-                            Password = "123",
-                            Phone = "01008314776",
-                            Role = 2,
-                            Schedule = 1
-                        },
-                        new
-                        {
-                            EmployeeID = 14,
-                            Department = "Marketing",
                             Email = "emp01@company.com",
                             Name = "emp01",
                             Password = "123",
@@ -370,7 +329,7 @@ namespace Attendance_Management.Migrations
 
                     b.HasIndex("EmployeeID");
 
-                    b.ToTable("Leaves", (string)null);
+                    b.ToTable("Leaves");
 
                     b.HasData(
                         new
@@ -456,7 +415,7 @@ namespace Attendance_Management.Migrations
 
                     b.HasIndex("EmployeeID");
 
-                    b.ToTable("Logs", (string)null);
+                    b.ToTable("Logs");
 
                     b.HasData(
                         new

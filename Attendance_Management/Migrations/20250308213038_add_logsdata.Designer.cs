@@ -4,6 +4,7 @@ using Attendance_Management.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Attendance_Management.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20250308213038_add_logsdata")]
+    partial class add_logsdata
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,7 +52,7 @@ namespace Attendance_Management.Migrations
 
                     b.HasIndex("EmployeeID");
 
-                    b.ToTable("Attendances", (string)null);
+                    b.ToTable("Attendances");
 
                     b.HasData(
                         new
@@ -180,7 +183,7 @@ namespace Attendance_Management.Migrations
 
                     b.HasKey("EmployeeID");
 
-                    b.ToTable("Employees", (string)null);
+                    b.ToTable("Employees");
 
                     b.HasData(
                         new
@@ -286,50 +289,6 @@ namespace Attendance_Management.Migrations
                         {
                             EmployeeID = 10,
                             Department = "Marketing",
-                            Email = "amlshbana28@gmail.com",
-                            Name = "Aml Shbana",
-                            Password = "123",
-                            Phone = "01008314776",
-                            Role = 2,
-                            Schedule = 1
-                        },
-                        new
-                        {
-                            EmployeeID = 11,
-                            Department = "Marketing",
-                            Email = "alaa@gmail.com",
-                            Name = "alaa",
-                            Password = "123",
-                            Phone = "01008314776",
-                            Role = 2,
-                            Schedule = 1
-                        },
-                        new
-                        {
-                            EmployeeID = 12,
-                            Department = "Marketing",
-                            Email = "ahmed@gmail.com",
-                            Name = "ahmed",
-                            Password = "123",
-                            Phone = "01008314776",
-                            Role = 2,
-                            Schedule = 1
-                        },
-                        new
-                        {
-                            EmployeeID = 13,
-                            Department = "Marketing",
-                            Email = "yasser@gmail.com",
-                            Name = "yasser",
-                            Password = "123",
-                            Phone = "01008314776",
-                            Role = 2,
-                            Schedule = 1
-                        },
-                        new
-                        {
-                            EmployeeID = 14,
-                            Department = "Marketing",
                             Email = "emp01@company.com",
                             Name = "emp01",
                             Password = "123",
@@ -337,6 +296,31 @@ namespace Attendance_Management.Migrations
                             Role = 2,
                             Schedule = 1
                         });
+                });
+
+            modelBuilder.Entity("Attendance_Management.Models.EmployeeAttendanceSummary", b =>
+                {
+                    b.Property<int>("EmpSummaryID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EmployeeID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DailyAttendance")
+                        .HasColumnType("int");
+
+                    b.Property<int>("monthlyAttendance")
+                        .HasColumnType("int");
+
+                    b.Property<int>("weekAttendance")
+                        .HasColumnType("int");
+
+                    b.HasKey("EmpSummaryID", "EmployeeID");
+
+                    b.HasIndex("EmployeeID")
+                        .IsUnique();
+
+                    b.ToTable("AttendanceSummaries");
                 });
 
             modelBuilder.Entity("Attendance_Management.Models.LeaveRequest", b =>
@@ -370,7 +354,7 @@ namespace Attendance_Management.Migrations
 
                     b.HasIndex("EmployeeID");
 
-                    b.ToTable("Leaves", (string)null);
+                    b.ToTable("Leaves");
 
                     b.HasData(
                         new
@@ -456,7 +440,7 @@ namespace Attendance_Management.Migrations
 
                     b.HasIndex("EmployeeID");
 
-                    b.ToTable("Logs", (string)null);
+                    b.ToTable("Logs");
 
                     b.HasData(
                         new
@@ -542,6 +526,17 @@ namespace Attendance_Management.Migrations
                     b.Navigation("Employee");
                 });
 
+            modelBuilder.Entity("Attendance_Management.Models.EmployeeAttendanceSummary", b =>
+                {
+                    b.HasOne("Attendance_Management.Models.Employee", "Employee")
+                        .WithOne("EmployeeAttendanceSummary")
+                        .HasForeignKey("Attendance_Management.Models.EmployeeAttendanceSummary", "EmployeeID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+                });
+
             modelBuilder.Entity("Attendance_Management.Models.LeaveRequest", b =>
                 {
                     b.HasOne("Attendance_Management.Models.Employee", "Employee")
@@ -567,6 +562,9 @@ namespace Attendance_Management.Migrations
             modelBuilder.Entity("Attendance_Management.Models.Employee", b =>
                 {
                     b.Navigation("Attendances");
+
+                    b.Navigation("EmployeeAttendanceSummary")
+                        .IsRequired();
 
                     b.Navigation("Leaves");
 

@@ -79,7 +79,6 @@
             // 
             // label1
             // 
-            label1.Image = Properties.Resources.ca521f10aa62e6a90b0f6cb54a3721f31;
             label1.Location = new System.Drawing.Point(3, 0);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(236, 206);
@@ -115,7 +114,6 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.WhatsApp_Image_2025_03_10_at_16_32_28_fd578727;
             BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             ClientSize = new System.Drawing.Size(800, 450);
             Controls.Add(panel1);

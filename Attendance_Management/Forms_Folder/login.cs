@@ -49,15 +49,15 @@ namespace Attendance_Management.Forms_Folder
             //set role
             switch (user.Role)
             {
-                //case UserRole.Admin:
-                //    new Admin().Show();
-                //    this.Hide();
-                //    break;
+                case UserRole.Admin:
+                    new Admin().Show();
+                    this.Hide();
+                    break;
 
-                //case UserRole.HR:
-                //    new HR().Show();
-                // this.Hide();
-                //break;
+                case UserRole.HR:
+                    new HR().Show();
+                    this.Hide();
+                    break;
                 case UserRole.Employee:
                     new empdashboard().Show();
                     break;
@@ -160,19 +160,20 @@ namespace Attendance_Management.Forms_Folder
             chbshowpass.ForeColor = SystemColors.ActiveCaption;
         }
 
-        
+
 
         private void linkLabel1_MouseLeave(object sender, EventArgs e)
         {
             linkLabel1.ForeColor = SystemColors.ActiveCaption;
-            
+
         }
 
         private void linkLabel1_MouseEnter(object sender, EventArgs e)
         {
             linkLabel1.ForeColor = Color.MediumBlue;
-           
+
         }
         #endregion
     }
 }
+

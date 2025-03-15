@@ -32,7 +32,8 @@ namespace Attendance_Management.Models
         //relations
         public virtual List<Attendance> Attendances { get; set; } = new List<Attendance>();
         public virtual List<LeaveRequest> Leaves { get; set; } = new List<LeaveRequest>();
-
+        public virtual List<Logs> Logs { get; set; } = new List<Logs> ();
+        
     }
     public enum UserRole
     {

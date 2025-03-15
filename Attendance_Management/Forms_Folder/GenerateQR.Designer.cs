@@ -46,7 +46,6 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.WhatsApp_Image_2025_03_10_at_16_32_42_899dd55a;
             BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             ClientSize = new System.Drawing.Size(806, 384);
             Controls.Add(pictureBoxQR);
