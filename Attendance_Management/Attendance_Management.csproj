@@ -39,4 +39,5 @@
     <PackageReference Include="ZXing.Net.Bindings.Windows.Compatibility" Version="0.16.13" />
   </ItemGroup>
 
+
 </Project>
